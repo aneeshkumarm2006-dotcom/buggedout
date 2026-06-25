@@ -51,9 +51,7 @@ export default async function GameDetailPage({ params }: GamePageProps) {
           >
             {game.meta}
           </span>
-          <h1 className="display">
-            {game.emoji} {game.name}
-          </h1>
+          <h1 className="display">{game.name}</h1>
           <p
             style={{
               color: "var(--color-fog)",

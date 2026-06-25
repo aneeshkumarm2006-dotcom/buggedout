@@ -474,10 +474,14 @@ ul{list-style:none}
 .field{margin-bottom:var(--space-3);display:flex;flex-direction:column;gap:6px}
 .field label{font-family:var(--font-body);font-weight:600;color:var(--color-fog);font-size:var(--text-sm);
   text-transform:uppercase;letter-spacing:.04em}
-.field input,.field textarea{background:rgba(255,255,255,.04);border:1px solid rgba(217,165,33,.22);
+.field input,.field textarea,.field select{background:rgba(255,255,255,.04);border:1px solid rgba(217,165,33,.22);
   border-radius:4px;padding:12px 14px;color:var(--color-bone);font-family:var(--font-body);font-size:var(--text-base);
   transition:border-color .2s ease,box-shadow .2s ease}
-.field input:focus,.field textarea:focus{outline:none;border-color:var(--color-acid);box-shadow:0 0 0 3px rgba(125,194,27,.12)}
+.field select{appearance:none;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23d9a521' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.field select option{background:var(--color-swamp);color:var(--color-bone)}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--color-acid);box-shadow:0 0 0 3px rgba(125,194,27,.12)}
 .field textarea{resize:vertical;min-height:120px}
 
 /* ============ SIGN UP MODAL ============ */
@@ -504,8 +508,6 @@ ul{list-style:none}
 .reveal-divider.in{clip-path:inset(0 0 0 0)}
 
 @media (prefers-reduced-motion: no-preference){
-  .hero-art{animation:float 3.4s ease-in-out infinite}
-  @keyframes float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-10px)}}
   .btn-primary:hover .shimmer{animation:shimmer .5s ease}
   @keyframes shimmer{from{transform:translateX(-120%)}to{transform:translateX(120%)}}
   .scroll-ind{animation:bob 1.8s ease-in-out infinite}

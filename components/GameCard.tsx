@@ -36,9 +36,7 @@ export default function GameCard({ game, index = 0 }: GameCardProps) {
       </Link>
       <div className="race-divider race-divider--card" />
       <div className="game-card-body">
-        <h3>
-          {game.emoji} {game.name}
-        </h3>
+        <h3>{game.name}</h3>
         <span className="meta">{game.meta}</span>
         <p className="desc">{game.tagline}</p>
         <Link href={`/games/${game.slug}`} className="play">

@@ -118,7 +118,6 @@ export default function HomePage() {
                 key={a.name}
                 style={{ transitionDelay: `${(i % 4) * 0.06}s` }}
               >
-                <span className="crit" aria-hidden="true">{a.emoji}</span>
                 <span className="nm">{a.name}</span>
                 <span className="tr">{a.trait}</span>
               </div>
@@ -151,7 +150,6 @@ export default function HomePage() {
               loading="lazy"
             />
             <div className="winner-fill">
-              <span className="champ" aria-hidden="true">🐓</span>
               <span className="nm">Backed at 8:1</span>
             </div>
           </div>
@@ -170,7 +168,6 @@ export default function HomePage() {
           <div className="why-grid">
             {HOME.why.map((w) => (
               <div className="why-card hud-panel reveal" key={w.h}>
-                <span className="ico" aria-hidden="true">{w.icon}</span>
                 <h3>{w.h}</h3>
                 <p>{w.p}</p>
               </div>

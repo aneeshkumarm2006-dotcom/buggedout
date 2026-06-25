@@ -114,7 +114,7 @@ export default function SignupProvider({ children }: { children: ReactNode }) {
                   padding: "var(--space-4) 0",
                 }}
               >
-                You&apos;re in. See you trackside! 🏁
+                You&apos;re in. See you trackside!
               </p>
             ) : (
               <form
@@ -150,6 +150,21 @@ export default function SignupProvider({ children }: { children: ReactNode }) {
                     type="tel"
                     placeholder="+1 (555) 000-0000"
                   />
+                </div>
+                <div className="field">
+                  <label htmlFor="su-referral">Where did you hear about us?</label>
+                  <select id="su-referral" defaultValue="">
+                    <option value="" disabled>
+                      Select an option
+                    </option>
+                    <option value="search">Search engine</option>
+                    <option value="social">Social media</option>
+                    <option value="friend">Friend or family</option>
+                    <option value="youtube">YouTube / streamer</option>
+                    <option value="event">Event or expo</option>
+                    <option value="ad">Advertisement</option>
+                    <option value="other">Other</option>
+                  </select>
                 </div>
                 <button type="submit" className="btn btn-primary btn-block">
                   <span className="shimmer" />

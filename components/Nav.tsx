@@ -116,7 +116,6 @@ export default function Nav() {
 
                 {GAMES.map((g) => (
                   <Link key={g.slug} href={`/games/${g.slug}`}>
-                    <span className="ico">{g.emoji}</span>
                     {g.name}
                   </Link>
                 ))}

@@ -13,7 +13,6 @@ export interface Game {
   slug: string;
   name: string;
   type: GameType;
-  emoji: string;
   /** e.g. "5×5 Grid" */
   format: string;
   /** e.g. "Bingo · 5×5 Grid" */
@@ -44,7 +43,6 @@ export const GAMES: Game[] = [
     "slug": "chicken-shit-bingo",
     "name": "Chicken Shit Bingo",
     "type": "Bingo",
-    "emoji": "🐔",
     "format": "5×5 Grid",
     "meta": "Bingo · 5×5 Grid",
     "image": "/assets/games/chicken-shit-bingo.webp",
@@ -52,7 +50,7 @@ export const GAMES: Game[] = [
     "w": 1600,
     "h": 893,
     "lineup": [
-      "🐔 Hen"
+      "Hen"
     ],
     "tagline": "Claim your square. Pray the hen agrees",
     "intro": "One hen, twenty-five numbered squares, and zero manners. Lock in your number before she's loose, then watch nature pick the winner.",
@@ -81,7 +79,6 @@ export const GAMES: Game[] = [
     "slug": "forked-fate",
     "name": "Forked Fate",
     "type": "Prediction",
-    "emoji": "🦆",
     "format": "2 Exits",
     "meta": "Prediction · 2 Exits",
     "image": "/assets/games/forked-fate.webp",
@@ -89,7 +86,7 @@ export const GAMES: Game[] = [
     "w": 1600,
     "h": 893,
     "lineup": [
-      "🦆 Duck"
+      "Duck"
     ],
     "tagline": "One duck. Two exits. Zero loyalty.",
     "intro": "A lone duck waddles up to a Y-junction where the track splits clean in two. You call the lane it walks out of. Sounds like a coin flip. The duck has never seen a coin.",
@@ -118,7 +115,6 @@ export const GAMES: Game[] = [
     "slug": "lane-racing",
     "name": "Lane Racing",
     "type": "Race",
-    "emoji": "🦀",
     "format": "3 Lanes",
     "meta": "Race · 3 Lanes",
     "image": "/assets/games/lane-racing.webp",
@@ -126,9 +122,9 @@ export const GAMES: Game[] = [
     "w": 1600,
     "h": 893,
     "lineup": [
-      "🐭 Mouse",
-      "🦀 Crab",
-      "🐟 Fish"
+      "Mouse",
+      "Crab",
+      "Fish"
     ],
     "tagline": "Three species. Three lanes. One finish line. Pick the weird one",
     "intro": "A mouse, a crab and a fish line up in three numbered lanes with one finish line between them. None of them move the same way, and your job is to call which one gets there first.",
@@ -157,7 +153,6 @@ export const GAMES: Game[] = [
     "slug": "roulette",
     "name": "Roulette",
     "type": "Roulette",
-    "emoji": "🪲",
     "format": "37 Slots",
     "meta": "Roulette · 37 Slots",
     "image": "/assets/games/roulette.webp",
@@ -165,7 +160,7 @@ export const GAMES: Game[] = [
     "w": 1600,
     "h": 893,
     "lineup": [
-      "🪲 Beetle"
+      "Beetle"
     ],
     "tagline": "Bet your number. The beetle has other plans",
     "intro": "A live beetle hits a spinning wheel of 37 numbered slots. You called red, you called 22, you called the middle dozen. Now the bug picks a seat and decides who gets paid.",
@@ -194,7 +189,6 @@ export const GAMES: Game[] = [
     "slug": "split-decision",
     "name": "Split Decision",
     "type": "Roulette",
-    "emoji": "🐸",
     "format": "Red / Black",
     "meta": "Roulette · Red / Black",
     "image": "/assets/games/split-decision.webp",
@@ -202,7 +196,7 @@ export const GAMES: Game[] = [
     "w": 1600,
     "h": 893,
     "lineup": [
-      "🐸 Frog"
+      "Frog"
     ],
     "tagline": "One frog. Two doors. Pick a color and pray",
     "intro": "A live frog sits behind the gate, and two doors wait below it: one red, one black. You call the color it hops through. Fifty-fifty on paper. Total chaos in practice.",
@@ -227,7 +221,6 @@ export const GAMES: Game[] = [
     "slug": "the-great-escape",
     "name": "The Great Escape",
     "type": "Race",
-    "emoji": "🐓",
     "format": "Open Track",
     "meta": "Race · Open Track",
     "image": "/assets/games/the-great-escape.webp",
@@ -235,16 +228,16 @@ export const GAMES: Game[] = [
     "w": 1600,
     "h": 893,
     "lineup": [
-      "🐓",
-      "🐇",
-      "🐸",
-      "🪲",
-      "🦀",
-      "🐟",
-      "🐭",
-      "🦆",
-      "🐢",
-      "🐞"
+      "Chicken",
+      "Rabbit",
+      "Frog",
+      "Beetle",
+      "Crab",
+      "Fish",
+      "Mouse",
+      "Duck",
+      "Turtle",
+      "Ladybug"
     ],
     "tagline": "Ten animals. One line. No second place",
     "intro": "The whole BuggedOut menagerie hits the open track at once. Chicken, rabbit, frog, beetle, crab, fish, mouse, duck, turtle, ladybug. Lock in your champion, then watch ten tiny brains decide the race for you.",
@@ -273,7 +266,6 @@ export const GAMES: Game[] = [
     "slug": "three-door-monty",
     "name": "Three Door Monty",
     "type": "Prediction",
-    "emoji": "🐇",
     "format": "3 Doors",
     "meta": "Prediction · 3 Doors",
     "image": "/assets/games/three-door-monty.webp",
@@ -281,9 +273,9 @@ export const GAMES: Game[] = [
     "w": 1600,
     "h": 893,
     "lineup": [
-      "🐇 Rabbit",
-      "🦆 Duck",
-      "🐸 Frog"
+      "Rabbit",
+      "Duck",
+      "Frog"
     ],
     "tagline": "Three doors. Three critters. Pick who walks out where",
     "intro": "Red, Yellow, Green. Three doors light up, three live animals wait behind them, and only you know which critter goes where. Lock your guess before the doors swing open.",
@@ -312,7 +304,6 @@ export const GAMES: Game[] = [
     "slug": "tunnel-vision",
     "name": "Tunnel Vision",
     "type": "Prediction",
-    "emoji": "🐇",
     "format": "4 Tunnels",
     "meta": "Prediction · 4 Tunnels",
     "image": "/assets/games/tunnel-vision.webp",
@@ -320,7 +311,7 @@ export const GAMES: Game[] = [
     "w": 1600,
     "h": 893,
     "lineup": [
-      "🐇 Rabbit"
+      "Rabbit"
     ],
     "tagline": "One rabbit. Four tunnels. Call the exit",
     "intro": "A rabbit sits in a box with four numbered tunnels glowing green and gold around it. You call which one it bolts through. Then you wait for the twitch.",

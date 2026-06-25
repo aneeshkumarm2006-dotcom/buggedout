@@ -51,59 +51,48 @@ export const HOME = {
   "heroSubhead": "Live prediction games where the contestants have no idea they're competing.",
   "why": [
     {
-      "icon": "🟢",
       "h": "Always Live",
       "p": "Every round runs in real time, so the chaos you bet on is the exact chaos you watch."
     },
     {
-      "icon": "🎲",
       "h": "Truly Random",
       "p": "No loops, no replays, no trained tricks; the animals do whatever they feel like."
     },
     {
-      "icon": "💸",
       "h": "Fast Payouts",
       "p": "Call it right and your winnings land before the next rooster even wakes up."
     }
   ],
   "lineup": [
     {
-      "emoji": "🐓",
       "name": "Rooster",
       "trait": "Struts first, thinks never."
     },
     {
-      "emoji": "🐔",
       "name": "Hen",
       "trait": "Pecks a path only she understands."
     },
     {
-      "emoji": "🐇",
       "name": "Rabbit",
       "trait": "Gone before the gate finishes opening."
     },
     {
-      "emoji": "🐸",
       "name": "Frog",
       "trait": "One jump can void your whole ticket."
     },
     {
-      "emoji": "🪲",
       "name": "Beetle",
       "trait": "Slow, stubborn, weirdly hard to read."
     },
     {
-      "emoji": "🦀",
       "name": "Crab",
       "trait": "Bets sideways, wins sideways, leaves sideways."
     },
     {
-      "emoji": "🐟",
       "name": "Fish",
       "trait": "Swims like the odds owe it money."
     },
     {
-      "emoji": "🦆",
       "name": "Duck",
       "trait": "Calm up top, scheming underneath."
     }
