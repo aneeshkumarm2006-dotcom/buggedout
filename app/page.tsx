@@ -1,66 +1,188 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Link from "next/link";
+import { GAMES } from "@/lib/games";
+import { HOME } from "@/lib/copy";
+import GameCard from "@/components/GameCard";
+import HeroArt from "@/components/HeroArt";
+import SignupButton from "@/components/SignupButton";
+import CtaBanner from "@/components/CtaBanner";
 
-export default function Home() {
+export default function HomePage() {
+  const titleLast = HOME.heroTitleLines.length - 1;
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      {/* ============ HERO ============ */}
+      <div className="hero">
+        <div className="hero-glow" />
+        <div className="hero-spotlight" />
+        <HeroArt />
+        <div className="hero-content">
+          <span className="eyebrow reveal">{HOME.heroEyebrow}</span>
+          <h1 className="display reveal">
+            {HOME.heroTitleLines.map((line, i) => (
+              <span key={line}>
+                {i === titleLast ? <span className="gold">{line}</span> : line}
+                {i < titleLast && <br />}
+              </span>
+            ))}
+          </h1>
+          <p className="subhead reveal">{HOME.heroSubhead}</p>
+          <div className="hero-cta reveal">
+            <SignupButton className="btn btn-primary btn-lg">
+              <span className="shimmer" />
+              Join Now
+            </SignupButton>
+            <Link href="/games" className="btn btn-ghost-gold btn-lg">
+              See The Games
+            </Link>
+          </div>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+        <div className="scroll-ind">⌄</div>
+      </div>
+
+      <div className="race-divider race-divider--strong reveal-divider" />
+
+      {/* ============ STAT BAND ============ */}
+      <section className="section" style={{ paddingTop: "var(--space-10)", paddingBottom: "var(--space-8)" }}>
+        <div className="wrap">
+          <div className="stat-band">
+            {HOME.stats.map((s) => (
+              <div className="stat reveal" key={s.label}>
+                <span className="num">{s.value}</span>
+                <span className="lbl">{s.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="race-divider reveal-divider" />
+
+      {/* ============ LOBBY PREVIEW ============ */}
+      <section className="section section-glow">
+        <div className="wrap">
+          <div className="section-header reveal">
+            <h2 className="display">The <span className="gold">Arena</span></h2>
+            <div className="divider-mini" />
+            <p className="sub">Eight live games. Pick your poison.</p>
+          </div>
+          <div className="grid-games" id="homeGames">
+            {GAMES.slice(0, 6).map((g, i) => (
+              <GameCard key={g.slug} game={g} index={i} />
+            ))}
+          </div>
+          <div style={{ textAlign: "center", marginTop: "var(--space-8)" }}>
+            <Link href="/games" className="btn btn-ghost">
+              View All Games
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <div className="race-divider reveal-divider" />
+
+      {/* ============ HOW IT WORKS ============ */}
+      <section className="section">
+        <div className="wrap">
+          <div className="section-header reveal">
+            <h2 className="display">How It <span className="gold">Works</span></h2>
+            <div className="divider-mini" />
+            <p className="sub">From cold open to cashed out in four moves.</p>
+          </div>
+          <div className="why-grid hiw-grid">
+            {HOME.howItWorks.map((step, i) => (
+              <div className="why-card hud-panel reveal" key={step.h}>
+                <span className="hiw-num">{i + 1}</span>
+                <h3>{step.h}</h3>
+                <p>{step.p}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="race-divider reveal-divider" />
+
+      {/* ============ THE LINEUP ============ */}
+      <section className="section section-glow">
+        <div className="wrap">
+          <div className="section-header reveal">
+            <h2 className="display">The <span className="gold">Lineup</span></h2>
+            <div className="divider-mini" />
+            <p className="sub">Your athletes. None of them asked for this.</p>
+          </div>
+          <div className="lineup-grid">
+            {HOME.lineup.map((a, i) => (
+              <div
+                className="lineup-card reveal"
+                key={a.name}
+                style={{ transitionDelay: `${(i % 4) * 0.06}s` }}
+              >
+                <span className="crit" aria-hidden="true">{a.emoji}</span>
+                <span className="nm">{a.name}</span>
+                <span className="tr">{a.trait}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ WINNER SHOWCASE ============ */}
+      <div className="race-divider reveal-divider" />
+      <section className="winner-band">
+        <div className="checker-edge top" />
+        <div className="winner-inner">
+          <div className="winner-copy reveal">
+            <span className="eyebrow">{HOME.winner.eyebrow}</span>
+            <h2>{HOME.winner.h}</h2>
+            <p>{HOME.winner.p}</p>
+            <SignupButton className="btn btn-gold btn-lg">
+              <span className="shimmer" />
+              Start Winning
+            </SignupButton>
+          </div>
+          <div className="winner-frame reveal">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/assets/hud-winner.webp"
+              width={1400}
+              height={781}
+              alt="BuggedOut WINNER results screen"
+              loading="lazy"
             />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <div className="winner-fill">
+              <span className="champ" aria-hidden="true">🐓</span>
+              <span className="nm">Backed at 8:1</span>
+            </div>
+          </div>
         </div>
-      </main>
-    </div>
+        <div className="checker-edge bottom" />
+      </section>
+
+      {/* ============ WHY ============ */}
+      <section className="section">
+        <div className="wrap">
+          <div className="section-header reveal">
+            <h2 className="display">Why <span className="gold">BuggedOut</span></h2>
+            <div className="divider-mini" />
+            <p className="sub">It&apos;s not a simulation. It&apos;s a spectator sport.</p>
+          </div>
+          <div className="why-grid">
+            {HOME.why.map((w) => (
+              <div className="why-card hud-panel reveal" key={w.h}>
+                <span className="ico" aria-hidden="true">{w.icon}</span>
+                <h3>{w.h}</h3>
+                <p>{w.p}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="race-divider reveal-divider" />
+
+      {/* ============ CTA ============ */}
+      <CtaBanner />
+    </>
   );
 }
