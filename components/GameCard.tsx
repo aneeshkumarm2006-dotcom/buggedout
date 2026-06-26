@@ -40,7 +40,7 @@ export default function GameCard({ game, index = 0 }: GameCardProps) {
         <span className="meta">{game.meta}</span>
         <p className="desc">{game.tagline}</p>
         <Link href={`/games/${game.slug}`} className="play">
-          Play Now →
+          View Game →
         </Link>
       </div>
     </article>

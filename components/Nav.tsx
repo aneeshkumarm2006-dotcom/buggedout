@@ -132,7 +132,7 @@ export default function Nav() {
               </Link>
             </li>
           </ul>
-          <SignupButton className="nav-signup desktop-only">Sign Up</SignupButton>
+          <SignupButton className="nav-signup desktop-only">Get Updates</SignupButton>
           <button
             className="nav-burger"
             id="burger"
@@ -182,7 +182,7 @@ export default function Nav() {
             Contact
           </Link>
           <SignupButton className="nav-signup" onBeforeOpen={closeDrawer}>
-            Sign Up
+            Get Updates
           </SignupButton>
         </div>
       </div>

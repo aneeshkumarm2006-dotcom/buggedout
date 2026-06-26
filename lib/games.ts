@@ -32,9 +32,9 @@ export interface Game {
   intro: string;
   /** one line on the chaos */
   vibe: string;
-  /** odds flavor */
-  payout: string;
-  /** game-specific how-to-play */
+  /** scoring flavor */
+  score: string;
+  /** game-specific how-it-works */
   how: HowStep[];
 }
 
@@ -53,9 +53,9 @@ export const GAMES: Game[] = [
       "Hen"
     ],
     "tagline": "Claim your square. Pray the hen agrees",
-    "intro": "One hen, twenty-five numbered squares, and zero manners. Lock in your number before she's loose, then watch nature pick the winner.",
+    "intro": "One hen, twenty-five numbered squares, and zero manners. Claim your number before she's loose, then watch nature pick the winner.",
     "vibe": "She struts, she pecks, she stalls on square 12 for a full minute, then drops the verdict three squares over while the whole room groans.",
-    "payout": "One square hits, one square pays 25:1",
+    "score": "One square hits, and it's worth a 25× score",
     "how": [
       {
         "h": "Claim a square",
@@ -70,8 +70,8 @@ export const GAMES: Game[] = [
         "p": "Whichever square the chicken poops on is the winning number, no appeals."
       },
       {
-        "h": "Cash the splat",
-        "p": "Hold that exact square and the 25:1 payout is yours."
+        "h": "Score the splat",
+        "p": "Land that exact square and the 25× score is yours."
       }
     ]
   },
@@ -89,9 +89,9 @@ export const GAMES: Game[] = [
       "Duck"
     ],
     "tagline": "One duck. Two exits. Zero loyalty.",
-    "intro": "A lone duck waddles up to a Y-junction where the track splits clean in two. You call the lane it walks out of. Sounds like a coin flip. The duck has never seen a coin.",
+    "intro": "A lone duck waddles up to a Y-junction where the track splits clean in two. Call the lane it walks out of. Sounds like a coin flip. The duck has never seen a coin.",
     "vibe": "The duck will dawdle at the split, fake left, preen for ten seconds, then commit to a fork nobody saw coming.",
-    "payout": "Call the right exit, win even money 1:1",
+    "score": "Nail the exit for an even 1× score",
     "how": [
       {
         "h": "Read the split",
@@ -99,15 +99,15 @@ export const GAMES: Game[] = [
       },
       {
         "h": "Call your lane",
-        "p": "Put your stake on the exit you think the duck waddles out of."
+        "p": "Pick the exit you think the duck waddles out of."
       },
       {
         "h": "Watch it dither",
         "p": "The duck loiters at the junction live, weighing two paths it doesn't understand."
       },
       {
-        "h": "Cash the fork",
-        "p": "Pick the exit it actually takes and the even-money payout is yours."
+        "h": "Read the fork",
+        "p": "Nail the exit it actually takes and the round is yours."
       }
     ]
   },
@@ -127,25 +127,25 @@ export const GAMES: Game[] = [
       "Fish"
     ],
     "tagline": "Three species. Three lanes. One finish line. Pick the weird one",
-    "intro": "A mouse, a crab and a fish line up in three numbered lanes with one finish line between them. None of them move the same way, and your job is to call which one gets there first.",
+    "intro": "A mouse, a crab and a fish line up in three numbered lanes with one finish line between them. None of them move the same way, and the fun is calling which one gets there first.",
     "vibe": "The mouse sprints then stalls, the crab goes sideways out of pure spite, and the fish just refuses to acknowledge the concept of a race.",
-    "payout": "Back the winning lane, collect 3:1",
+    "score": "Pick the winning lane for a 3× score",
     "how": [
       {
         "h": "Read the lanes",
         "p": "Lane 1 mouse, lane 2 crab, lane 3 fish, each locked to its own numbered lane."
       },
       {
-        "h": "Back a lane",
-        "p": "Put your stake on the single lane you think crosses the finish line first."
+        "h": "Call a lane",
+        "p": "Pick the single lane you think crosses the finish line first."
       },
       {
         "h": "Watch three styles collide",
         "p": "The mouse scrambles, the crab scuttles sideways, the fish does whatever a fish does."
       },
       {
-        "h": "First across pays",
-        "p": "The first nose, claw or fin over the line settles every bet on that lane."
+        "h": "First across wins",
+        "p": "The first nose, claw or fin over the line settles the round."
       }
     ]
   },
@@ -162,14 +162,14 @@ export const GAMES: Game[] = [
     "lineup": [
       "Beetle"
     ],
-    "tagline": "Bet your number. The beetle has other plans",
-    "intro": "A live beetle hits a spinning wheel of 37 numbered slots. You called red, you called 22, you called the middle dozen. Now the bug picks a seat and decides who gets paid.",
-    "vibe": "The wheel slows, the beetle wanders three slots, doubles back, and parks one number off your bet right as the chips lock.",
-    "payout": "Straight-up single number pays 35:1",
+    "tagline": "Call your number. The beetle has other plans",
+    "intro": "A live beetle hits a spinning wheel of 37 numbered slots. You called red, you called 22, you called the middle dozen. Now the bug picks a seat and decides who's right.",
+    "vibe": "The wheel slows, the beetle wanders three slots, doubles back, and parks one number off your call right as the round locks.",
+    "score": "A straight-up single number is worth a 35× score",
     "how": [
       {
-        "h": "Place your slot",
-        "p": "Drop chips on a single number, a color, or a whole section of the 37-slot wheel."
+        "h": "Call your slot",
+        "p": "Call a single number, a color, or a whole section of the 37-slot wheel."
       },
       {
         "h": "Spin and drop",
@@ -180,7 +180,7 @@ export const GAMES: Game[] = [
         "p": "The beetle crawls, stalls, and finally squats in one slot as the wheel coasts to a stop."
       },
       {
-        "h": "Slot pays out",
+        "h": "The slot wins",
         "p": "Wherever the bug parks is the winning number, color, and section, all at once."
       }
     ]
@@ -199,9 +199,9 @@ export const GAMES: Game[] = [
       "Frog"
     ],
     "tagline": "One frog. Two doors. Pick a color and pray",
-    "intro": "A live frog sits behind the gate, and two doors wait below it: one red, one black. You call the color it hops through. Fifty-fifty on paper. Total chaos in practice.",
+    "intro": "A live frog sits behind the gate, and two doors wait below it: one red, one black. Call the color it hops through. Fifty-fifty on paper. Total chaos in practice.",
     "vibe": "No middle ground here, so the whole room leans one way until the frog ignores all of it and bolts the other.",
-    "payout": "Nail the color, double your stake at 2:1",
+    "score": "Nail the color for a 2× score",
     "how": [
       {
         "h": "Read the wheel",
@@ -209,7 +209,7 @@ export const GAMES: Game[] = [
       },
       {
         "h": "Call your color",
-        "p": "Put your stake on red or black before the gate lifts, with no hedge and no second guess."
+        "p": "Call red or black before the gate lifts, with no hedge and no second guess."
       },
       {
         "h": "Spring the frog",
@@ -242,14 +242,14 @@ export const GAMES: Game[] = [
     "tagline": "Ten animals. One line. No second place",
     "intro": "The whole BuggedOut menagerie hits the open track at once. Chicken, rabbit, frog, beetle, crab, fish, mouse, duck, turtle, ladybug. Lock in your champion, then watch ten tiny brains decide the race for you.",
     "vibe": "The gate drops and chaos goes everywhere at once. The frog hops sideways, the turtle commits to nothing, the duck somehow leads, and your beetle is facing the wrong way. First nose past the line takes it.",
-    "payout": "Pick the winner outright, single runner pays up to 10:1",
+    "score": "Pick the winner outright, worth up to a 10× score",
     "how": [
       {
         "h": "Scout the field",
         "p": "Size up all ten runners in the lineup and decide who's got a sprint in them today."
       },
       {
-        "h": "Back your champion",
+        "h": "Pick your champion",
         "p": "Tap one animal to win before the gate drops, the pick locks the second the countdown ends."
       },
       {
@@ -258,7 +258,7 @@ export const GAMES: Game[] = [
       },
       {
         "h": "First nose wins",
-        "p": "Whoever crosses the line first cashes your ticket, everything behind it gets nothing."
+        "p": "Whoever crosses the line first takes the round, everything behind it gets nothing."
       }
     ]
   },
@@ -280,7 +280,7 @@ export const GAMES: Game[] = [
     "tagline": "Three doors. Three critters. Pick who walks out where",
     "intro": "Red, Yellow, Green. Three doors light up, three live animals wait behind them, and only you know which critter goes where. Lock your guess before the doors swing open.",
     "vibe": "The shuffle behind the doors is real, the animals don't read the script, and a duck waddling out of the door everyone wrote off turns the whole floor upside down.",
-    "payout": "Nail one door pays 3:1, sweep all three pays 25:1",
+    "score": "One door scores 3×, a clean sweep of all three scores 25×",
     "how": [
       {
         "h": "Read the lineup",
@@ -288,15 +288,15 @@ export const GAMES: Game[] = [
       },
       {
         "h": "Assign the doors",
-        "p": "Predict which animal comes out of Red, Yellow, and Green."
+        "p": "Call which animal comes out of Red, Yellow, and Green."
       },
       {
         "h": "Doors swing open",
         "p": "All three doors fire at once and the live critters make their exit."
       },
       {
-        "h": "Match and bank",
-        "p": "Every door you called correctly cashes; a clean three-door sweep hits the top payout."
+        "h": "Match and score",
+        "p": "Every door you called correctly scores; a clean three-door sweep hits the top score."
       }
     ]
   },
@@ -314,9 +314,9 @@ export const GAMES: Game[] = [
       "Rabbit"
     ],
     "tagline": "One rabbit. Four tunnels. Call the exit",
-    "intro": "A rabbit sits in a box with four numbered tunnels glowing green and gold around it. You call which one it bolts through. Then you wait for the twitch.",
+    "intro": "A rabbit sits in a box with four numbered tunnels glowing green and gold around it. Call which one it bolts through. Then you wait for the twitch.",
     "vibe": "The rabbit might rocket through tunnel 3 in half a second or sit dead-still grooming its ears while the whole arena holds its breath.",
-    "payout": "Nail the tunnel, win the round. One in four, live every time.",
+    "score": "Nail the tunnel to win the round. One in four, live every time.",
     "how": [
       {
         "h": "Read the box",
@@ -353,7 +353,7 @@ export const GALLERY: GalleryTile[] = [
     "blur": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADwAQCdASoQAAkAA4BaJYgC7AD2K03SAGAA/vM4KYHdRjRG+Sb+mzgowo8bWeLIRuRcbtpuvdk3FtzsVWtI1u2uVDEv5AAA",
     "w": 1600,
     "h": 893,
-    "caption": "Hen on the grid, money on the line.",
+    "caption": "Hen on the grid, chaos on the board.",
     "alt": "Chicken Shit Bingo — BuggedOut arena card"
   },
   {
@@ -377,7 +377,7 @@ export const GALLERY: GalleryTile[] = [
     "blur": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAQAgCdASoQAAkAA4BaJZACdAEVwRiqa2PgAP7xnJe+GrJHfDeLw++pEs0I1D65HCeBJ64m8DfOH5nrZNtZgAJc5jAAoFKi79vaWh91Xhntb/fMAAA=",
     "w": 1600,
     "h": 893,
-    "caption": "Drop your chip, let the critter land it.",
+    "caption": "Call your number, let the critter land it.",
     "alt": "Roulette — BuggedOut arena card"
   },
   {
@@ -393,7 +393,7 @@ export const GALLERY: GalleryTile[] = [
     "blur": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADQAQCdASoQAAkAA4BaJQBOgBcH5QXXoAD+8ZzpYjZu5QdrtidTBAKQC6HefJWZs589MUwGICd237vp1YrlUrUqiDU1IT0IQ4DFI8bqgdxZgAAA",
     "w": 1600,
     "h": 893,
-    "caption": "He's loose in the pit. Bet the breakout.",
+    "caption": "He's loose in the pit. Watch the breakout.",
     "alt": "The Great Escape — BuggedOut arena card"
   },
   {
@@ -433,7 +433,7 @@ export const GALLERY: GalleryTile[] = [
     "blur": "",
     "w": 1400,
     "h": 781,
-    "caption": "Gold circuitry, green money.",
+    "caption": "Gold circuitry, neon glow.",
     "alt": "BuggedOut gold circuit HUD overlay"
   },
   {

@@ -12,7 +12,7 @@ export default function CtaBanner() {
         <div className="actions">
           <SignupButton className="btn btn-primary btn-lg">
             <span className="shimmer" />
-            Sign Up Free
+            Join The List
           </SignupButton>
           <Link href="/games" className="btn btn-ghost-gold btn-lg">
             Browse Games

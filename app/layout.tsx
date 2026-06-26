@@ -44,7 +44,7 @@ export const metadata: Metadata = {
         url: "/assets/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "BuggedOut.com — live animal racing and betting arena",
+        alt: "BuggedOut.com — live animal racing arena",
       },
     ],
   },

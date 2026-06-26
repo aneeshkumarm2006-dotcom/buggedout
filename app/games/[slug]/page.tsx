@@ -64,7 +64,7 @@ export default async function GameDetailPage({ params }: GamePageProps) {
           </p>
           <SignupButton className="btn btn-primary btn-lg">
             <span className="shimmer" />
-            Play Now
+            Get Notified
           </SignupButton>
         </div>
       </div>
@@ -75,7 +75,7 @@ export default async function GameDetailPage({ params }: GamePageProps) {
         <div className="wrap">
           <div className="game-info">
             <div>
-              <h2>How To Play</h2>
+              <h2>How It Works</h2>
               <div className="steps">
                 {game.how.map((step, i) => (
                   <div className="step" key={step.h}>
@@ -107,7 +107,7 @@ export default async function GameDetailPage({ params }: GamePageProps) {
 
             <div className="stats-card hud-panel">
               <h3>This Round</h3>
-              <LiveStats format={game.format} type={game.type} payout={game.payout} />
+              <LiveStats format={game.format} type={game.type} score={game.score} />
             </div>
           </div>
         </div>

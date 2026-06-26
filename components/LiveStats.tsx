@@ -6,14 +6,14 @@ import SignupButton from "@/components/SignupButton";
 interface LiveStatsProps {
   format: string;
   type: string;
-  payout: string;
+  score: string;
 }
 
 /**
  * Random "live" figures are generated on the client after mount so server and
  * client render the same initial markup (no hydration mismatch).
  */
-export default function LiveStats({ format, type, payout }: LiveStatsProps) {
+export default function LiveStats({ format, type, score }: LiveStatsProps) {
   const [online, setOnline] = useState<number | null>(null);
   const [rounds, setRounds] = useState<number | null>(null);
 
@@ -46,12 +46,12 @@ export default function LiveStats({ format, type, payout }: LiveStatsProps) {
         <span className="val muted">{type}</span>
       </div>
       <div className="stat-row" style={{ borderBottom: "none" }}>
-        <span className="label">Top Payout</span>
-        <span className="val gold">{payout}</span>
+        <span className="label">Top Score</span>
+        <span className="val gold">{score}</span>
       </div>
       <SignupButton className="btn btn-primary btn-block">
         <span className="shimmer" />
-        Join Game
+        Get Notified
       </SignupButton>
     </>
   );

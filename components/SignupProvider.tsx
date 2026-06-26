@@ -101,9 +101,10 @@ export default function SignupProvider({ children }: { children: ReactNode }) {
             ×
           </button>
           <div className="modal-body">
-            <h2 id="signupTitle">Join The Race</h2>
+            <h2 id="signupTitle">Join The List</h2>
             <p className="sub">
-              Create your account and you&apos;re trackside in seconds.
+              Drop your details for round alerts, early access, and trackside
+              news straight from the crew.
             </p>
             {submitted ? (
               <p
@@ -168,7 +169,7 @@ export default function SignupProvider({ children }: { children: ReactNode }) {
                 </div>
                 <button type="submit" className="btn btn-primary btn-block">
                   <span className="shimmer" />
-                  Enter Now
+                  Keep Me Posted
                 </button>
               </form>
             )}

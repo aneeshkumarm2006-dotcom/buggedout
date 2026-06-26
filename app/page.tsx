@@ -30,7 +30,7 @@ export default function HomePage() {
           <div className="hero-cta reveal">
             <SignupButton className="btn btn-primary btn-lg">
               <span className="shimmer" />
-              Join Now
+              Get Updates
             </SignupButton>
             <Link href="/games" className="btn btn-ghost-gold btn-lg">
               See The Games
@@ -87,7 +87,7 @@ export default function HomePage() {
           <div className="section-header reveal">
             <h2 className="display">How It <span className="gold">Works</span></h2>
             <div className="divider-mini" />
-            <p className="sub">From cold open to cashed out in four moves.</p>
+            <p className="sub">From cold open to photo finish in four moves.</p>
           </div>
           <div className="why-grid hiw-grid">
             {HOME.howItWorks.map((step, i) => (
@@ -137,7 +137,7 @@ export default function HomePage() {
             <p>{HOME.winner.p}</p>
             <SignupButton className="btn btn-gold btn-lg">
               <span className="shimmer" />
-              Start Winning
+              Join The List
             </SignupButton>
           </div>
           <div className="winner-frame reveal">
@@ -150,7 +150,7 @@ export default function HomePage() {
               loading="lazy"
             />
             <div className="winner-fill">
-              <span className="nm">Backed at 8:1</span>
+              <span className="nm">Winner · 8×</span>
             </div>
           </div>
         </div>

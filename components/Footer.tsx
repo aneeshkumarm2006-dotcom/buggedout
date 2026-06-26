@@ -18,7 +18,7 @@ export default function Footer() {
               />
             </Link>
             <p className="footer-tag">
-              Real animals. Real odds. Real chaos. The arena never closes.
+              Real animals. Real races. Real chaos. The arena never closes.
             </p>
           </div>
           <div className="footer-col">
@@ -53,8 +53,8 @@ export default function Footer() {
           </div>
         </div>
         <p className="footer-copy">
-          Copyright © 2025 BuggedOut.com · All Rights Reserved · 18+ Play
-          Responsibly
+          Copyright © 2025 BuggedOut.com · All Rights Reserved · The animals
+          never asked for this
         </p>
       </div>
     </footer>
