@@ -101,10 +101,14 @@ export default function SignupProvider({ children }: { children: ReactNode }) {
             ×
           </button>
           <div className="modal-body">
-            <h2 id="signupTitle">Join The List</h2>
+            <span className="eyebrow" style={{ display: "block", marginBottom: "var(--space-2)" }}>
+              Launching Soon
+            </span>
+            <h2 id="signupTitle">We&apos;re Coming Soon</h2>
             <p className="sub">
-              Drop your details for round alerts, early access, and trackside
-              news straight from the crew.
+              The arena isn&apos;t open just yet — but the sport that&apos;s about to
+              change the game is almost here. Sign up for news, early access, and
+              round alerts. And tell us how you heard about us.
             </p>
             {submitted ? (
               <p
@@ -115,7 +119,8 @@ export default function SignupProvider({ children }: { children: ReactNode }) {
                   padding: "var(--space-4) 0",
                 }}
               >
-                You&apos;re in. See you trackside!
+                You&apos;re on the list. We&apos;ll be in touch the moment the
+                arena opens!
               </p>
             ) : (
               <form
@@ -153,8 +158,8 @@ export default function SignupProvider({ children }: { children: ReactNode }) {
                   />
                 </div>
                 <div className="field">
-                  <label htmlFor="su-referral">Where did you hear about us?</label>
-                  <select id="su-referral" defaultValue="">
+                  <label htmlFor="su-referral">How did you hear about us?</label>
+                  <select id="su-referral" defaultValue="" required>
                     <option value="" disabled>
                       Select an option
                     </option>

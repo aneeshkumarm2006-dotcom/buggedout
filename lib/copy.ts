@@ -9,21 +9,21 @@ export interface RouteCopy {
   sub: string;
 }
 
-export const ROUTES: Record<"home" | "games" | "gallery" | "contact", RouteCopy> =
+export const ROUTES: Record<"home" | "events" | "gallery" | "contact", RouteCopy> =
   {
   "home": {
-    "title": "BuggedOut.com — The Live Animal Racing Arena",
-    "description": "Real animals, live races, pure chaos. Chickens, crabs, fish and roaches go head-to-head in real time. No replays, no scripts, no two rounds alike.",
+    "title": "BuggedOut.com — The Future of Live Sporting Events",
+    "description": "A brand-new category of sport. Real animals, live races, pure chaos — chickens, crabs, fish and roaches head-to-head in real time. No replays, no scripts, no two rounds alike. This is how the world watches sport next.",
     "eyebrow": "Live Animal Racing",
     "h1": "Race. Cheer. Repeat.",
     "sub": "Real animals. Real races. Real chaos."
   },
-  "games": {
-    "title": "The Lineup — Live Games & Roulette | BuggedOut.com",
-    "description": "Browse the full lineup of live animal races and roulette. Meet the chickens, fish, crabs and roaches, see how each game runs, and watch the chaos unfold.",
+  "events": {
+    "title": "The Lineup — Live Events & Roulette | BuggedOut.com",
+    "description": "Browse the full lineup of live animal races and roulette. Meet the chickens, fish, crabs and roaches, see how each event runs, and watch the chaos unfold.",
     "eyebrow": "The Lineup",
     "h1": "Meet The Runners",
-    "sub": "Every game runs live. Meet the contestants and watch it all go sideways."
+    "sub": "Every event runs live. Meet the contestants and watch it all go sideways."
   },
   "gallery": {
     "title": "Inside the Pit — Arena Gallery | BuggedOut.com",
@@ -34,7 +34,7 @@ export const ROUTES: Record<"home" | "games" | "gallery" | "contact", RouteCopy>
   },
   "contact": {
     "title": "Contact the Crew — BuggedOut.com",
-    "description": "Questions about the arena, the games or partnerships? Reach the BuggedOut crew trackside. Fast answers, straight talk, no runaround.",
+    "description": "Questions about the arena, the events or partnerships? Reach the BuggedOut crew trackside. Fast answers, straight talk, no runaround.",
     "eyebrow": "Trackside Support",
     "h1": "Talk to the Crew",
     "sub": "Stuck, curious, or want in? Drop us a line."
@@ -42,13 +42,13 @@ export const ROUTES: Record<"home" | "games" | "gallery" | "contact", RouteCopy>
 };
 
 export const HOME = {
-  "heroEyebrow": "THE LIVE ANIMAL ARENA",
+  "heroEyebrow": "THE FUTURE OF SPORTING EVENTS",
   "heroTitleLines": [
     "Eight animals.",
     "All chaos.",
     "BUGGEDOUT."
   ],
-  "heroSubhead": "Live animal races where the contestants have no idea they're competing.",
+  "heroSubhead": "The world's first live animal racing arena — and the start of a brand-new kind of sport.",
   "why": [
     {
       "h": "Always Live",
@@ -97,6 +97,25 @@ export const HOME = {
       "trait": "Calm up top, scheming underneath."
     }
   ],
+  "manifesto": {
+    "eyebrow": "REWRITING THE RULEBOOK",
+    "h": "The Sport The World Has Never Seen.",
+    "lead": "Every sport you grew up on was invented exactly once. BuggedOut is the next one. We took the rush of the racetrack, threw out the scripts and the slow-motion replays, and handed the whole spectacle to contestants who have no idea the stakes. This isn't a gimmick — it's a brand-new category of live sporting event, and it's about to change the way the world watches sport.",
+    "points": [
+      {
+        "h": "A New Category",
+        "p": "Not esports. Not racing. Not a casino game. A live spectator sport that simply did not exist until now."
+      },
+      {
+        "h": "Unscriptable By Design",
+        "p": "No teams to fix, no plays to rehearse. Every outcome is decided by raw instinct — sport in its purest, wildest form."
+      },
+      {
+        "h": "Built To Go Global",
+        "p": "Nine-second rounds, around the clock, in every timezone. The arena that turns idle minutes into the world's most-watched races."
+      }
+    ]
+  },
   "winner": {
     "eyebrow": "ROUND SETTLED",
     "h": "We Have A Winner.",
@@ -104,7 +123,7 @@ export const HOME = {
   },
   "howItWorks": [
     {
-      "h": "Pick Your Game",
+      "h": "Pick Your Event",
       "p": "Eight ways to play, from Chicken Shit Bingo to Tunnel Vision, each with its own brand of mayhem."
     },
     {
@@ -123,7 +142,7 @@ export const HOME = {
   "stats": [
     {
       "value": "8",
-      "label": "Live games, no two alike"
+      "label": "Live events, no two alike"
     },
     {
       "value": "47,000+",
@@ -139,7 +158,7 @@ export const HOME = {
     }
   ],
   "cta": {
-    "h": "Sign up. Tune in. See what happens.",
-    "p": "Join the list for round alerts, early access, and a front-row seat to Forked Fate, Split Decision, and The Great Escape. The animals are waiting; they just don't know it."
+    "h": "Get in before the world catches on.",
+    "p": "Join the list for round alerts, early access, and a front-row seat to the sport that's about to rewrite the rulebook — Forked Fate, Split Decision, The Great Escape. The animals are waiting; they just don't know it."
   }
 } as const;

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { GALLERY } from "@/lib/games";
+import { GALLERY } from "@/lib/events";
 import { useScrollLock } from "@/lib/useScrollLock";
 
 interface ActiveImage {

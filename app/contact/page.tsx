@@ -22,7 +22,7 @@ export default function ContactPage() {
             <div className="contact-info">
               <span className="label">Questions?</span>
               <p>
-                Stuck on the rules, curious about a game, or want to put
+                Stuck on the rules, curious about an event, or want to put
                 BuggedOut in front of your audience? Drop a line and a real human
                 on the crew gets back to you fast.
               </p>

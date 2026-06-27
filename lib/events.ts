@@ -1,18 +1,18 @@
 // Domain data for BuggedOut.
 // AUTO-ASSEMBLED from the brand asset event cards + the content workflow
-// (8 real games keyed to their arena art, plus the gallery render set).
+// (8 real events keyed to their arena art, plus the gallery render set).
 
-export type GameType = "Race" | "Roulette" | "Prediction" | "Bingo";
+export type EventType = "Race" | "Roulette" | "Prediction" | "Bingo";
 
 export interface HowStep {
   h: string;
   p: string;
 }
 
-export interface Game {
+export interface Event {
   slug: string;
   name: string;
-  type: GameType;
+  type: EventType;
   /** e.g. "5×5 Grid" */
   format: string;
   /** e.g. "Bingo · 5×5 Grid" */
@@ -24,7 +24,7 @@ export interface Game {
   /** intrinsic dimensions of `image` */
   w: number;
   h: number;
-  /** animal "athletes" in this game, as display chips */
+  /** animal "athletes" in this event, as display chips */
   lineup: string[];
   /** card hook */
   tagline: string;
@@ -34,18 +34,18 @@ export interface Game {
   vibe: string;
   /** scoring flavor */
   score: string;
-  /** game-specific how-it-works */
+  /** event-specific how-it-works */
   how: HowStep[];
 }
 
-export const GAMES: Game[] = [
+export const EVENTS: Event[] = [
   {
     "slug": "chicken-shit-bingo",
     "name": "Chicken Shit Bingo",
     "type": "Bingo",
     "format": "5×5 Grid",
     "meta": "Bingo · 5×5 Grid",
-    "image": "/assets/games/chicken-shit-bingo.webp",
+    "image": "/assets/events/chicken-shit-bingo.webp",
     "blur": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADwAQCdASoQAAkAA4BaJYgC7AD2K03SAGAA/vM4KYHdRjRG+Sb+mzgowo8bWeLIRuRcbtpuvdk3FtzsVWtI1u2uVDEv5AAA",
     "w": 1600,
     "h": 893,
@@ -81,7 +81,7 @@ export const GAMES: Game[] = [
     "type": "Prediction",
     "format": "2 Exits",
     "meta": "Prediction · 2 Exits",
-    "image": "/assets/games/forked-fate.webp",
+    "image": "/assets/events/forked-fate.webp",
     "blur": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAAAQAgCdASoQAAkAA4BaJZgC7DiAASb+ZpgAAP7xnOixOBpCj5x82RHEMu1sLWXZb77BoAZ9YqJxZEELgBku6Dzt//AAAA==",
     "w": 1600,
     "h": 893,
@@ -117,7 +117,7 @@ export const GAMES: Game[] = [
     "type": "Race",
     "format": "3 Lanes",
     "meta": "Race · 3 Lanes",
-    "image": "/assets/games/lane-racing.webp",
+    "image": "/assets/events/lane-racing.webp",
     "blur": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADwAQCdASoQAAkAA4BaJZACdAD2OMoEMfAA/vMpYVlveunde8LqSJyTbNfh2dOZNFKyO/rteF41S6x7ocwxsNGtTbUVTn8HZAAAAA==",
     "w": 1600,
     "h": 893,
@@ -155,7 +155,7 @@ export const GAMES: Game[] = [
     "type": "Roulette",
     "format": "37 Slots",
     "meta": "Roulette · 37 Slots",
-    "image": "/assets/games/roulette.webp",
+    "image": "/assets/events/roulette.webp",
     "blur": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAQAgCdASoQAAkAA4BaJZACdAEVwRiqa2PgAP7xnJe+GrJHfDeLw++pEs0I1D65HCeBJ64m8DfOH5nrZNtZgAJc5jAAoFKi79vaWh91Xhntb/fMAAA=",
     "w": 1600,
     "h": 893,
@@ -191,7 +191,7 @@ export const GAMES: Game[] = [
     "type": "Roulette",
     "format": "Red / Black",
     "meta": "Roulette · Red / Black",
-    "image": "/assets/games/split-decision.webp",
+    "image": "/assets/events/split-decision.webp",
     "blur": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAAAQAgCdASoQAAkAA4BaJYgCdDiAAUjuvvP4AP7xo26j2Icka+XuaVsIuNFnJSXZRQQUbQDTEkVv4UAFtyo+70Mw7Cxle16QAAA=",
     "w": 1600,
     "h": 893,
@@ -223,7 +223,7 @@ export const GAMES: Game[] = [
     "type": "Race",
     "format": "Open Track",
     "meta": "Race · Open Track",
-    "image": "/assets/games/the-great-escape.webp",
+    "image": "/assets/events/the-great-escape.webp",
     "blur": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADQAQCdASoQAAkAA4BaJQBOgBcH5QXXoAD+8ZzpYjZu5QdrtidTBAKQC6HefJWZs589MUwGICd237vp1YrlUrUqiDU1IT0IQ4DFI8bqgdxZgAAA",
     "w": 1600,
     "h": 893,
@@ -268,7 +268,7 @@ export const GAMES: Game[] = [
     "type": "Prediction",
     "format": "3 Doors",
     "meta": "Prediction · 3 Doors",
-    "image": "/assets/games/three-door-monty.webp",
+    "image": "/assets/events/three-door-monty.webp",
     "blur": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADQAQCdASoQAAkAA4BaJZACdADxBJ1jIAD+8aOkQRlwgSI2j3AUJoNGPf38pVDwreX9PiiDOclAOUnI/avz6TbE08gS0e7GbklmO8nbyc4pJhCVxB/KjhrhT0AAAA==",
     "w": 1600,
     "h": 893,
@@ -306,7 +306,7 @@ export const GAMES: Game[] = [
     "type": "Prediction",
     "format": "4 Tunnels",
     "meta": "Prediction · 4 Tunnels",
-    "image": "/assets/games/tunnel-vision.webp",
+    "image": "/assets/events/tunnel-vision.webp",
     "blur": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAQCdASoQAAkAA4BaJYgCdDiAAUcTPNAA/vGclLfURUCkUPgfd0gcMTmNnVoRMyjiWcpYaXzOK7XhMxtOwAgFnuc9ig0Qkl3Ok9sWxIAAAA==",
     "w": 1600,
     "h": 893,
@@ -349,7 +349,7 @@ export interface GalleryTile {
 
 export const GALLERY: GalleryTile[] = [
   {
-    "src": "/assets/games/chicken-shit-bingo.webp",
+    "src": "/assets/events/chicken-shit-bingo.webp",
     "blur": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAADwAQCdASoQAAkAA4BaJYgC7AD2K03SAGAA/vM4KYHdRjRG+Sb+mzgowo8bWeLIRuRcbtpuvdk3FtzsVWtI1u2uVDEv5AAA",
     "w": 1600,
     "h": 893,
@@ -357,7 +357,7 @@ export const GALLERY: GalleryTile[] = [
     "alt": "Chicken Shit Bingo — BuggedOut arena card"
   },
   {
-    "src": "/assets/games/forked-fate.webp",
+    "src": "/assets/events/forked-fate.webp",
     "blur": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAAAQAgCdASoQAAkAA4BaJZgC7DiAASb+ZpgAAP7xnOixOBpCj5x82RHEMu1sLWXZb77BoAZ9YqJxZEELgBku6Dzt//AAAA==",
     "w": 1600,
     "h": 893,
@@ -365,7 +365,7 @@ export const GALLERY: GalleryTile[] = [
     "alt": "Forked Fate — BuggedOut arena card"
   },
   {
-    "src": "/assets/games/lane-racing.webp",
+    "src": "/assets/events/lane-racing.webp",
     "blur": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADwAQCdASoQAAkAA4BaJZACdAD2OMoEMfAA/vMpYVlveunde8LqSJyTbNfh2dOZNFKyO/rteF41S6x7ocwxsNGtTbUVTn8HZAAAAA==",
     "w": 1600,
     "h": 893,
@@ -373,7 +373,7 @@ export const GALLERY: GalleryTile[] = [
     "alt": "Lane Racing — BuggedOut arena card"
   },
   {
-    "src": "/assets/games/roulette.webp",
+    "src": "/assets/events/roulette.webp",
     "blur": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAQAgCdASoQAAkAA4BaJZACdAEVwRiqa2PgAP7xnJe+GrJHfDeLw++pEs0I1D65HCeBJ64m8DfOH5nrZNtZgAJc5jAAoFKi79vaWh91Xhntb/fMAAA=",
     "w": 1600,
     "h": 893,
@@ -381,7 +381,7 @@ export const GALLERY: GalleryTile[] = [
     "alt": "Roulette — BuggedOut arena card"
   },
   {
-    "src": "/assets/games/split-decision.webp",
+    "src": "/assets/events/split-decision.webp",
     "blur": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAAAQAgCdASoQAAkAA4BaJYgCdDiAAUjuvvP4AP7xo26j2Icka+XuaVsIuNFnJSXZRQQUbQDTEkVv4UAFtyo+70Mw7Cxle16QAAA=",
     "w": 1600,
     "h": 893,
@@ -389,7 +389,7 @@ export const GALLERY: GalleryTile[] = [
     "alt": "Split Decision — BuggedOut arena card"
   },
   {
-    "src": "/assets/games/the-great-escape.webp",
+    "src": "/assets/events/the-great-escape.webp",
     "blur": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADQAQCdASoQAAkAA4BaJQBOgBcH5QXXoAD+8ZzpYjZu5QdrtidTBAKQC6HefJWZs589MUwGICd237vp1YrlUrUqiDU1IT0IQ4DFI8bqgdxZgAAA",
     "w": 1600,
     "h": 893,
@@ -397,7 +397,7 @@ export const GALLERY: GalleryTile[] = [
     "alt": "The Great Escape — BuggedOut arena card"
   },
   {
-    "src": "/assets/games/three-door-monty.webp",
+    "src": "/assets/events/three-door-monty.webp",
     "blur": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADQAQCdASoQAAkAA4BaJZACdADxBJ1jIAD+8aOkQRlwgSI2j3AUJoNGPf38pVDwreX9PiiDOclAOUnI/avz6TbE08gS0e7GbklmO8nbyc4pJhCVxB/KjhrhT0AAAA==",
     "w": 1600,
     "h": 893,
@@ -405,7 +405,7 @@ export const GALLERY: GalleryTile[] = [
     "alt": "Three Door Monty — BuggedOut arena card"
   },
   {
-    "src": "/assets/games/tunnel-vision.webp",
+    "src": "/assets/events/tunnel-vision.webp",
     "blur": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAQCdASoQAAkAA4BaJYgCdDiAAUcTPNAA/vGclLfURUCkUPgfd0gcMTmNnVoRMyjiWcpYaXzOK7XhMxtOwAgFnuc9ig0Qkl3Ok9sWxIAAAA==",
     "w": 1600,
     "h": 893,
@@ -454,16 +454,16 @@ export const GALLERY: GalleryTile[] = [
   }
 ];
 
-export function getGame(slug: string): Game | undefined {
-  return GAMES.find((g) => g.slug === slug);
+export function getEvent(slug: string): Event | undefined {
+  return EVENTS.find((g) => g.slug === slug);
 }
 
-export function getMoreGames(slug: string, count = 4): Game[] {
-  return GAMES.filter((g) => g.slug !== slug).slice(0, count);
+export function getMoreEvents(slug: string, count = 4): Event[] {
+  return EVENTS.filter((g) => g.slug !== slug).slice(0, count);
 }
 
-/** Distinct game types present, in first-seen order — drives the lobby filter bar. */
-export const GAME_TYPES: GameType[] = GAMES.reduce<GameType[]>((acc, g) => {
+/** Distinct event types present, in first-seen order — drives the lobby filter bar. */
+export const EVENT_TYPES: EventType[] = EVENTS.reduce<EventType[]>((acc, g) => {
   if (!acc.includes(g.type)) acc.push(g.type);
   return acc;
 }, []);

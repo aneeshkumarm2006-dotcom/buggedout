@@ -24,7 +24,7 @@ export default function Footer() {
           <div className="footer-col">
             <h4>Quick Links</h4>
             <Link href="/">Home</Link>
-            <Link href="/games">Games</Link>
+            <Link href="/events">Events</Link>
             <Link href="/gallery">Gallery</Link>
             <Link href="/contact">Contact</Link>
           </div>

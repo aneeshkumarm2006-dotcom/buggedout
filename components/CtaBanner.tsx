@@ -14,8 +14,8 @@ export default function CtaBanner() {
             <span className="shimmer" />
             Join The List
           </SignupButton>
-          <Link href="/games" className="btn btn-ghost-gold btn-lg">
-            Browse Games
+          <Link href="/events" className="btn btn-ghost-gold btn-lg">
+            Browse Events
           </Link>
         </div>
       </div>

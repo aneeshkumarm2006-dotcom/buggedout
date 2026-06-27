@@ -1,57 +1,57 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { GAMES, getGame, getMoreGames } from "@/lib/games";
-import GameCard from "@/components/GameCard";
+import { EVENTS, getEvent, getMoreEvents } from "@/lib/events";
+import EventCard from "@/components/EventCard";
 import SignupButton from "@/components/SignupButton";
 import LiveStats from "@/components/LiveStats";
 
-interface GamePageProps {
+interface EventPageProps {
   params: Promise<{ slug: string }>;
 }
 
 export function generateStaticParams() {
-  return GAMES.map((g) => ({ slug: g.slug }));
+  return EVENTS.map((g) => ({ slug: g.slug }));
 }
 
 export async function generateMetadata({
   params,
-}: GamePageProps): Promise<Metadata> {
+}: EventPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const game = getGame(slug);
-  if (!game) {
-    return { title: "Game not found — BuggedOut.com" };
+  const event = getEvent(slug);
+  if (!event) {
+    return { title: "Event not found — BuggedOut.com" };
   }
   return {
-    title: `${game.name} — ${game.meta} | BuggedOut.com`,
-    description: game.tagline,
+    title: `${event.name} — ${event.meta} | BuggedOut.com`,
+    description: event.tagline,
     openGraph: {
-      title: `${game.name} — BuggedOut.com`,
-      description: game.tagline,
-      images: [{ url: game.image }],
+      title: `${event.name} — BuggedOut.com`,
+      description: event.tagline,
+      images: [{ url: event.image }],
     },
   };
 }
 
-export default async function GameDetailPage({ params }: GamePageProps) {
+export default async function EventDetailPage({ params }: EventPageProps) {
   const { slug } = await params;
-  const game = getGame(slug);
-  if (!game) notFound();
+  const event = getEvent(slug);
+  if (!event) notFound();
 
-  const more = getMoreGames(slug, 4);
+  const more = getMoreEvents(slug, 4);
 
   return (
     <>
       <div
-        className="game-hero"
-        style={{ backgroundImage: `url(${game.image})` }}
+        className="event-hero"
+        style={{ backgroundImage: `url(${event.image})` }}
       >
-        <div className="game-hero-content">
+        <div className="event-hero-content">
           <span
-            className={`badge ${game.type === "Race" ? "badge-gold" : "badge-acid"}`}
+            className={`badge ${event.type === "Race" ? "badge-gold" : "badge-acid"}`}
           >
-            {game.meta}
+            {event.meta}
           </span>
-          <h1 className="display">{game.name}</h1>
+          <h1 className="display">{event.name}</h1>
           <p
             style={{
               color: "var(--color-fog)",
@@ -60,7 +60,7 @@ export default async function GameDetailPage({ params }: GamePageProps) {
               margin: "0 auto var(--space-4)",
             }}
           >
-            {game.intro}
+            {event.intro}
           </p>
           <SignupButton className="btn btn-primary btn-lg">
             <span className="shimmer" />
@@ -73,11 +73,11 @@ export default async function GameDetailPage({ params }: GamePageProps) {
 
       <section className="section">
         <div className="wrap">
-          <div className="game-info">
+          <div className="event-info">
             <div>
               <h2>How It Works</h2>
               <div className="steps">
-                {game.how.map((step, i) => (
+                {event.how.map((step, i) => (
                   <div className="step" key={step.h}>
                     <span className="num">{i + 1}</span>
                     <div>
@@ -90,13 +90,13 @@ export default async function GameDetailPage({ params }: GamePageProps) {
 
               <div className="vibe-note hud-panel">
                 <span className="eyebrow">Expect chaos</span>
-                <p>{game.vibe}</p>
+                <p>{event.vibe}</p>
               </div>
 
               <div className="lineup-chips">
                 <span className="chips-label">In the arena</span>
                 <div className="chips">
-                  {game.lineup.map((l) => (
+                  {event.lineup.map((l) => (
                     <span className="chip" key={l}>
                       {l}
                     </span>
@@ -107,7 +107,7 @@ export default async function GameDetailPage({ params }: GamePageProps) {
 
             <div className="stats-card hud-panel">
               <h3>This Round</h3>
-              <LiveStats format={game.format} type={game.type} score={game.score} />
+              <LiveStats format={event.format} type={event.type} score={event.score} />
             </div>
           </div>
         </div>
@@ -119,12 +119,12 @@ export default async function GameDetailPage({ params }: GamePageProps) {
         <div className="wrap">
           <div className="section-header" style={{ marginBottom: "var(--space-5)" }}>
             <h2 className="display" style={{ fontSize: "var(--text-2xl)" }}>
-              More Games
+              More Events
             </h2>
           </div>
           <div className="more-row">
             {more.map((g, i) => (
-              <GameCard key={g.slug} game={g} index={i} />
+              <EventCard key={g.slug} event={g} index={i} />
             ))}
           </div>
         </div>

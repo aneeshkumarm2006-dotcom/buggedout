@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { GAMES } from "@/lib/games";
+import { EVENTS } from "@/lib/events";
 import { HOME } from "@/lib/copy";
-import GameCard from "@/components/GameCard";
+import EventCard from "@/components/EventCard";
 import HeroArt from "@/components/HeroArt";
 import SignupButton from "@/components/SignupButton";
 import CtaBanner from "@/components/CtaBanner";
@@ -32,8 +32,8 @@ export default function HomePage() {
               <span className="shimmer" />
               Get Updates
             </SignupButton>
-            <Link href="/games" className="btn btn-ghost-gold btn-lg">
-              See The Games
+            <Link href="/events" className="btn btn-ghost-gold btn-lg">
+              See The Events
             </Link>
           </div>
         </div>
@@ -58,22 +58,46 @@ export default function HomePage() {
 
       <div className="race-divider reveal-divider" />
 
+      {/* ============ MANIFESTO ============ */}
+      <section className="section section-glow">
+        <div className="wrap">
+          <div className="section-header reveal">
+            <span className="eyebrow">{HOME.manifesto.eyebrow}</span>
+            <h2 className="display">
+              The Sport The World Has <span className="gold">Never Seen.</span>
+            </h2>
+            <div className="divider-mini" />
+            <p className="sub">{HOME.manifesto.lead}</p>
+          </div>
+          <div className="why-grid">
+            {HOME.manifesto.points.map((pt) => (
+              <div className="why-card hud-panel reveal" key={pt.h}>
+                <h3>{pt.h}</h3>
+                <p>{pt.p}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="race-divider reveal-divider" />
+
       {/* ============ LOBBY PREVIEW ============ */}
       <section className="section section-glow">
         <div className="wrap">
           <div className="section-header reveal">
             <h2 className="display">The <span className="gold">Arena</span></h2>
             <div className="divider-mini" />
-            <p className="sub">Eight live games. Pick your poison.</p>
+            <p className="sub">Eight live events. Pick your poison.</p>
           </div>
-          <div className="grid-games" id="homeGames">
-            {GAMES.slice(0, 6).map((g, i) => (
-              <GameCard key={g.slug} game={g} index={i} />
+          <div className="grid-events" id="homeEvents">
+            {EVENTS.slice(0, 6).map((g, i) => (
+              <EventCard key={g.slug} event={g} index={i} />
             ))}
           </div>
           <div style={{ textAlign: "center", marginTop: "var(--space-8)" }}>
-            <Link href="/games" className="btn btn-ghost">
-              View All Games
+            <Link href="/events" className="btn btn-ghost">
+              View All Events
             </Link>
           </div>
         </div>
@@ -163,7 +187,7 @@ export default function HomePage() {
           <div className="section-header reveal">
             <h2 className="display">Why <span className="gold">BuggedOut</span></h2>
             <div className="divider-mini" />
-            <p className="sub">It&apos;s not a simulation. It&apos;s a spectator sport.</p>
+            <p className="sub">It&apos;s not a simulation. It&apos;s the future of spectator sport.</p>
           </div>
           <div className="why-grid">
             {HOME.why.map((w) => (

@@ -1,20 +1,20 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { GAMES, GAME_TYPES, type GameType } from "@/lib/games";
-import GameCard from "@/components/GameCard";
+import { EVENTS, EVENT_TYPES, type EventType } from "@/lib/events";
+import EventCard from "@/components/EventCard";
 
-type Filter = "all" | GameType;
+type Filter = "all" | EventType;
 
 const FILTERS: { value: Filter; label: string }[] = [
   { value: "all", label: "All" },
-  ...GAME_TYPES.map((t) => ({ value: t as Filter, label: t })),
+  ...EVENT_TYPES.map((t) => ({ value: t as Filter, label: t })),
 ];
 
-export default function GamesLobby() {
+export default function EventsLobby() {
   const [filter, setFilter] = useState<Filter>("all");
   const gridRef = useRef<HTMLDivElement>(null);
-  const list = filter === "all" ? GAMES : GAMES.filter((g) => g.type === filter);
+  const list = filter === "all" ? EVENTS : EVENTS.filter((g) => g.type === filter);
 
   // The grid container carries key={filter}, so changing the filter remounts
   // the whole grid (and its cards). Each card mounts hidden (.reveal, opacity 0);
@@ -48,9 +48,9 @@ export default function GamesLobby() {
       <div className="race-divider reveal-divider" />
       <section className="section section-glow" style={{ paddingTop: "var(--space-8)" }}>
         <div className="wrap">
-          <div className="grid-games" id="lobbyGames" ref={gridRef} key={filter}>
+          <div className="grid-events" id="lobbyEvents" ref={gridRef} key={filter}>
             {list.map((g, i) => (
-              <GameCard key={g.slug} game={g} index={i} />
+              <EventCard key={g.slug} event={g} index={i} />
             ))}
           </div>
         </div>

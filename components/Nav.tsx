@@ -3,11 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { GAMES } from "@/lib/games";
+import { EVENTS } from "@/lib/events";
 import SignupButton from "@/components/SignupButton";
 import { useScrollLock } from "@/lib/useScrollLock";
 
-type RouteKey = "home" | "games" | "gallery" | "contact";
+type RouteKey = "home" | "events" | "gallery" | "contact";
 
 export default function Nav() {
   const pathname = usePathname();
@@ -19,8 +19,8 @@ export default function Nav() {
   const activeKey: RouteKey | null =
     pathname === "/"
       ? "home"
-      : pathname.startsWith("/games")
-        ? "games"
+      : pathname.startsWith("/events")
+        ? "events"
         : pathname === "/gallery"
           ? "gallery"
           : pathname === "/contact"
@@ -107,15 +107,15 @@ export default function Nav() {
             </li>
             <li className="nav-dd">
               <Link
-                href="/games"
-                className={linkClass("games", "nav-dd-trigger")}
+                href="/events"
+                className={linkClass("events", "nav-dd-trigger")}
               >
-                Games <span className="caret">▾</span>
+                Events <span className="caret">▾</span>
               </Link>
-              <div className="nav-dd-menu" id="ddMenu" aria-label="All games">
+              <div className="nav-dd-menu" id="ddMenu" aria-label="All events">
 
-                {GAMES.map((g) => (
-                  <Link key={g.slug} href={`/games/${g.slug}`}>
+                {EVENTS.map((g) => (
+                  <Link key={g.slug} href={`/events/${g.slug}`}>
                     {g.name}
                   </Link>
                 ))}
@@ -172,8 +172,8 @@ export default function Nav() {
           <Link href="/" onClick={closeDrawer}>
             Home
           </Link>
-          <Link href="/games" onClick={closeDrawer}>
-            Games
+          <Link href="/events" onClick={closeDrawer}>
+            Events
           </Link>
           <Link href="/gallery" onClick={closeDrawer}>
             Gallery
