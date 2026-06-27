@@ -45,8 +45,7 @@ export default function EventsLobby() {
           </button>
         ))}
       </div>
-      <div className="race-divider reveal-divider" />
-      <section className="section section-glow" style={{ paddingTop: "var(--space-8)" }}>
+      <section className="section section-glow" style={{ paddingTop: "var(--space-4)" }}>
         <div className="wrap">
           <div className="grid-events" id="lobbyEvents" ref={gridRef} key={filter}>
             {list.map((g, i) => (

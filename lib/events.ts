@@ -413,44 +413,12 @@ export const GALLERY: GalleryTile[] = [
     "alt": "Tunnel Vision — BuggedOut arena card"
   },
   {
-    "src": "/assets/hud-winner.webp",
-    "blur": "data:image/webp;base64,UklGRsoAAABXRUJQVlA4WAoAAAAQAAAADwAACAAAQUxQSFQAAAANcFTbttOcf2k+MMCMEaSq6Mbip48xQ9Z7n+ohIiYgAu7MJZalhdUYfl0RCf+mjAFwPZ5miPvREuaJ5UAvVo0ewLUgTlUu3Do0C+xrBDlL4M5cAgBWUDggUAAAANABAJ0BKhAACQADgFolAE6AIbW3QiIAAP7zKds5hfKBd5IZ3tU61RFuGnP5X2cf0zGRw/WsqySK8Q66ZMVUjCk8r6shCXc09Yxh4qcFPQAA",
-    "w": 1400,
-    "h": 781,
-    "caption": "Round settled. Winner locked.",
-    "alt": "BuggedOut WINNER results overlay"
-  },
-  {
-    "src": "/assets/overlay-1.webp",
-    "blur": "",
-    "w": 1400,
-    "h": 781,
-    "caption": "The broadcast frame goes live.",
-    "alt": "BuggedOut live stream overlay frame"
-  },
-  {
-    "src": "/assets/overlay-2.webp",
-    "blur": "",
-    "w": 1400,
-    "h": 781,
-    "caption": "Gold circuitry, neon glow.",
-    "alt": "BuggedOut gold circuit HUD overlay"
-  },
-  {
     "src": "/assets/hero-horizontal.webp",
     "blur": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAADQAQCdASoQAAkAA4BaJYwCdAD1dcFSAAD++FZscm4BJTfk+fTAJOAFvYqbjW7ht+h43jFL08IwmQAA",
     "w": 1675,
     "h": 939,
     "caption": "The starting line, lit up.",
     "alt": "BuggedOut animal lineup at the checkered start"
-  },
-  {
-    "src": "/assets/hero-vertical.webp",
-    "blur": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAABQBACdASoQAB0APu1iqU2ppaOiMAgBMB2JYgC7IBgC935E8fIVDVDgYXYAAP7yqfH0GXP3S7jj1fAUVWl0RdbggfuRki0c8V7xVPH49z4BcVux79/fVG5iGF8sgvi3IbCrkg1675p1ojUmsXtq4/ln5PF0Ms286mwditXgAAA=",
-    "w": 1100,
-    "h": 1971,
-    "caption": "Front row at the start gate.",
-    "alt": "BuggedOut animal lineup, portrait view"
   }
 ];
 

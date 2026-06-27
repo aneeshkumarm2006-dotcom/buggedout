@@ -3,8 +3,10 @@ import { EVENTS } from "@/lib/events";
 import { HOME } from "@/lib/copy";
 import EventCard from "@/components/EventCard";
 import HeroArt from "@/components/HeroArt";
+import CountUpStat from "@/components/CountUpStat";
 import SignupButton from "@/components/SignupButton";
 import CtaBanner from "@/components/CtaBanner";
+import { IconChevronDown } from "@/components/icons";
 
 export default function HomePage() {
   const titleLast = HOME.heroTitleLines.length - 1;
@@ -37,10 +39,13 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
-        <div className="scroll-ind">⌄</div>
+        <div className="scroll-ind" aria-hidden="true">
+          <IconChevronDown width={26} height={26} />
+        </div>
       </div>
 
-      <div className="race-divider race-divider--strong reveal-divider" />
+      {/* Signature film-strip / start-line — the motif appears ONCE here. */}
+      <div className="race-divider reveal-divider" />
 
       {/* ============ STAT BAND ============ */}
       <section className="section" style={{ paddingTop: "var(--space-10)", paddingBottom: "var(--space-8)" }}>
@@ -48,15 +53,13 @@ export default function HomePage() {
           <div className="stat-band">
             {HOME.stats.map((s) => (
               <div className="stat reveal" key={s.label}>
-                <span className="num">{s.value}</span>
+                <CountUpStat value={s.value} />
                 <span className="lbl">{s.label}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
-
-      <div className="race-divider reveal-divider" />
 
       {/* ============ MANIFESTO ============ */}
       <section className="section section-glow">
@@ -80,8 +83,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="race-divider reveal-divider" />
-
       {/* ============ LOBBY PREVIEW ============ */}
       <section className="section section-glow">
         <div className="wrap">
@@ -103,8 +104,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="race-divider reveal-divider" />
-
       {/* ============ HOW IT WORKS ============ */}
       <section className="section">
         <div className="wrap">
@@ -124,8 +123,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      <div className="race-divider reveal-divider" />
 
       {/* ============ THE LINEUP ============ */}
       <section className="section section-glow">
@@ -151,9 +148,7 @@ export default function HomePage() {
       </section>
 
       {/* ============ WINNER SHOWCASE ============ */}
-      <div className="race-divider reveal-divider" />
       <section className="winner-band">
-        <div className="checker-edge top" />
         <div className="winner-inner">
           <div className="winner-copy reveal">
             <span className="eyebrow">{HOME.winner.eyebrow}</span>
@@ -178,7 +173,6 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-        <div className="checker-edge bottom" />
       </section>
 
       {/* ============ WHY ============ */}
@@ -199,8 +193,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      <div className="race-divider reveal-divider" />
 
       {/* ============ CTA ============ */}
       <CtaBanner />

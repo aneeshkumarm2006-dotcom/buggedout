@@ -54,7 +54,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
           <h1 className="display">{event.name}</h1>
           <p
             style={{
-              color: "var(--color-fog)",
+              color: "var(--text-secondary)",
               fontSize: "var(--text-lg)",
               maxWidth: "60ch",
               margin: "0 auto var(--space-4)",
@@ -68,8 +68,6 @@ export default async function EventDetailPage({ params }: EventPageProps) {
           </SignupButton>
         </div>
       </div>
-
-      <div className="race-divider race-divider--strong" />
 
       <section className="section">
         <div className="wrap">
@@ -105,7 +103,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
               </div>
             </div>
 
-            <div className="stats-card hud-panel">
+            <div className="stats-card hud-panel hud-corners">
               <h3>This Round</h3>
               <LiveStats format={event.format} type={event.type} score={event.score} />
             </div>
@@ -113,9 +111,7 @@ export default async function EventDetailPage({ params }: EventPageProps) {
         </div>
       </section>
 
-      <div className="race-divider" />
-
-      <section className="section">
+      <section className="section" style={{ paddingTop: 0 }}>
         <div className="wrap">
           <div className="section-header" style={{ marginBottom: "var(--space-5)" }}>
             <h2 className="display" style={{ fontSize: "var(--text-2xl)" }}>

@@ -40,7 +40,7 @@ export default function ContactForm() {
       <button
         type="submit"
         className="btn btn-primary btn-block"
-        style={sent ? { background: "var(--color-lime)" } : undefined}
+        style={sent ? { background: "var(--accent-bright)" } : undefined}
         disabled={sent}
       >
         {sent ? (

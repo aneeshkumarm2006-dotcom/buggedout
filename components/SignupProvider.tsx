@@ -9,6 +9,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { IconClose } from "@/components/icons";
 import { useScrollLock } from "@/lib/useScrollLock";
 
 interface SignupContextValue {
@@ -98,7 +99,7 @@ export default function SignupProvider({ children }: { children: ReactNode }) {
         <div className="modal">
           <div className="checker-top" />
           <button className="modal-close" aria-label="Close" onClick={close}>
-            ×
+            <IconClose width={22} height={22} />
           </button>
           <div className="modal-body">
             <span className="eyebrow" style={{ display: "block", marginBottom: "var(--space-2)" }}>
@@ -113,7 +114,7 @@ export default function SignupProvider({ children }: { children: ReactNode }) {
             {submitted ? (
               <p
                 style={{
-                  color: "var(--color-acid)",
+                  color: "var(--accent)",
                   fontFamily: "var(--font-display)",
                   textAlign: "center",
                   padding: "var(--space-4) 0",

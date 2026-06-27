@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { EVENTS } from "@/lib/events";
 import SignupButton from "@/components/SignupButton";
+import { IconChevronDown, IconClose } from "@/components/icons";
 import { useScrollLock } from "@/lib/useScrollLock";
 
 type RouteKey = "home" | "events" | "gallery" | "contact";
@@ -109,8 +110,9 @@ export default function Nav() {
               <Link
                 href="/events"
                 className={linkClass("events", "nav-dd-trigger")}
+                aria-haspopup="menu"
               >
-                Events <span className="caret">▾</span>
+                Events <span className="caret"><IconChevronDown width={14} height={14} /></span>
               </Link>
               <div className="nav-dd-menu" id="ddMenu" aria-label="All events">
 
@@ -166,7 +168,7 @@ export default function Nav() {
           aria-label="Close menu"
           onClick={closeDrawer}
         >
-          ×
+          <IconClose width={26} height={26} />
         </button>
         <div className="drawer-links">
           <Link href="/" onClick={closeDrawer}>

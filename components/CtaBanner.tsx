@@ -5,7 +5,6 @@ import SignupButton from "@/components/SignupButton";
 export default function CtaBanner() {
   return (
     <section className="cta-banner">
-      <div className="checker-edge top" />
       <div className="reveal">
         <h2 className="display">{HOME.cta.h}</h2>
         <p>{HOME.cta.p}</p>
@@ -19,7 +18,6 @@ export default function CtaBanner() {
           </Link>
         </div>
       </div>
-      <div className="checker-edge bottom" />
     </section>
   );
 }

@@ -1,9 +1,9 @@
 import Link from "next/link";
+import { IconX, IconInstagram, IconYouTube, IconDiscord } from "@/components/icons";
 
 export default function Footer() {
   return (
     <footer className="footer">
-      <div className="race-divider race-divider--mid" />
       <div className="wrap">
         <div className="footer-grid">
           <div className="footer-brand">
@@ -37,17 +37,17 @@ export default function Footer() {
           <div className="footer-col">
             <h4>Follow Us</h4>
             <div className="footer-social">
-              <a href="#" aria-label="X">
-                ✦
+              <a href="#" aria-label="BuggedOut on X">
+                <IconX />
               </a>
-              <a href="#" aria-label="Instagram">
-                ◎
+              <a href="#" aria-label="BuggedOut on Instagram">
+                <IconInstagram />
               </a>
-              <a href="#" aria-label="YouTube">
-                ▶
+              <a href="#" aria-label="BuggedOut on YouTube">
+                <IconYouTube />
               </a>
-              <a href="#" aria-label="Discord">
-                ✺
+              <a href="#" aria-label="BuggedOut on Discord">
+                <IconDiscord />
               </a>
             </div>
           </div>

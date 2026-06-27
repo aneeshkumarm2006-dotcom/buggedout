@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { GALLERY } from "@/lib/events";
+import { IconClose } from "@/components/icons";
 import { useScrollLock } from "@/lib/useScrollLock";
 
 interface ActiveImage {
@@ -45,7 +46,7 @@ export default function GalleryGrid() {
 
   return (
     <>
-      <div className="masonry" id="galleryGrid">
+      <div className="gallery-grid" id="galleryGrid">
         {GALLERY.map((tile) => (
           <figure
             key={tile.src}
@@ -96,7 +97,7 @@ export default function GalleryGrid() {
           aria-label="Close image"
           onClick={closeLightbox}
         >
-          ×
+          <IconClose width={28} height={28} />
         </button>
         {active && (
           // eslint-disable-next-line @next/next/no-img-element

@@ -34,7 +34,6 @@ export default function EventCard({ event, index = 0 }: EventCardProps) {
           />
         </div>
       </Link>
-      <div className="race-divider race-divider--card" />
       <div className="event-card-body">
         <h3>{event.name}</h3>
         <span className="meta">{event.meta}</span>
