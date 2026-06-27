@@ -47,20 +47,31 @@
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+/* Solid dark base on the root so element/full-page screenshots never flatten to white */
+html{scroll-behavior:smooth;background:var(--color-abyss)}
 body{
   font-family:var(--font-body);
   font-weight:300;
   color:var(--color-bone);
   background:var(--color-abyss);
-  background:
-    radial-gradient(ellipse 70% 50% at 88% 8%, rgba(217,165,33,.10) 0%, transparent 55%),
-    radial-gradient(ellipse 80% 60% at 50% 0%, #1C8E74 0%, #0B221D 42%, #060C0B 100%);
-  background-attachment:fixed;
-  background-repeat:no-repeat;
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
+  min-height:100vh;
+}
+/* Viewport-anchored glow layer.
+   Replaces `background-attachment:fixed` on body, which Chrome DevTools drops when
+   rasterizing screenshots (renders white). A real fixed-positioned element is captured. */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse 70% 50% at 88% 8%, rgba(217,165,33,.10) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 60% at 50% 0%, #1C8E74 0%, #0B221D 42%, #060C0B 100%);
+  background-repeat:no-repeat;
 }
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
