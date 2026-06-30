@@ -364,14 +364,65 @@ ul{list-style:none}
    WINNER BAND
    ========================================================================= */
 .winner-band{position:relative;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;
-  padding:clamp(24px,3vw,40px) 0;background:linear-gradient(135deg,#0A1E12,#13361F 50%,#0A1E12)}
-.winner-inner{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter);display:grid;grid-template-columns:1fr .55fr;gap:clamp(24px,4vw,48px);align-items:center}
-.winner-frame{max-width:320px;margin-left:auto}
-.winner-copy h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.8rem,4vw,2.8rem);text-transform:uppercase;line-height:.96;margin:10px 0 12px}
-.winner-copy h2 em{font-style:normal;color:var(--gold);text-shadow:0 0 34px rgba(var(--gold-rgb),.55)}
-.winner-copy p{color:var(--text-secondary);font-size:1.05rem;max-width:44ch;margin-bottom:20px;line-height:1.5}
-.winner-frame{position:relative;padding:12px;background:linear-gradient(150deg,var(--panel-2),var(--panel));box-shadow:0 0 0 1px var(--line-2),0 0 56px rgba(var(--gold-rgb),.18)}
-.winner-screen{position:relative;width:100%;line-height:0}
+  padding:clamp(28px,3.2vw,44px) 0;background:
+    radial-gradient(120% 90% at 14% 0%,rgba(var(--accent-rgb),.10),transparent 60%),
+    radial-gradient(120% 120% at 100% 100%,rgba(var(--gold-rgb),.12),transparent 55%),
+    linear-gradient(135deg,#08160D,#102B19 52%,#08160D)}
+/* faint HUD grid wash behind the band */
+.winner-band-fx{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(rgba(var(--accent-rgb),.10) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(var(--accent-rgb),.10) 1px,transparent 1px);
+  background-size:46px 46px;
+  -webkit-mask-image:radial-gradient(80% 80% at 50% 50%,#000,transparent 75%);
+  mask-image:radial-gradient(80% 80% at 50% 50%,#000,transparent 75%)}
+.winner-inner{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter);
+  display:grid;grid-template-columns:1fr .6fr;gap:clamp(28px,3.6vw,56px);align-items:center}
+
+/* ---- copy ---- */
+.winner-copy h2{margin:14px 0 16px;line-height:1.04}
+.winner-mark{font-family:var(--font-display);font-weight:700;font-size:clamp(1.9rem,3.6vw,2.9rem);
+  text-transform:uppercase;letter-spacing:.01em;color:var(--on-accent);
+  background:linear-gradient(100deg,var(--accent),var(--accent-bright));
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;
+  padding:.06em .26em;box-shadow:0 0 38px rgba(var(--accent-rgb),.4)}
+.winner-copy p{color:var(--text-secondary);font-size:1.05rem;max-width:42ch;margin-bottom:24px;line-height:1.55}
+
+/* ---- final standings board ---- */
+.winner-board{position:relative;padding:16px 18px 14px;background:linear-gradient(160deg,rgba(14,20,12,.92),rgba(8,12,8,.92));
+  border:1px solid var(--line-2);box-shadow:inset 0 0 0 1px rgba(255,255,255,.02),0 18px 44px rgba(0,0,0,.5);
+  clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px))}
+.wb-head{display:flex;align-items:center;justify-content:space-between;font-family:var(--font-mono);
+  font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-tertiary);
+  padding-bottom:10px;margin-bottom:6px;border-bottom:1px solid var(--line)}
+.wb-head .live-tag{display:inline-flex;align-items:center;gap:7px;color:var(--accent)}
+.wb-id{color:var(--gold)}
+.wb-list{display:flex;flex-direction:column}
+.wb-row{display:grid;grid-template-columns:18px minmax(0,auto) 1fr auto;align-items:center;gap:11px;
+  padding:9px 0;border-bottom:1px solid var(--line);font-family:var(--font-mono)}
+.wb-row:last-child{border-bottom:0}
+.wb-pos{font-size:.78rem;font-weight:700;color:var(--text-tertiary);text-align:center}
+.wb-who{font-size:.84rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text-secondary);white-space:nowrap}
+.wb-bar{height:5px;background:rgba(255,255,255,.06);overflow:hidden;border-radius:2px}
+.wb-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent-deep),var(--accent));
+  border-radius:2px;transition:width .9s var(--ease) .15s}
+.wb-time{font-size:.82rem;font-weight:700;color:var(--text-secondary);font-variant-numeric:tabular-nums;min-width:48px;text-align:right}
+.wb-row.is-win{margin:2px -10px;padding:9px 10px;border-bottom:0;background:rgba(var(--gold-rgb),.07);
+  box-shadow:inset 2px 0 0 var(--gold)}
+.wb-row.is-win .wb-pos{color:var(--gold)}
+.wb-row.is-win .wb-who{color:var(--text-primary)}
+.wb-row.is-win .wb-bar i{background:linear-gradient(90deg,var(--gold),var(--gold-bright));box-shadow:0 0 12px rgba(var(--gold-rgb),.6)}
+.wb-row.is-win .wb-time{color:var(--gold)}
+.wb-foot{display:flex;align-items:center;justify-content:space-between;margin-top:11px;padding-top:10px;
+  border-top:1px solid var(--line);font-family:var(--font-mono);font-size:.62rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--text-tertiary)}
+.wb-foot span:first-child{color:var(--accent)}
+
+/* ---- art frame ---- */
+.winner-frame{max-width:340px;margin-left:auto}
+.winner-frame{position:relative;aspect-ratio:1;display:flex;align-items:center;padding:12px;background:linear-gradient(150deg,var(--panel-2),var(--panel));box-shadow:0 0 0 1px var(--line-2),0 0 56px rgba(var(--gold-rgb),.18)}
+.winner-screen{position:relative;width:100%;aspect-ratio:1;overflow:hidden;line-height:0}
+/* scale the landscape HUD composite to fully cover the square screen (feed % stay aligned to the art) */
+.winner-stage{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:180%}
 .winner-art{position:relative;z-index:2;width:100%;display:block}
 /* fill the hollow HUD screen (transparent window of hud-winner.webp) with the live arena lineup */
 .winner-feed{position:absolute;z-index:1;left:26%;top:28%;width:46.5%;height:45%;object-fit:cover;object-position:50% 44%;
@@ -557,7 +608,9 @@ ul{list-style:none}
   .flow{grid-template-columns:repeat(2,1fr);gap:34px 0}
   .flow .step:not(:last-child)::after{display:none}
   .roster{grid-template-columns:repeat(2,1fr)}
-  .winner-inner{grid-template-columns:1fr;gap:var(--space-5)}
+  .winner-inner{grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,32px);align-items:start}
+  .winner-copy{grid-column:1 / -1}
+  .winner-frame{max-width:300px;margin:0 auto}
   .footer-grid{grid-template-columns:1fr 1fr 1fr;gap:26px}
   .footer-brand{grid-column:1 / -1}
   .event-info{grid-template-columns:1fr;gap:var(--space-5)}
@@ -576,6 +629,8 @@ ul{list-style:none}
   .form-row{grid-template-columns:1fr}
   .gallery-grid{grid-template-columns:1fr}
   .hero-mini{gap:20px}
+  .winner-inner{grid-template-columns:1fr;gap:var(--space-4)}
+  .winner-frame{margin:0 auto}
 }
 @media (prefers-reduced-motion: reduce){
   .fx-grid::before,.fx-grid::after,.fx-beam::after,.ticker,.marquee-row,.monitor::before,.glitch .gold::before,.glitch .gold::after{animation:none!important}

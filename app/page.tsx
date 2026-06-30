@@ -203,46 +203,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ============ WINNER SHOWCASE ============ */}
-      <section className="winner-band">
-        <div className="winner-inner">
-          <div className="winner-copy reveal">
-            <span className="kicker">{HOME.winner.eyebrow}</span>
-            <h2>We Have A <em>Winner.</em></h2>
-            <p>{HOME.winner.p}</p>
-            <SignupButton className="btn btn-gold btn-lg">
-              <span className="shimmer" />
-              Join The List
-            </SignupButton>
-          </div>
-          <div className="winner-frame brackets reveal">
-            <div className="winner-screen">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                className="winner-feed"
-                src="/assets/hero-horizontal.webp"
-                width={1675}
-                height={939}
-                alt=""
-                aria-hidden="true"
-                loading="lazy"
-              />
-              <span className="winner-feed-glow" aria-hidden="true" />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                className="winner-art"
-                src="/assets/hud-winner.webp"
-                width={1400}
-                height={781}
-                alt="BuggedOut WINNER results screen"
-                loading="lazy"
-              />
-            </div>
-            <span className="winner-badge">WINNER · 8×</span>
-          </div>
-        </div>
-      </section>
-
       {/* ============ WHY ============ */}
       <section className="section">
         <div className="wrap">
