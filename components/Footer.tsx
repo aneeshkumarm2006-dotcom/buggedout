@@ -8,34 +8,38 @@ export default function Footer() {
         <div className="footer-grid">
           <div className="footer-brand">
             <Link href="/" className="logo" aria-label="BuggedOut.com — home">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                className="brand-logo"
-                src="/assets/logo.webp"
-                width={640}
-                height={346}
-                alt="BuggedOut.com"
-              />
+              <span className="brand">
+                <span className="b1">BUGGED</span>
+                <span className="b2">OUT</span>
+              </span>
             </Link>
             <p className="footer-tag">
               Real animals. Real races. Real chaos. The arena never closes.
             </p>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="brand-logo"
+              src="/assets/logo.webp"
+              width={640}
+              height={346}
+              alt="BuggedOut.com"
+            />
           </div>
           <div className="footer-col">
-            <h4>Quick Links</h4>
+            <h4>Navigate</h4>
             <Link href="/">Home</Link>
             <Link href="/events">Events</Link>
             <Link href="/gallery">Gallery</Link>
             <Link href="/contact">Contact</Link>
           </div>
           <div className="footer-col">
-            <h4>Company</h4>
+            <h4>System</h4>
             <a href="#">Privacy Policy</a>
             <a href="#">Terms &amp; Conditions</a>
             <a href="#">Cookies Policy</a>
           </div>
           <div className="footer-col">
-            <h4>Follow Us</h4>
+            <h4>Signal</h4>
             <div className="footer-social">
               <a href="#" aria-label="BuggedOut on X">
                 <IconX />
@@ -52,10 +56,10 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <p className="footer-copy">
-          Copyright © 2025 BuggedOut.com · All Rights Reserved · The animals
-          never asked for this
-        </p>
+        <div className="footer-bottom">
+          <span>© 2025 BuggedOut.com — All rights reserved</span>
+          <span>// The animals never asked for this</span>
+        </div>
       </div>
     </footer>
   );

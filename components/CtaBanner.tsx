@@ -5,7 +5,10 @@ import SignupButton from "@/components/SignupButton";
 export default function CtaBanner() {
   return (
     <section className="cta-banner">
-      <div className="reveal">
+      <div className="wrap reveal">
+        <span className="kicker" style={{ marginBottom: "var(--space-3)" }}>
+          Access Pending
+        </span>
         <h2 className="display">{HOME.cta.h}</h2>
         <p>{HOME.cta.p}</p>
         <div className="actions">

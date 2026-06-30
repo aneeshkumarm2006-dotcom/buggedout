@@ -10,6 +10,16 @@ import { useScrollLock } from "@/lib/useScrollLock";
 
 type RouteKey = "home" | "events" | "gallery" | "contact";
 
+function Wordmark() {
+  return (
+    <span className="brand">
+      <span className="b1">BUGGED</span>
+      <span className="b2">OUT</span>
+      <span className="tag">.COM</span>
+    </span>
+  );
+}
+
 export default function Nav() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
@@ -33,7 +43,7 @@ export default function Nav() {
 
   // Translucent → solid nav after a little scroll.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 30);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -41,9 +51,7 @@ export default function Nav() {
 
   useScrollLock(drawerOpen);
 
-  // Close the drawer whenever the route changes. Done as a render-phase reset
-  // (tracking the previous pathname) rather than an effect — see
-  // https://react.dev/learn/you-might-not-need-an-effect#adjusting-some-state-when-a-prop-changes
+  // Close the drawer whenever the route changes (render-phase reset).
   const [drawerPath, setDrawerPath] = useState(pathname);
   if (pathname !== drawerPath) {
     setDrawerPath(pathname);
@@ -91,14 +99,7 @@ export default function Nav() {
       <nav className={`nav${scrolled ? " scrolled" : ""}`} id="nav">
         <div className="nav-inner">
           <Link href="/" className="logo" aria-label="BuggedOut.com — home">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              className="brand-logo"
-              src="/assets/logo.webp"
-              width={640}
-              height={346}
-              alt="BuggedOut.com"
-            />
+            <Wordmark />
           </Link>
           <ul className="nav-links">
             <li>
@@ -112,10 +113,9 @@ export default function Nav() {
                 className={linkClass("events", "nav-dd-trigger")}
                 aria-haspopup="menu"
               >
-                Events <span className="caret"><IconChevronDown width={14} height={14} /></span>
+                Events <span className="caret"><IconChevronDown width={13} height={13} /></span>
               </Link>
               <div className="nav-dd-menu" id="ddMenu" aria-label="All events">
-
                 {EVENTS.map((g) => (
                   <Link key={g.slug} href={`/events/${g.slug}`}>
                     {g.name}
@@ -134,22 +134,28 @@ export default function Nav() {
               </Link>
             </li>
           </ul>
-          <SignupButton className="nav-signup desktop-only">Get Updates</SignupButton>
-          <button
-            className="nav-burger"
-            id="burger"
-            aria-label="Open menu"
-            aria-expanded={drawerOpen}
-            aria-controls="drawer"
-            onClick={() => {
-              lastFocus.current = document.activeElement as HTMLElement | null;
-              setDrawerOpen(true);
-            }}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
+          <div className="nav-right">
+            <span className="live-tag" aria-hidden="true">
+              <span className="dot" />
+              Live
+            </span>
+            <SignupButton className="nav-signup">Get Updates</SignupButton>
+            <button
+              className="nav-burger"
+              id="burger"
+              aria-label="Open menu"
+              aria-expanded={drawerOpen}
+              aria-controls="drawer"
+              onClick={() => {
+                lastFocus.current = document.activeElement as HTMLElement | null;
+                setDrawerOpen(true);
+              }}
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+          </div>
         </div>
       </nav>
 
