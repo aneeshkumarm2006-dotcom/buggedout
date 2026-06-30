@@ -103,14 +103,6 @@ export default function RootLayout({
             Skip to content
           </a>
 
-          {/* Top status ticker */}
-          <div className="ticker-bar" aria-hidden="true">
-            <div className="ticker">
-              {TICKER}
-              {TICKER}
-            </div>
-          </div>
-
           <Nav />
           <main id="main-content">{children}</main>
           <Footer />

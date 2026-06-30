@@ -135,10 +135,6 @@ export default function Nav() {
             </li>
           </ul>
           <div className="nav-right">
-            <span className="live-tag" aria-hidden="true">
-              <span className="dot" />
-              Live
-            </span>
             <SignupButton className="nav-signup">Get Updates</SignupButton>
             <button
               className="nav-burger"

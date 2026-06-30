@@ -364,11 +364,11 @@ ul{list-style:none}
    WINNER BAND
    ========================================================================= */
 .winner-band{position:relative;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;
-  padding:var(--section-y) 0;background:linear-gradient(135deg,#0A1E12,#13361F 50%,#0A1E12)}
-.winner-inner{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter);display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(30px,5vw,60px);align-items:center}
-.winner-copy h2{font-family:var(--font-display);font-weight:700;font-size:clamp(2.2rem,5.4vw,3.6rem);text-transform:uppercase;line-height:.96;margin:14px 0 16px}
+  padding:clamp(32px,4vw,52px) 0;background:linear-gradient(135deg,#0A1E12,#13361F 50%,#0A1E12)}
+.winner-inner{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter);display:grid;grid-template-columns:1fr .9fr;gap:clamp(24px,4vw,48px);align-items:center}
+.winner-copy h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.8rem,4vw,2.8rem);text-transform:uppercase;line-height:.96;margin:10px 0 12px}
 .winner-copy h2 em{font-style:normal;color:var(--gold);text-shadow:0 0 34px rgba(var(--gold-rgb),.55)}
-.winner-copy p{color:var(--text-secondary);font-size:1.18rem;max-width:44ch;margin-bottom:28px;line-height:1.55}
+.winner-copy p{color:var(--text-secondary);font-size:1.05rem;max-width:44ch;margin-bottom:20px;line-height:1.5}
 .winner-frame{position:relative;padding:12px;background:linear-gradient(150deg,var(--panel-2),var(--panel));box-shadow:0 0 0 1px var(--line-2),0 0 56px rgba(var(--gold-rgb),.18)}
 .winner-screen{position:relative;width:100%;line-height:0}
 .winner-art{position:relative;z-index:2;width:100%;display:block}
