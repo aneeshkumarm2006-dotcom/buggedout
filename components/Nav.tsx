@@ -15,7 +15,6 @@ function Wordmark() {
     <span className="brand">
       <span className="b1">BUGGED</span>
       <span className="b2">OUT</span>
-      <span className="tag">.COM</span>
     </span>
   );
 }
