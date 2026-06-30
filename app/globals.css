@@ -640,3 +640,33 @@ ul{list-style:none}
   html{scroll-behavior:auto}
   *{transition-duration:.01ms!important}
 }
+
+/* =========================================================================
+   CUSTOM CURSOR — "Glitch Arrow"
+   Theme-aware neon pointer on the brand palette (accent / gold / amber).
+   Markup is rendered by <CustomCursor>; it activates (html.gc-on) only on a
+   fine pointer after hydration, so touch + no-JS keep the native cursor.
+   ========================================================================= */
+html.gc-on, html.gc-on *{cursor:none}
+/* keep a real text caret in form fields — the arrow hides over them via JS */
+html.gc-on input, html.gc-on textarea, html.gc-on [contenteditable="true"]{cursor:text}
+
+#gc-cursor{position:fixed;left:0;top:0;width:26px;height:26px;z-index:9999;pointer-events:none;
+  opacity:0;transition:opacity .18s linear;will-change:transform}
+#gc-cursor.gc-show{opacity:1}
+#gc-cursor svg{position:absolute;top:0;left:0;width:26px;height:26px;overflow:visible}
+#gc-cursor .gc-a{fill:rgba(8,11,8,.55);stroke:currentColor;stroke-width:1.6;stroke-linejoin:round;
+  filter:drop-shadow(0 0 4px currentColor)}
+#gc-cursor .gc-c{color:var(--accent)}                       /* main arrow — lime  */
+#gc-cursor .gc-m{color:var(--gold);mix-blend-mode:screen}   /* split A   — gold  */
+#gc-cursor .gc-v{color:var(--amber);mix-blend-mode:screen}  /* split B   — amber */
+/* over a link/button the head flips to gold and glows harder */
+#gc-cursor.gc-hot .gc-c{color:var(--gold)}
+#gc-cursor.gc-hot .gc-a{filter:drop-shadow(0 0 7px currentColor)}
+
+@media (prefers-reduced-motion: no-preference){
+  #gc-cursor .gc-m{animation:gc-j1 .18s steps(2) infinite}
+  #gc-cursor .gc-v{animation:gc-j2 .22s steps(2) infinite}
+  @keyframes gc-j1{0%{transform:translate(1.4px,-1px)}100%{transform:translate(-1px,1px)}}
+  @keyframes gc-j2{0%{transform:translate(-1.4px,1px)}100%{transform:translate(1px,-1px)}}
+}

@@ -5,6 +5,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SignupProvider from "@/components/SignupProvider";
 import RevealObserver from "@/components/RevealObserver";
+import CustomCursor from "@/components/CustomCursor";
 import { ROUTES } from "@/lib/copy";
 
 const display = Chakra_Petch({
@@ -107,6 +108,7 @@ export default function RootLayout({
           <main id="main-content">{children}</main>
           <Footer />
           <RevealObserver />
+          <CustomCursor />
         </SignupProvider>
       </body>
     </html>
