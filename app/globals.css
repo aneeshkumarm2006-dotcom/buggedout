@@ -370,7 +370,15 @@ ul{list-style:none}
 .winner-copy h2 em{font-style:normal;color:var(--gold);text-shadow:0 0 34px rgba(var(--gold-rgb),.55)}
 .winner-copy p{color:var(--text-secondary);font-size:1.18rem;max-width:44ch;margin-bottom:28px;line-height:1.55}
 .winner-frame{position:relative;padding:12px;background:linear-gradient(150deg,var(--panel-2),var(--panel));box-shadow:0 0 0 1px var(--line-2),0 0 56px rgba(var(--gold-rgb),.18)}
-.winner-frame>img{width:100%;display:block}
+.winner-screen{position:relative;width:100%;line-height:0}
+.winner-art{position:relative;z-index:2;width:100%;display:block}
+/* fill the hollow HUD screen (transparent window of hud-winner.webp) with the live arena lineup */
+.winner-feed{position:absolute;z-index:1;left:26%;top:28%;width:46.5%;height:45%;object-fit:cover;object-position:50% 44%;
+  filter:saturate(1.05) contrast(1.04)}
+.winner-feed-glow{position:absolute;z-index:1;left:26%;top:28%;width:46.5%;height:45%;pointer-events:none;
+  background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0,rgba(0,0,0,.22) 1px,transparent 2px,transparent 4px),
+    radial-gradient(120% 90% at 50% 0%,transparent 55%,rgba(var(--accent-rgb),.12)),
+    linear-gradient(180deg,rgba(6,11,8,.1),rgba(6,11,8,.45))}
 .winner-badge{position:absolute;bottom:22px;right:22px;font-family:var(--font-mono);font-size:.8rem;letter-spacing:.14em;
   background:var(--accent);color:var(--on-accent);padding:8px 16px;box-shadow:0 0 24px rgba(var(--accent-rgb),.5)}
 

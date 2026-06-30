@@ -216,14 +216,28 @@ export default function HomePage() {
             </SignupButton>
           </div>
           <div className="winner-frame brackets reveal">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/assets/hud-winner.webp"
-              width={1400}
-              height={781}
-              alt="BuggedOut WINNER results screen"
-              loading="lazy"
-            />
+            <div className="winner-screen">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                className="winner-feed"
+                src="/assets/hero-horizontal.webp"
+                width={1675}
+                height={939}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+              />
+              <span className="winner-feed-glow" aria-hidden="true" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                className="winner-art"
+                src="/assets/hud-winner.webp"
+                width={1400}
+                height={781}
+                alt="BuggedOut WINNER results screen"
+                loading="lazy"
+              />
+            </div>
             <span className="winner-badge">WINNER · 8×</span>
           </div>
         </div>
