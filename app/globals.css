@@ -61,7 +61,7 @@
 html{background:var(--bg);scroll-behavior:smooth}
 body{
   font-family:var(--font-body);font-weight:400;font-size:1.05rem;color:var(--text-primary);
-  background:var(--bg) url("/assets/bg-marble-white.png") center top/cover no-repeat fixed;
+  background:var(--bg) url("/assets/bg-marble-white.png") left center/cover no-repeat;
   line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;min-height:100vh;
 }
 img{display:block;max-width:100%}
