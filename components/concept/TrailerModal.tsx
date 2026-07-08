@@ -2,8 +2,9 @@
 
 import { useRef, useState } from "react";
 
-// Trailer thumbnail button + fullscreen video modal (concept behavior).
-// Drop the real trailer at /public/assets/concept/trailer.mp4.
+// Trailer thumbnail button + fullscreen video modal (matches live behavior).
+// The live site references /videos/Buggedout_Full Events Video.mp4 (not deployed
+// there); drop a real clip at site/public/videos/ to make the modal play.
 export default function TrailerModal() {
   const [open, setOpen] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -32,11 +33,11 @@ export default function TrailerModal() {
           <picture>
             <source
               media="(min-width: 992px)"
-              srcSet="/assets/concept/trlr-glass.png"
+              srcSet="/images/trlr-glass.webp"
             />
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/assets/concept/trlr-glass.png"
+              src="/images/trlr-glass.webp"
               alt="Watch Trailer"
               className="trailer-image"
             />
@@ -60,7 +61,9 @@ export default function TrailerModal() {
             ×
           </button>
           <video ref={videoRef} controls playsInline preload="metadata">
-            <source src="/assets/concept/trailer.mp4" type="video/mp4" />
+            {/* Matches the live site's reference; the source .mp4 is not
+                deployed there either, so the modal opens with no playable clip. */}
+            <source src="/videos/Buggedout_Full Events Video.mp4" type="video/mp4" />
           </video>
         </div>
       </div>

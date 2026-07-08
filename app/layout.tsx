@@ -2,8 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Orbitron, Exo_2 } from "next/font/google";
 import "./globals.css";
 import "./concept.css";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
+import SiteChrome from "@/components/SiteChrome";
 import SignupProvider from "@/components/SignupProvider";
 import RevealObserver from "@/components/RevealObserver";
 import { ROUTES } from "@/lib/copy";
@@ -57,16 +56,6 @@ export const viewport: Viewport = {
   themeColor: "#eef2f5",
 };
 
-// Static, decorative system-status strip that scrolls above the nav.
-const TICKER = (
-  <>
-    <span>SYSTEM <b>ONLINE</b></span><span>ARENA_07</span>
-    <span>SPECTATORS <b>47,210</b></span><span>NEXT ROUND <i>00:09</i></span>
-    <span>UPTIME <b>24/7</b></span><span>LATENCY <b>12MS</b></span>
-    <span>CHAOS LEVEL <i>MAX</i></span>
-  </>
-);
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -98,9 +87,7 @@ export default function RootLayout({
             Skip to content
           </a>
 
-          <Nav />
-          <main id="main-content">{children}</main>
-          <Footer />
+          <SiteChrome>{children}</SiteChrome>
           <RevealObserver />
         </SignupProvider>
       </body>

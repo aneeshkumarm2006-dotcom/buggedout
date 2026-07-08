@@ -29,7 +29,7 @@ export default function SignupForm() {
         />
         <label htmlFor="policy">
           By signing up, I agree to the{" "}
-          <a href="#" target="_blank" rel="noopener noreferrer">
+          <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">
             Privacy Policy
           </a>
           .

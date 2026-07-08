@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-// Countdown target — September 2, 2026 00:00:00 (local).
+// Countdown target — September 2, 2026 00:00:00 (local). Matches live script.js.
 const TARGET = new Date(2026, 8, 2, 0, 0, 0).getTime();
 
 const pad = (n: number) => String(n).padStart(2, "0");
@@ -18,6 +18,15 @@ function calc() {
     s: pad(Math.floor((d % 60000) / 1000)),
   };
 }
+
+// Primary nav links (desktop bar + mobile drawer). Hash links are prefixed with
+// "/" so they resolve to the home sections from any route.
+const LINKS: [string, string][] = [
+  ["/#about", "About"],
+  ["/#features", "How It Works"],
+  ["/#events", "Events"],
+  ["/#trailer", "Trailer"],
+];
 
 export default function Nav() {
   const [t, setT] = useState({ d: "00", h: "00", m: "00", s: "00" });
@@ -54,24 +63,26 @@ export default function Nav() {
             </button>
 
             <Link href="/" className="logo-link" aria-label="BuggedOut — home">
-              <picture>
-                <source
-                  media="(min-width: 992px)"
-                  srcSet="/assets/concept/letter-logo.png"
-                />
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/assets/concept/comingsoon.png"
-                  alt="BuggedOut"
-                  className="nav-logo"
-                />
-              </picture>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/comingsoon.webp"
+                alt="BuggedOut"
+                className="nav-logo"
+              />
             </Link>
+
+            <nav className="desktop-nav">
+              {LINKS.map(([href, label]) => (
+                <a href={href} key={href}>
+                  {label}
+                </a>
+              ))}
+            </nav>
 
             <a href="/#signup" className="signup-btn">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/assets/concept/winuptosqr.webp"
+                src="/images/winuptosqr.webp"
                 alt=""
                 className="signup-btn-image"
               />
@@ -90,21 +101,17 @@ export default function Nav() {
         <button className="close-menu" aria-label="Close Menu" onClick={close}>
           ✕
         </button>
-        <a href="/#about" onClick={close}>
-          About
-        </a>
-        <a href="/#features" onClick={close}>
-          How It Works
-        </a>
-        <a href="/#events" onClick={close}>
-          Events
-        </a>
-        <a href="/#trailer" onClick={close}>
-          Trailer
-        </a>
+        {LINKS.map(([href, label]) => (
+          <a href={href} key={href} onClick={close}>
+            {label}
+          </a>
+        ))}
         <a href="/#signup" onClick={close}>
           Sign Up
         </a>
+        <Link href="/privacy-policy" onClick={close}>
+          Privacy Policy
+        </Link>
       </div>
     </>
   );

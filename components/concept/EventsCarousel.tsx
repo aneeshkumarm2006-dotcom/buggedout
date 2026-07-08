@@ -40,7 +40,7 @@ export default function EventsCarousel() {
             {SLIDES.map(([slug, name]) => (
               <div className="event-slide" key={slug}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={`/assets/concept/events/${slug}.png`} alt={name} />
+                <img src={`/images/events/${slug}.webp`} alt={name} />
               </div>
             ))}
           </div>

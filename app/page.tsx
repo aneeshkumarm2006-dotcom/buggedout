@@ -1,6 +1,10 @@
+import type { Metadata } from "next";
 import TrailerModal from "@/components/concept/TrailerModal";
 import EventsCarousel from "@/components/concept/EventsCarousel";
 import SignupForm from "@/components/concept/SignupForm";
+
+// Live home is titled simply "BuggedOut".
+export const metadata: Metadata = { title: "BuggedOut" };
 
 export default function HomePage() {
   return (
@@ -10,11 +14,11 @@ export default function HomePage() {
         <picture>
           <source
             media="(min-width: 992px)"
-            srcSet="/assets/concept/hero-desk.webp"
+            srcSet="/images/hero-mob-nosoon.webp"
           />
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/assets/concept/hero-mob-nosoon.png"
+            src="/images/hero-mob-nosoon.webp"
             alt="BuggedOut Hero"
             className="hero-image"
           />
@@ -29,35 +33,32 @@ export default function HomePage() {
         <div className="gallery-grid">
           <div className="gallery-card">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/assets/concept/fast_fun_free_impossible.png"
-              alt="Fast. Fun. Free. Impossible to predict."
-            />
+            <img src="/images/fast_fun_free_impossible.webp" alt="Image 1" />
           </div>
           <div className="gallery-card">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/assets/concept/1mili.png"
-              alt="Opportunity to win up to $1,000,000"
-            />
+            <img src="/images/one-milli-desk.png" alt="Image 2" />
           </div>
         </div>
       </section>
 
       {/* ============ PRIZE (mobile) ============ */}
       <section className="prize-section">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/assets/concept/one-mili.png"
-          alt="Win up to one million dollars"
-          className="prize-banner"
-        />
+        <picture>
+          <source media="(min-width: 992px)" srcSet="/images/1mili-desktop.webp" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/one-mili.webp"
+            alt="Win up to one million dollars"
+            className="prize-banner"
+          />
+        </picture>
       </section>
 
       {/* ============ ABOUT ============ */}
       <section className="about-section" id="about">
         <div className="about-content">
-          <h2 className="about-heading">Where Instinct Meets Competition</h2>
+          <h2 className="about-heading">WHERE INSTINCT MEETS COMPETITION</h2>
           <p className="about-text">
             BuggedOut is the world&apos;s first{" "}
             <strong>Critters and Things Event Promotion</strong>, bringing
@@ -79,30 +80,27 @@ export default function HomePage() {
         <div className="feature">
           <div className="feature-icon">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/assets/concept/features/TV.png" alt="Watch Live" />
+            <img src="/images/features/TV.webp" alt="Watch Live" />
           </div>
-          <h3 className="glow-blue">Watch Live</h3>
+          <h3 className="glow-blue">WATCH LIVE</h3>
           <p>Tune in to weekly live events packed with action, chaos and surprises.</p>
         </div>
 
         <div className="feature">
           <div className="feature-icon">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/assets/concept/features/clipboard.png"
-              alt="Make Your Picks"
-            />
+            <img src="/images/features/clipboard.webp" alt="Make Your Picks" />
           </div>
-          <h3 className="glow-yellow">Make Your Picks</h3>
+          <h3 className="glow-yellow">MAKE YOUR PICKS</h3>
           <p>Predict the winners. It&apos;s free and easy.</p>
         </div>
 
         <div className="feature">
           <div className="feature-icon">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/assets/concept/features/cup.png" alt="Climb the Rankings" />
+            <img src="/images/features/cup.webp" alt="Climb the Rankings" />
           </div>
-          <h3 className="glow-red">Climb the Rankings</h3>
+          <h3 className="glow-red">CLIMB THE RANKINGS</h3>
           <p>
             Earn points, climb the leaderboard, and prove you&apos;ve got the best
             instincts.
@@ -112,10 +110,10 @@ export default function HomePage() {
         <div className="feature">
           <div className="feature-icon">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/assets/concept/features/crown.png" alt="Win Big" />
+            <img src="/images/features/crown.webp" alt="Win Big" />
           </div>
           <h3 className="glow-ice">
-            Win <span className="highlight-yellow">Big</span>
+            WIN <span className="highlight-yellow">BIG</span>
           </h3>
           <p>
             Qualify for the Championship and compete for the ultimate prize of up
@@ -133,10 +131,16 @@ export default function HomePage() {
           <div className="events-sticker">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/assets/concept/fastfunflecha.webp"
+              src="/images/fastfunflecha.webp"
               alt=""
               className="sticker-image"
               aria-hidden="true"
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/win-up-to-inline.webp"
+              alt="BuggedOut"
+              className="signup-logo"
             />
           </div>
           <p className="signup-description">

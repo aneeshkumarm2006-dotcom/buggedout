@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="footer-content">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/assets/concept/letter-logo.png"
+          src="/images/letter-logo.webp"
           alt="BuggedOut"
           className="footer-logo"
         />
@@ -20,7 +20,7 @@ export default function Footer() {
         </nav>
 
         <div className="footer-links">
-          <Link href="/contact">Contact</Link>
+          <Link href="/privacy-policy">Privacy Policy</Link>
           <a href="#">Terms &amp; Conditions</a>
         </div>
 
