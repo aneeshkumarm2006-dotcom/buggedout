@@ -1,65 +1,45 @@
 import Link from "next/link";
-import { IconX, IconInstagram, IconYouTube, IconDiscord } from "@/components/icons";
 
+// Concept "1big navbar / white" footer — centered logo, nav, links, socials.
 export default function Footer() {
   return (
     <footer className="footer">
-      <div className="wrap">
-        <div className="footer-grid">
-          <div className="footer-brand">
-            <Link href="/" className="logo" aria-label="BuggedOut.com — home">
-              <span className="brand">
-                <span className="b1">BUGGED</span>
-                <span className="b2">OUT</span>
-              </span>
-            </Link>
-            <p className="footer-tag">
-              Real animals. Real races. Real chaos. The arena never closes.
-            </p>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              className="brand-logo"
-              src="/assets/logo.webp"
-              width={640}
-              height={346}
-              alt="BuggedOut.com"
-            />
-          </div>
-          <div className="footer-col">
-            <h4>Navigate</h4>
-            <Link href="/">Home</Link>
-            <Link href="/events">Events</Link>
-            <Link href="/gallery">Gallery</Link>
-            <Link href="/contact">Contact</Link>
-          </div>
-          <div className="footer-col">
-            <h4>System</h4>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms &amp; Conditions</a>
-            <a href="#">Cookies Policy</a>
-          </div>
-          <div className="footer-col">
-            <h4>Signal</h4>
-            <div className="footer-social">
-              <a href="#" aria-label="BuggedOut on X">
-                <IconX />
-              </a>
-              <a href="#" aria-label="BuggedOut on Instagram">
-                <IconInstagram />
-              </a>
-              <a href="#" aria-label="BuggedOut on YouTube">
-                <IconYouTube />
-              </a>
-              <a href="#" aria-label="BuggedOut on Discord">
-                <IconDiscord />
-              </a>
-            </div>
-          </div>
+      <div className="footer-content">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/assets/concept/letter-logo.png"
+          alt="BuggedOut"
+          className="footer-logo"
+        />
+
+        <nav className="footer-nav">
+          <a href="/#trailer">Trailer</a>
+          <a href="/#about">About</a>
+          <a href="/#features">How It Works</a>
+          <a href="/#events">Events</a>
+        </nav>
+
+        <div className="footer-links">
+          <Link href="/contact">Contact</Link>
+          <a href="#">Terms &amp; Conditions</a>
         </div>
-        <div className="footer-bottom">
-          <span>© 2025 BuggedOut.com — All rights reserved</span>
-          <span>// The animals never asked for this</span>
+
+        <div className="footer-social">
+          <a href="#" aria-label="Instagram">
+            <i className="fa-brands fa-instagram" />
+          </a>
+          <a href="#" aria-label="TikTok">
+            <i className="fa-brands fa-tiktok" />
+          </a>
+          <a href="#" aria-label="YouTube">
+            <i className="fa-brands fa-youtube" />
+          </a>
+          <a href="#" aria-label="X">
+            <i className="fa-brands fa-x-twitter" />
+          </a>
         </div>
+
+        <p className="footer-copy">© 2026 BuggedOut. All rights reserved.</p>
       </div>
     </footer>
   );

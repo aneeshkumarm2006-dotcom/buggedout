@@ -1,11 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Orbitron, Exo_2 } from "next/font/google";
 import "./globals.css";
+import "./concept.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SignupProvider from "@/components/SignupProvider";
 import RevealObserver from "@/components/RevealObserver";
-import CustomCursor from "@/components/CustomCursor";
 import { ROUTES } from "@/lib/copy";
 
 // Orbitron drives display headings + HUD labels (--font-mono aliases it in CSS);
@@ -79,6 +79,12 @@ export default function RootLayout({
       className={`${display.variable} ${body.variable}`}
     >
       <body suppressHydrationWarning>
+        {/* Font Awesome brand glyphs for the footer social row (hoisted to <head>). */}
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        />
+
         {/* No-JS fallback: reveal animations stay hidden without JS, so force them visible. */}
         <noscript
           dangerouslySetInnerHTML={{
@@ -86,14 +92,6 @@ export default function RootLayout({
               "<style>.reveal,.reveal-divider{opacity:1!important;transform:none!important;clip-path:none!important}</style>",
           }}
         />
-
-        {/* Fixed atmospheric overlays — neon perspective grid, city glow, scanlines, grain, vignette. */}
-        <div className="fx-grid" aria-hidden="true" />
-        <div className="fx-glow" aria-hidden="true" />
-        <div className="fx fx-vig" aria-hidden="true" />
-        <div className="fx fx-scan" aria-hidden="true" />
-        <div className="fx fx-beam" aria-hidden="true" />
-        <div className="fx fx-grain" aria-hidden="true" />
 
         <SignupProvider>
           <a className="skip-link" href="#main-content">
@@ -104,7 +102,6 @@ export default function RootLayout({
           <main id="main-content">{children}</main>
           <Footer />
           <RevealObserver />
-          <CustomCursor />
         </SignupProvider>
       </body>
     </html>

@@ -1,193 +1,110 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { EVENTS } from "@/lib/events";
-import SignupButton from "@/components/SignupButton";
-import { IconChevronDown, IconClose } from "@/components/icons";
-import { useScrollLock } from "@/lib/useScrollLock";
 
-type RouteKey = "home" | "events" | "gallery" | "contact";
+// Countdown target — September 2, 2026 00:00:00 (local).
+const TARGET = new Date(2026, 8, 2, 0, 0, 0).getTime();
 
-function Wordmark() {
-  return (
-    <span className="brand">
-      <span className="b1">BUGGED</span>
-      <span className="b2">OUT</span>
-    </span>
-  );
+const pad = (n: number) => String(n).padStart(2, "0");
+
+function calc() {
+  const d = TARGET - Date.now();
+  if (d <= 0) return { d: "00", h: "00", m: "00", s: "00" };
+  return {
+    d: pad(Math.floor(d / 86400000)),
+    h: pad(Math.floor((d % 86400000) / 3600000)),
+    m: pad(Math.floor((d % 3600000) / 60000)),
+    s: pad(Math.floor((d % 60000) / 1000)),
+  };
 }
 
 export default function Nav() {
-  const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const drawerRef = useRef<HTMLDivElement>(null);
-  const lastFocus = useRef<HTMLElement | null>(null);
+  const [t, setT] = useState({ d: "00", h: "00", m: "00", s: "00" });
+  const [open, setOpen] = useState(false);
 
-  const activeKey: RouteKey | null =
-    pathname === "/"
-      ? "home"
-      : pathname.startsWith("/events")
-        ? "events"
-        : pathname === "/gallery"
-          ? "gallery"
-          : pathname === "/contact"
-            ? "contact"
-            : null;
-
-  const linkClass = (key: RouteKey, extra = "") =>
-    `nav-link${extra ? " " + extra : ""}${activeKey === key ? " active" : ""}`;
-
-  // Translucent → solid nav after a little scroll.
+  // Client-only ticking countdown (avoids SSR/CSR hydration mismatch).
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    setT(calc());
+    const id = setInterval(() => setT(calc()), 1000);
+    return () => clearInterval(id);
   }, []);
 
-  useScrollLock(drawerOpen);
-
-  // Close the drawer whenever the route changes (render-phase reset).
-  const [drawerPath, setDrawerPath] = useState(pathname);
-  if (pathname !== drawerPath) {
-    setDrawerPath(pathname);
-    setDrawerOpen(false);
-  }
-
-  // While the drawer is open: focus it, trap Tab inside, Escape to close, and
-  // restore focus to the trigger when it closes.
+  // Lock scroll while the mobile menu is open.
   useEffect(() => {
-    if (!drawerOpen) return;
-    const drawer = drawerRef.current;
-    const focusables = drawer
-      ? Array.from(drawer.querySelectorAll<HTMLElement>("a,button"))
-      : [];
-    focusables[0]?.focus();
-
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setDrawerOpen(false);
-        return;
-      }
-      if (e.key === "Tab" && focusables.length) {
-        const first = focusables[0];
-        const last = focusables[focusables.length - 1];
-        if (e.shiftKey && document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        } else if (!e.shiftKey && document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
-      }
-    };
-    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = open ? "hidden" : "";
     return () => {
-      document.removeEventListener("keydown", onKey);
-      lastFocus.current?.focus();
+      document.body.style.overflow = "";
     };
-  }, [drawerOpen]);
+  }, [open]);
 
-  const closeDrawer = () => setDrawerOpen(false);
+  const close = () => setOpen(false);
 
   return (
     <>
-      <nav className={`nav${scrolled ? " scrolled" : ""}`} id="nav">
-        <div className="nav-inner">
-          <Link href="/" className="logo" aria-label="BuggedOut.com — home">
-            <Wordmark />
-          </Link>
-          <ul className="nav-links">
-            <li>
-              <Link href="/" className={linkClass("home")}>
-                Home
-              </Link>
-            </li>
-            <li className="nav-dd">
-              <Link
-                href="/events"
-                className={linkClass("events", "nav-dd-trigger")}
-                aria-haspopup="menu"
-              >
-                Events <span className="caret"><IconChevronDown width={13} height={13} /></span>
-              </Link>
-              <div className="nav-dd-menu" id="ddMenu" aria-label="All events">
-                {EVENTS.map((g) => (
-                  <Link key={g.slug} href={`/events/${g.slug}`}>
-                    {g.name}
-                  </Link>
-                ))}
-              </div>
-            </li>
-            <li>
-              <Link href="/gallery" className={linkClass("gallery")}>
-                Gallery
-              </Link>
-            </li>
-            <li>
-              <Link href="/contact" className={linkClass("contact")}>
-                Contact
-              </Link>
-            </li>
-          </ul>
-          <div className="nav-right">
-            <SignupButton className="nav-signup">Get Updates</SignupButton>
+      <header>
+        <div className="navbar">
+          <div className="navbar-top">
             <button
-              className="nav-burger"
-              id="burger"
+              className="menu-btn"
               aria-label="Open menu"
-              aria-expanded={drawerOpen}
-              aria-controls="drawer"
-              onClick={() => {
-                lastFocus.current = document.activeElement as HTMLElement | null;
-                setDrawerOpen(true);
-              }}
+              onClick={() => setOpen(true)}
             >
-              <span />
-              <span />
-              <span />
+              ☰
             </button>
+
+            <Link href="/" className="logo-link" aria-label="BuggedOut — home">
+              <picture>
+                <source
+                  media="(min-width: 992px)"
+                  srcSet="/assets/concept/letter-logo.png"
+                />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/assets/concept/comingsoon.png"
+                  alt="BuggedOut"
+                  className="nav-logo"
+                />
+              </picture>
+            </Link>
+
+            <a href="/#signup" className="signup-btn">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/assets/concept/winuptosqr.webp"
+                alt=""
+                className="signup-btn-image"
+              />
+              <span>Sign Up</span>
+            </a>
+          </div>
+
+          <div className="nav-countdown" suppressHydrationWarning>
+            <span>{t.d}</span>d :<span>{t.h}</span>h :<span>{t.m}</span>m :
+            <span>{t.s}</span>s
           </div>
         </div>
-      </nav>
+      </header>
 
-      {/* Mobile drawer */}
-      <div
-        ref={drawerRef}
-        className={`drawer${drawerOpen ? " open" : ""}`}
-        id="drawer"
-        role="dialog"
-        aria-modal="true"
-        aria-label="Site navigation"
-        inert={!drawerOpen}
-      >
-        <button
-          className="drawer-close"
-          aria-label="Close menu"
-          onClick={closeDrawer}
-        >
-          <IconClose width={26} height={26} />
+      <div className={`mobile-menu${open ? " active" : ""}`}>
+        <button className="close-menu" aria-label="Close Menu" onClick={close}>
+          ✕
         </button>
-        <div className="drawer-links">
-          <Link href="/" onClick={closeDrawer}>
-            Home
-          </Link>
-          <Link href="/events" onClick={closeDrawer}>
-            Events
-          </Link>
-          <Link href="/gallery" onClick={closeDrawer}>
-            Gallery
-          </Link>
-          <Link href="/contact" onClick={closeDrawer}>
-            Contact
-          </Link>
-          <SignupButton className="nav-signup" onBeforeOpen={closeDrawer}>
-            Get Updates
-          </SignupButton>
-        </div>
+        <a href="/#about" onClick={close}>
+          About
+        </a>
+        <a href="/#features" onClick={close}>
+          How It Works
+        </a>
+        <a href="/#events" onClick={close}>
+          Events
+        </a>
+        <a href="/#trailer" onClick={close}>
+          Trailer
+        </a>
+        <a href="/#signup" onClick={close}>
+          Sign Up
+        </a>
       </div>
     </>
   );
