@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Chakra_Petch, Rajdhani, Share_Tech_Mono } from "next/font/google";
+import { Orbitron, Exo_2 } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -8,22 +8,18 @@ import RevealObserver from "@/components/RevealObserver";
 import CustomCursor from "@/components/CustomCursor";
 import { ROUTES } from "@/lib/copy";
 
-const display = Chakra_Petch({
-  weight: ["500", "600", "700"],
+// Orbitron drives display headings + HUD labels (--font-mono aliases it in CSS);
+// Exo 2 carries body copy. Matches the new client homepage's type system.
+const display = Orbitron({
+  weight: ["500", "700", "800", "900"],
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
 });
-const body = Rajdhani({
-  weight: ["400", "500", "600", "700"],
+const body = Exo_2({
+  weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-body",
-  display: "swap",
-});
-const mono = Share_Tech_Mono({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-mono",
   display: "swap",
 });
 
@@ -58,7 +54,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#080B08",
+  themeColor: "#eef2f5",
 };
 
 // Static, decorative system-status strip that scrolls above the nav.
@@ -80,7 +76,7 @@ export default function RootLayout({
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${display.variable} ${body.variable} ${mono.variable}`}
+      className={`${display.variable} ${body.variable}`}
     >
       <body suppressHydrationWarning>
         {/* No-JS fallback: reveal animations stay hidden without JS, so force them visible. */}

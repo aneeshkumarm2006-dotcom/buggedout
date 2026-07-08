@@ -1,35 +1,37 @@
 /* =========================================================================
-   BuggedOut — "Neon-Noir Broadcast HUD" design system
-   Cyberpunk arena-control aesthetic on the original lime/gold brand palette.
+   BuggedOut — "Neon Marble Promo" design system
+   Light white-marble canvas, dark glass HUD panels, orange + cyan neon.
+   Fonts: Orbitron (display/labels) + Exo 2 (body) via next/font.
    Single source of truth. --font-display/body/mono injected by next/font.
    ========================================================================= */
 :root{
-  /* ---- Surfaces (near-black, faint green tint) ---- */
-  --bg-base:#080B08; --bg:#080B08; --bg-2:#0B0F0A; --bg-3:#10160D;
-  --bg-elevated:#0E140C; --bg-elevated-2:#131A0F;
-  --panel:#0E140C; --panel-2:#131A10;
-  --surface-inset:rgba(255,255,255,.035);
+  /* ---- Surfaces (light marble page fallback + dark glass panels) ---- */
+  --bg-base:#eef2f5; --bg:#eef2f5; --bg-2:#e7edf1; --bg-3:#dfe6ec;
+  --bg-elevated:#0e0e12; --bg-elevated-2:#17171d;
+  --panel:rgba(6,6,9,.80); --panel-2:rgba(6,6,9,.72);
+  --surface-inset:rgba(255,255,255,.05);
 
-  /* ---- Lines / borders ---- */
-  --line:rgba(176,208,138,.12); --line-2:rgba(176,208,138,.22);
-  --border-subtle:rgba(255,255,255,.07); --border-strong:rgba(255,255,255,.12);
-  --border-accent:rgba(163,230,53,.32); --border-gold:rgba(224,183,58,.34);
+  /* ---- Lines / borders (hairlines live on dark glass) ---- */
+  --line:rgba(255,255,255,.10); --line-2:rgba(255,122,24,.30);
+  --border-subtle:rgba(255,255,255,.08); --border-strong:rgba(255,255,255,.14);
+  --border-accent:rgba(255,122,24,.40); --border-gold:rgba(24,251,255,.50);
 
-  /* ---- Brand accents ---- */
-  --accent:#A3E635; --accent-bright:#C6F86B; --accent-deep:#7DC21B;
-  --gold:#E0B73A; --gold-bright:#F4CE5B; --amber:#E8A33D;
-  --accent-rgb:163,230,53; --gold-rgb:224,183,58; --amber-rgb:232,163,61;
-  --on-accent:#0A1206; --on-gold:#241A05;
+  /* ---- Brand accents (orange primary, cyan secondary, red tertiary) ---- */
+  --accent:#FF7A18; --accent-bright:#FF9A45; --accent-deep:#E0600A;
+  --gold:#18FBFF; --gold-bright:#7FF6FF; --amber:#FF4D4D;
+  --accent-rgb:255,122,24; --gold-rgb:24,251,255; --amber-rgb:255,77,77;
+  --on-accent:#FFFFFF; --on-gold:#04232A;
 
-  /* ---- Text ---- */
-  --text-primary:#F4F7F2; --text-secondary:#A6AE9F; --text-tertiary:#8B9380;
+  /* ---- Text ---- light values sit on dark glass; --ink sits on marble ---- */
+  --text-primary:#F6F8FA; --text-secondary:rgba(255,255,255,.82); --text-tertiary:rgba(255,255,255,.56);
+  --ink:#111418; --ink-soft:#414851; --ink-faint:#6b7078;
 
   /* ---- Radius ---- */
-  --radius-sm:8px; --radius-md:12px; --radius-lg:18px; --radius-pill:100px;
+  --radius-sm:10px; --radius-md:14px; --radius-lg:18px; --radius-xl:22px; --radius-pill:100px;
 
   /* ---- Elevation / glow ---- */
-  --shadow-sm:0 1px 2px rgba(0,0,0,.45); --shadow-md:0 12px 34px rgba(0,0,0,.5); --shadow-lg:0 28px 64px rgba(0,0,0,.6);
-  --glow-accent:0 0 28px rgba(var(--accent-rgb),.4); --glow-gold:0 0 26px rgba(var(--gold-rgb),.4);
+  --shadow-sm:0 1px 2px rgba(0,0,0,.30); --shadow-md:0 16px 40px rgba(10,14,20,.28); --shadow-lg:0 30px 70px rgba(10,14,20,.34);
+  --glow-accent:0 0 24px rgba(var(--accent-rgb),.5); --glow-gold:0 0 22px rgba(var(--gold-rgb),.5);
 
   /* ---- Type scale ---- */
   --text-xs:.75rem; --text-sm:.875rem; --text-base:1rem; --text-lg:1.25rem;
@@ -42,10 +44,13 @@
   --space-6:48px;--space-8:64px;--space-10:80px;--space-12:96px;--space-16:128px;
 
   /* ---- Layout ---- */
-  --maxw:1280px; --gutter:clamp(18px,4.5vw,40px); --section-y:clamp(64px,9vw,116px); --nav-h:68px;
+  --maxw:1280px; --gutter:clamp(18px,4.5vw,40px); --section-y:clamp(64px,9vw,116px); --nav-h:76px;
 
   /* ---- Motion ---- */
   --ease:cubic-bezier(.2,.7,.2,1); --dur:.22s;
+
+  /* ---- Fonts ---- Orbitron drives both display + HUD labels ---- */
+  --font-mono:var(--font-display);
 }
 @property --a{syntax:'<angle>';inherits:false;initial-value:0deg}
 
@@ -55,8 +60,9 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{background:var(--bg);scroll-behavior:smooth}
 body{
-  font-family:var(--font-body);font-weight:500;font-size:1.05rem;color:var(--text-primary);background:var(--bg);
-  line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;min-height:100vh;
+  font-family:var(--font-body);font-weight:400;font-size:1.05rem;color:var(--text-primary);
+  background:var(--bg) url("/assets/bg-marble-white.png") center top/cover no-repeat fixed;
+  line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;min-height:100vh;
 }
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
@@ -77,32 +83,15 @@ ul{list-style:none}
 /* =========================================================================
    Fixed atmospheric overlays (rendered once in layout)
    ========================================================================= */
+/* Light "marble promo" theme: the busy dark-page grid / scanline / beam / grain /
+   vignette films are disabled — the marble backdrop carries the atmosphere.
+   Only a soft warm+cyan bloom remains to tie the neon accents together. */
 .fx{position:fixed;inset:0;pointer-events:none}
-.fx-grid{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.fx-grid::before,.fx-grid::after{content:"";position:absolute;left:-50%;width:200%;height:120%;
-  background-image:linear-gradient(rgba(var(--accent-rgb),.18) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(var(--accent-rgb),.18) 1px,transparent 1px);
-  background-size:54px 54px;-webkit-mask-image:linear-gradient(transparent,#000 72%);mask-image:linear-gradient(transparent,#000 72%);
-  animation:gridrun 10s linear infinite}
-.fx-grid::before{bottom:-22%;transform:perspective(420px) rotateX(72deg)}
-.fx-grid::after{top:-22%;transform:perspective(420px) rotateX(-72deg);opacity:.45;
-  background-image:linear-gradient(rgba(var(--gold-rgb),.16) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(var(--gold-rgb),.16) 1px,transparent 1px);
-  -webkit-mask-image:linear-gradient(#000 28%,transparent);mask-image:linear-gradient(#000 28%,transparent)}
-@keyframes gridrun{to{background-position:0 54px,54px 0}}
+.fx-grid,.fx-scan,.fx-beam,.fx-grain,.fx-vig{display:none}
 .fx-glow{position:fixed;inset:0;z-index:0;pointer-events:none;
-  background:radial-gradient(60% 40% at 80% 6%, rgba(var(--gold-rgb),.14), transparent 60%),
-    radial-gradient(70% 48% at 16% 2%, rgba(var(--accent-rgb),.16), transparent 62%),
-    radial-gradient(90% 60% at 50% 122%, rgba(var(--amber-rgb),.12), transparent 70%)}
-.fx-scan{z-index:60;opacity:.45;mix-blend-mode:multiply;
-  background:repeating-linear-gradient(0deg,rgba(0,0,0,.16) 0,rgba(0,0,0,.16) 1px,transparent 2px,transparent 3px)}
-.fx-beam{z-index:61;overflow:hidden}
-.fx-beam::after{content:"";position:absolute;left:0;right:0;height:140px;
-  background:linear-gradient(rgba(var(--accent-rgb),0),rgba(var(--accent-rgb),.05),rgba(var(--accent-rgb),0));animation:beam 8s linear infinite}
-@keyframes beam{0%{transform:translateY(-160px)}100%{transform:translateY(100vh)}}
-.fx-grain{z-index:62;opacity:.045;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-.fx-vig{z-index:59;background:radial-gradient(120% 120% at 50% 38%,transparent 56%,rgba(0,0,0,.5))}
+  background:radial-gradient(55% 40% at 82% 4%, rgba(var(--gold-rgb),.10), transparent 60%),
+    radial-gradient(60% 46% at 14% 2%, rgba(var(--accent-rgb),.12), transparent 62%),
+    radial-gradient(90% 60% at 50% 124%, rgba(var(--amber-rgb),.08), transparent 72%)}
 
 /* content sits above the grid/glow, below the scanline film */
 .nav,.ticker-bar,main,.footer{position:relative;z-index:2}
@@ -110,14 +99,14 @@ ul{list-style:none}
 /* =========================================================================
    Typography helpers
    ========================================================================= */
-.display{font-family:var(--font-display);font-weight:700;text-transform:uppercase;color:var(--text-primary);
-  line-height:1.02;letter-spacing:.005em}
-.display .gold{color:var(--gold)}
-.kicker{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);
+.display{font-family:var(--font-display);font-weight:800;text-transform:uppercase;color:var(--ink);
+  line-height:1.02;letter-spacing:.01em}
+.display .gold{color:var(--accent)}
+.kicker{font-family:var(--font-mono);font-weight:600;font-size:.76rem;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);
   display:inline-flex;align-items:center;gap:10px}
 .kicker::before{content:"//";color:var(--gold)}
-.eyebrow{display:inline-block;font-family:var(--font-mono);font-weight:400;color:var(--gold);font-size:.78rem;
-  letter-spacing:.26em;text-transform:uppercase}
+.eyebrow{display:inline-block;font-family:var(--font-mono);font-weight:600;color:var(--accent);font-size:.76rem;
+  letter-spacing:.24em;text-transform:uppercase}
 
 /* =========================================================================
    Layout primitives
@@ -189,11 +178,14 @@ ul{list-style:none}
 /* =========================================================================
    NAV
    ========================================================================= */
-.nav{position:sticky;top:0;z-index:50;height:var(--nav-h);display:flex;align-items:center;
-  background:rgba(8,11,8,.72);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--line);transition:background var(--dur) var(--ease),border-color var(--dur) var(--ease)}
-.nav.scrolled{background:rgba(8,11,8,.94);border-bottom-color:var(--line-2)}
-.nav-inner{max-width:var(--maxw);margin:0 auto;width:100%;height:100%;display:flex;align-items:center;justify-content:space-between;padding:0 var(--gutter);gap:20px}
+/* Floating glass "pill" nav — sticky so it still reserves layout space. */
+.nav{position:sticky;top:16px;z-index:50;height:var(--nav-h);margin:16px auto 0;
+  width:min(1300px,calc(100% - 2*var(--gutter)));display:flex;align-items:center;
+  background:rgba(14,14,18,.72);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-lg);box-shadow:0 12px 34px rgba(10,14,20,.30);
+  transition:background var(--dur) var(--ease),border-color var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
+.nav.scrolled{background:rgba(12,12,16,.9);border-color:var(--line-2);box-shadow:0 14px 40px rgba(10,14,20,.4),0 0 0 1px rgba(var(--accent-rgb),.18)}
+.nav-inner{max-width:var(--maxw);margin:0 auto;width:100%;height:100%;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,3vw,36px);gap:20px}
 .brand{font-family:var(--font-display);font-weight:700;font-size:1.5rem;letter-spacing:.03em;text-transform:uppercase;display:inline-flex;align-items:center;line-height:1}
 .brand .b1{color:var(--text-primary)} .brand .b2{color:var(--gold);text-shadow:0 0 18px rgba(var(--gold-rgb),.55)}
 .brand .tag{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.2em;color:var(--text-tertiary);margin-left:8px;align-self:flex-start;margin-top:3px}
@@ -216,11 +208,11 @@ ul{list-style:none}
   letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);transition:background var(--dur) var(--ease),color var(--dur) var(--ease)}
 .nav-dd-menu a:hover{background:var(--bg-elevated-2);color:var(--accent)}
 .nav-right{display:flex;align-items:center;gap:18px}
-.nav-signup{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
-  background:linear-gradient(120deg,var(--accent-bright),var(--accent));color:var(--on-accent);padding:11px 20px;
-  box-shadow:0 0 0 1px rgba(var(--accent-rgb),.6),0 0 24px rgba(var(--accent-rgb),.35);transition:filter var(--dur) var(--ease),box-shadow var(--dur) var(--ease),transform var(--dur) var(--ease);
-  clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px))}
-.nav-signup:hover{filter:brightness(1.08);transform:translateY(-1px);box-shadow:0 0 0 1px var(--accent),0 0 34px rgba(var(--accent-rgb),.6)}
+/* Solid-black signup pill, matching the new nav CTA. */
+.nav-signup{font-family:var(--font-mono);font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
+  background:#0c0c0f;color:#fff;padding:12px 22px;border-radius:var(--radius-sm);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),0 6px 18px rgba(0,0,0,.35);transition:color var(--dur) var(--ease),box-shadow var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.nav-signup:hover{color:var(--accent-bright);transform:translateY(-1px);box-shadow:inset 0 0 0 1px rgba(var(--accent-rgb),.7),0 0 26px rgba(var(--accent-rgb),.45)}
 .nav-burger{display:none;flex-direction:column;gap:5px;padding:8px}
 .nav-burger span{width:24px;height:2px;background:var(--text-primary)}
 
@@ -340,8 +332,8 @@ ul{list-style:none}
 .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
 .flow .step{position:relative;padding:0 22px}
 .flow .step:not(:last-child)::after{content:"";position:absolute;top:26px;left:50%;right:-2px;height:2px;background:linear-gradient(90deg,var(--accent),rgba(var(--accent-rgb),.1));z-index:0}
-.flow .node{position:relative;z-index:1;width:54px;height:54px;display:grid;place-items:center;font-family:var(--font-mono);font-size:1.05rem;color:var(--accent);
-  background:var(--bg);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);box-shadow:0 0 0 1px rgba(var(--accent-rgb),.5),0 0 22px rgba(var(--accent-rgb),.3);margin-bottom:22px}
+.flow .node{position:relative;z-index:1;width:54px;height:54px;display:grid;place-items:center;font-family:var(--font-mono);font-weight:700;font-size:1.05rem;color:var(--accent-bright);
+  background:var(--panel);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);box-shadow:0 0 0 1px rgba(var(--accent-rgb),.6),0 0 22px rgba(var(--accent-rgb),.35);margin-bottom:22px}
 .flow .step h3{font-family:var(--font-display);font-weight:700;font-size:1.28rem;text-transform:uppercase;margin-bottom:8px}
 .flow .step p{color:var(--text-secondary);font-size:1.02rem;line-height:1.45}
 
@@ -456,8 +448,9 @@ ul{list-style:none}
 .footer-col a{display:block;color:var(--text-secondary);padding:5px 0;width:fit-content;transition:color var(--dur) var(--ease)}
 .footer-col a:hover{color:var(--text-primary);text-shadow:0 0 10px rgba(var(--accent-rgb),.4)}
 .footer-social{display:flex;gap:10px}
-.footer-social a{width:42px;height:42px;display:grid;place-items:center;color:var(--text-secondary);border:1px solid var(--line);transition:color var(--dur) var(--ease),border-color var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
-.footer-social a:hover{color:var(--accent);border-color:rgba(var(--accent-rgb),.5);box-shadow:0 0 18px rgba(var(--accent-rgb),.2)}
+.footer-social a{width:46px;height:46px;display:grid;place-items:center;border-radius:50%;color:var(--gold);
+  border:2px solid rgba(var(--gold-rgb),.5);background:rgba(255,255,255,.04);transition:color var(--dur) var(--ease),border-color var(--dur) var(--ease),box-shadow var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.footer-social a:hover{transform:translateY(-4px);color:var(--accent);border-color:var(--accent);box-shadow:0 0 10px rgba(var(--accent-rgb),.8),0 0 20px rgba(var(--accent-rgb),.4)}
 .footer-social svg{width:18px;height:18px}
 .footer-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:24px;border-top:1px solid var(--line);
   font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-tertiary)}
@@ -484,8 +477,7 @@ ul{list-style:none}
 .event-hero{min-height:62vh;display:flex;align-items:flex-end;position:relative;overflow:hidden;
   padding:var(--space-10) var(--gutter) var(--space-8);background-size:cover;background-position:center}
 .event-hero::after{content:"";position:absolute;inset:0;z-index:0;
-  background:linear-gradient(to top,var(--bg) 2%,rgba(8,11,8,.55) 52%,rgba(8,11,8,.72) 100%),
-    repeating-linear-gradient(0deg,rgba(0,0,0,.2) 0,rgba(0,0,0,.2) 1px,transparent 2px,transparent 4px)}
+  background:linear-gradient(to top,rgba(6,6,9,.90) 0%,rgba(6,6,9,.55) 46%,rgba(6,6,9,.15) 100%)}
 .event-hero-content{position:relative;z-index:1;text-align:center;width:100%;max-width:var(--maxw);margin:0 auto}
 .event-hero-content h1{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:var(--text-4xl);margin:var(--space-2) 0 var(--space-3)}
 .badge{display:inline-block;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;padding:7px 14px;
@@ -670,3 +662,69 @@ html.gc-on input, html.gc-on textarea, html.gc-on [contenteditable="true"]{curso
   @keyframes gc-j1{0%{transform:translate(1.4px,-1px)}100%{transform:translate(-1px,1px)}}
   @keyframes gc-j2{0%{transform:translate(-1.4px,1px)}100%{transform:translate(1px,-1px)}}
 }
+
+/* =========================================================================
+   NEON-MARBLE POLISH
+   Rounded frosted-glass panels floating on the marble page, with neon edges.
+   Centralised here so every shared card/panel picks up the new look without
+   editing each rule above. clip-path panels (buttons, badges, modal) keep
+   their angled-corner silhouette — border-radius is simply ignored there.
+   ========================================================================= */
+.mani,.hud-panel,.form-card,.stats-card,.monitor,.stathud .stat,.ev,.fighter,
+.gallery-grid figure,.winner-board,.winner-frame,.nav-dd-menu{
+  border-radius:var(--radius-lg)}
+.mani{border-radius:var(--radius-xl)}
+
+/* frosted glass — let the marble bleed softly through the dark panels */
+.mani,.hud-panel,.form-card,.stats-card,.stathud .stat,.ev,.fighter,
+.gallery-grid figure,.monitor{
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+
+/* neon edge tints (default state) — hovers already intensify these */
+.ev{border-color:rgba(var(--accent-rgb),.30)}
+.fighter{border-color:rgba(var(--gold-rgb),.26)}
+.stathud .stat{border-color:rgba(var(--accent-rgb),.22)}
+.stats-card,.form-card,.hud-panel{border-color:rgba(var(--accent-rgb),.22)}
+.gallery-grid figure{border-color:rgba(var(--gold-rgb),.32);
+  box-shadow:0 0 8px rgba(var(--gold-rgb),.35),0 0 22px rgba(var(--gold-rgb),.18)}
+
+/* =========================================================================
+   ON-MARBLE TEXT (must stay last — wins source order over the component
+   rules above so text sitting directly on the light page reads as dark ink;
+   text inside dark glass panels keeps its light color via those same rules).
+   ========================================================================= */
+.hero-copy .glitch{color:var(--ink);text-shadow:none}
+.hero-copy .glitch .gold{color:var(--accent);text-shadow:0 0 22px rgba(var(--accent-rgb),.35)}
+.hero-sub{color:var(--ink-soft)}
+.hero-mini .m span{color:var(--ink-faint)}
+.sec-head h2{color:var(--ink)}
+.sec-head p{color:var(--ink-soft)}
+.section-header h2{color:var(--ink)}
+.section-header .sub{color:var(--ink-soft)}
+.flow .step h3{color:var(--ink)}
+.flow .step p{color:var(--ink-soft)}
+/* .mpt is reused inside the dark manifesto panel AND bare on the WHY section */
+.mpt h3{color:var(--accent-deep)}
+.mpt p{color:var(--ink-soft)}
+.mani .mpt h3{color:var(--accent-bright)}
+.mani .mpt p{color:var(--text-secondary)}
+.cta-banner h2{color:var(--ink)}
+.cta-banner p{color:var(--ink-soft)}
+.page-top h1{color:var(--ink)}
+.page-top .sub{color:var(--ink-soft)}
+.contact-info p{color:var(--ink-soft)}
+.contact-info .links a{color:var(--ink)}
+.marquee-row{color:var(--ink-faint)}
+.marquee-row b{color:var(--ink)}
+/* cyan highlight is bright on dark panels but weak on white marble → deepen it there */
+.sec-head .hl-m,.cta-banner .hl-m,.section-header .hl-m{color:#0a97a0}
+
+/* event detail — "How It Works" column sits on marble; steps + chips need ink */
+.event-info h2{color:var(--ink)}
+.steps .step .step-h{color:var(--ink)}
+.steps .step p{color:var(--ink-soft)}
+.lineup-chips .chips-label{color:var(--ink-faint)}
+.lineup-chips .chip{background:var(--panel-2);color:var(--text-primary);border-color:var(--line-2)}
+
+/* exception: the event-hero sits on a DARK image, so its .display h1 stays light */
+.event-hero-content .display{color:var(--text-primary);text-shadow:0 2px 22px rgba(0,0,0,.75)}
