@@ -181,10 +181,10 @@ ul{list-style:none}
 /* Floating glass "pill" nav — sticky so it still reserves layout space. */
 .nav{position:sticky;top:16px;z-index:50;height:var(--nav-h);margin:16px auto 0;
   width:min(1300px,calc(100% - 2*var(--gutter)));display:flex;align-items:center;
-  background:rgba(14,14,18,.72);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  background:rgba(14,14,18,.45);backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);
   border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-lg);box-shadow:0 12px 34px rgba(10,14,20,.30);
   transition:background var(--dur) var(--ease),border-color var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
-.nav.scrolled{background:rgba(12,12,16,.9);border-color:var(--line-2);box-shadow:0 14px 40px rgba(10,14,20,.4),0 0 0 1px rgba(var(--accent-rgb),.18)}
+.nav.scrolled{background:rgba(12,12,16,.68);backdrop-filter:blur(28px) saturate(160%);-webkit-backdrop-filter:blur(28px) saturate(160%);border-color:var(--line-2);box-shadow:0 14px 40px rgba(10,14,20,.4),0 0 0 1px rgba(var(--accent-rgb),.18)}
 .nav-inner{max-width:var(--maxw);margin:0 auto;width:100%;height:100%;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,3vw,36px);gap:20px}
 .brand{font-family:var(--font-display);font-weight:700;font-size:1.5rem;letter-spacing:.03em;text-transform:uppercase;display:inline-flex;align-items:center;line-height:1}
 .brand .b1{color:var(--text-primary)} .brand .b2{color:var(--gold);text-shadow:0 0 18px rgba(var(--gold-rgb),.55)}
