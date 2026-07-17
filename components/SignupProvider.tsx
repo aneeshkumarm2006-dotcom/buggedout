@@ -26,9 +26,14 @@ export function useSignup(): SignupContextValue {
   return ctx;
 }
 
+const EMPTY_FORM = { name: "", email: "", phone: "", referral: "" };
+
 export default function SignupProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [form, setForm] = useState(EMPTY_FORM);
   const overlayRef = useRef<HTMLDivElement>(null);
   const nameRef = useRef<HTMLInputElement>(null);
   const lastFocus = useRef<HTMLElement | null>(null);
@@ -36,8 +41,35 @@ export default function SignupProvider({ children }: { children: ReactNode }) {
   const open = useCallback(() => {
     lastFocus.current = document.activeElement as HTMLElement | null;
     setSubmitted(false);
+    setSubmitting(false);
+    setError(null);
+    setForm(EMPTY_FORM);
     setIsOpen(true);
   }, []);
+
+  const handleSubmit = useCallback(async () => {
+    setSubmitting(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = (await res.json().catch(() => ({}))) as {
+        error?: string;
+      };
+      if (!res.ok) {
+        setError(data.error || "Something went wrong. Please try again.");
+        return;
+      }
+      setSubmitted(true);
+    } catch {
+      setError("Network error. Please check your connection and try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  }, [form]);
 
   const close = useCallback(() => {
     setIsOpen(false);
@@ -128,7 +160,7 @@ export default function SignupProvider({ children }: { children: ReactNode }) {
                 noValidate
                 onSubmit={(e) => {
                   e.preventDefault();
-                  setSubmitted(true);
+                  if (!submitting) handleSubmit();
                 }}
               >
                 <div className="field">
@@ -139,6 +171,10 @@ export default function SignupProvider({ children }: { children: ReactNode }) {
                     type="text"
                     placeholder="Your name"
                     required
+                    value={form.name}
+                    onChange={(e) =>
+                      setForm((f) => ({ ...f, name: e.target.value }))
+                    }
                   />
                 </div>
                 <div className="field">
@@ -148,6 +184,10 @@ export default function SignupProvider({ children }: { children: ReactNode }) {
                     type="email"
                     placeholder="you@email.com"
                     required
+                    value={form.email}
+                    onChange={(e) =>
+                      setForm((f) => ({ ...f, email: e.target.value }))
+                    }
                   />
                 </div>
                 <div className="field">
@@ -156,11 +196,22 @@ export default function SignupProvider({ children }: { children: ReactNode }) {
                     id="su-phone"
                     type="tel"
                     placeholder="+1 (555) 000-0000"
+                    value={form.phone}
+                    onChange={(e) =>
+                      setForm((f) => ({ ...f, phone: e.target.value }))
+                    }
                   />
                 </div>
                 <div className="field">
                   <label htmlFor="su-referral">How did you hear about us?</label>
-                  <select id="su-referral" defaultValue="" required>
+                  <select
+                    id="su-referral"
+                    required
+                    value={form.referral}
+                    onChange={(e) =>
+                      setForm((f) => ({ ...f, referral: e.target.value }))
+                    }
+                  >
                     <option value="" disabled>
                       Select an option
                     </option>
@@ -173,9 +224,25 @@ export default function SignupProvider({ children }: { children: ReactNode }) {
                     <option value="other">Other</option>
                   </select>
                 </div>
-                <button type="submit" className="btn btn-primary btn-block">
+                {error ? (
+                  <p
+                    role="alert"
+                    style={{
+                      color: "#ff5a5a",
+                      fontSize: "0.85rem",
+                      marginBottom: "var(--space-3)",
+                    }}
+                  >
+                    {error}
+                  </p>
+                ) : null}
+                <button
+                  type="submit"
+                  className="btn btn-primary btn-block"
+                  disabled={submitting}
+                >
                   <span className="shimmer" />
-                  Keep Me Posted
+                  {submitting ? "Signing you up…" : "Keep Me Posted"}
                 </button>
               </form>
             )}
