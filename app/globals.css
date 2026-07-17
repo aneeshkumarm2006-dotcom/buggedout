@@ -689,6 +689,84 @@ html.gc-on input, html.gc-on textarea, html.gc-on [contenteditable="true"]{curso
   box-shadow:0 0 8px rgba(var(--gold-rgb),.35),0 0 22px rgba(var(--gold-rgb),.18)}
 
 /* =========================================================================
+   ADMIN CONSOLE (/admin) — the working side of the arena: a staff-only
+   signup ledger + access gate. Reuses the public HUD vocabulary (stathud
+   rails, filter pills, hud-panel glass) with denser, data-first spacing.
+   Top padding clears the fixed .navbar from concept.css (logo + countdown
+   rows): its bottom edge lands near 200px on mobile, ~240px on desktop.
+   ========================================================================= */
+.admin-shell{max-width:1180px;margin:0 auto;padding:220px var(--gutter) var(--space-12);display:grid;gap:18px;align-content:start}
+.admin-head{display:flex;justify-content:space-between;align-items:flex-end;gap:var(--space-3);flex-wrap:wrap;margin-bottom:6px}
+.admin-head .kicker{margin-bottom:12px}
+.admin-title{font-family:var(--font-display);font-weight:800;text-transform:uppercase;color:var(--ink);font-size:var(--text-3xl);line-height:1;margin:0}
+.admin-title .count{font-size:1.05rem;font-weight:600;color:var(--accent);letter-spacing:.12em;margin-left:10px}
+.admin-actions{display:flex;gap:10px;flex-wrap:wrap}
+.admin-actions .btn,.ledger-foot .btn,.ledger-note .btn{padding:11px 20px;font-size:.76rem}
+
+/* stat modules reuse .stathud; the top-channel word sits smaller than digits */
+.stathud .stat .num.is-word{font-size:clamp(1.25rem,2.4vw,1.7rem);line-height:1.2;padding:10px 0 4px}
+
+/* DB-offline alert */
+.admin-alert{padding:var(--space-4) var(--space-5);border-color:rgba(var(--amber-rgb),.55);box-shadow:var(--shadow-md),0 0 34px rgba(var(--amber-rgb),.10)}
+.admin-alert h2{font-family:var(--font-display);font-size:1.15rem;text-transform:uppercase;letter-spacing:.04em;color:var(--amber);margin-bottom:6px}
+.admin-alert p{color:var(--text-secondary);font-size:var(--text-sm);line-height:1.6}
+.admin-alert code{font-family:var(--font-mono);font-size:.82em;letter-spacing:.06em;color:var(--gold-bright)}
+
+/* ---- ledger terminal ---- */
+.ledger{overflow:hidden}
+.ledger-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:13px 18px;border-bottom:1px solid var(--line);font-family:var(--font-mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-tertiary)}
+.ledger-bar b{color:var(--accent);font-weight:600}
+.ledger-tools{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 18px;border-bottom:1px solid var(--line)}
+.ledger-search{position:relative;flex:1;min-width:230px}
+.ledger-search input{width:100%;min-height:44px;padding:11px 40px 11px 14px;background:var(--surface-inset);border:1px solid var(--line);border-radius:var(--radius-sm);color:var(--text-primary);font-family:var(--font-body);font-size:.98rem;transition:border-color var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
+.ledger-search input::placeholder{color:var(--text-tertiary)}
+.ledger-search input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}
+.ledger-search input:hover{border-color:var(--line-2)}
+.ledger-search input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(var(--accent-rgb),.16)}
+.ledger-clear{position:absolute;top:0;right:0;height:100%;width:40px;display:grid;place-items:center;color:var(--text-tertiary);transition:color var(--dur) var(--ease)}
+.ledger-clear:hover{color:var(--accent)}
+/* channel pills double as the distribution readout — each carries its count */
+.ledger-pills{display:flex;gap:8px;flex-wrap:wrap}
+.ledger-pills .filter-pill{padding:8px 14px;font-size:.68rem}
+.ledger-pills .filter-pill b{font-weight:600;color:var(--gold-bright);margin-left:6px}
+.ledger-pills .filter-pill.active b{color:var(--on-accent)}
+
+.ledger-view{max-height:min(62vh,640px);overflow:auto;overscroll-behavior:contain}
+.ledger-table{width:100%;min-width:780px;border-collapse:separate;border-spacing:0;font-size:.95rem}
+.ledger-table th{position:sticky;top:0;z-index:2;text-align:left;padding:12px 16px;background:rgba(10,10,15,.97);border-bottom:1px solid var(--line-2);font-family:var(--font-mono);font-weight:600;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-tertiary)}
+.ledger-table td{padding:11px 16px;border-bottom:1px solid var(--line);color:var(--text-secondary);white-space:nowrap}
+.ledger-table tbody tr:last-child td{border-bottom:0}
+@media (hover:hover){.ledger-table tbody tr:hover td{background:rgba(var(--accent-rgb),.05)}}
+.ledger-table .t-name{color:var(--text-primary);font-weight:600}
+.ledger-table a{color:var(--accent);transition:color var(--dur) var(--ease)}
+.ledger-table a:hover{color:var(--accent-bright);text-shadow:0 0 12px rgba(var(--accent-rgb),.4)}
+.t-chip{display:inline-block;padding:4px 10px;border-radius:6px;font-family:var(--font-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-bright);background:rgba(var(--gold-rgb),.07);box-shadow:inset 0 0 0 1px rgba(var(--gold-rgb),.3)}
+.t-date{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.06em;color:var(--text-tertiary);font-variant-numeric:tabular-nums}
+/* signups from the last 24h get an orange rail */
+.ledger-table tr.is-new td:first-child{box-shadow:inset 3px 0 0 var(--accent)}
+.ledger-note{padding:var(--space-6) var(--space-4);text-align:center;color:var(--text-secondary)}
+.ledger-note b{color:var(--text-primary)}
+.ledger-note .btn{margin-top:var(--space-3)}
+.ledger-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 18px;border-top:1px solid var(--line);font-family:var(--font-mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-tertiary)}
+.ledger-foot b{color:var(--accent);font-weight:600}
+
+/* ---- access gate (/admin/login) ---- */
+.gate-wrap{min-height:70vh;display:grid;place-items:start center;padding:220px var(--gutter) var(--space-12)}
+.gate{width:min(100%,400px);overflow:hidden}
+.gate-strip{height:5px;background:linear-gradient(90deg,var(--accent),var(--gold))}
+.gate-body{padding:var(--space-5);display:grid;gap:var(--space-4)}
+.gate h1{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:1.45rem;color:var(--text-primary);margin:6px 0 0}
+.gate-sub{color:var(--text-tertiary);font-size:var(--text-sm);line-height:1.55;margin:4px 0 0}
+.gate .field{margin:0}
+.gate-pw{position:relative;display:flex}
+.gate-pw input{flex:1;padding-right:48px}
+.gate-eye{position:absolute;top:0;right:0;height:100%;width:46px;display:grid;place-items:center;color:var(--text-secondary);transition:color var(--dur) var(--ease)}
+.gate-eye:hover{color:var(--gold-bright)}
+.gate-error{margin:0;color:var(--amber);font-size:var(--text-sm);font-weight:500}
+
+@media (min-width:992px){.admin-shell,.gate-wrap{padding-top:270px}}
+
+/* =========================================================================
    ON-MARBLE TEXT (must stay last — wins source order over the component
    rules above so text sitting directly on the light page reads as dark ink;
    text inside dark glass panels keeps its light color via those same rules).

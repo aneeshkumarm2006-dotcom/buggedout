@@ -35,117 +35,87 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <main
-      id="main-content"
-      style={{
-        minHeight: "70vh",
-        display: "grid",
-        placeItems: "start center",
-        // Clear the fixed navbar (logo + countdown rows) so the card sits below it.
-        padding:
-          "clamp(160px, 26vh, 300px) var(--space-4) var(--space-8)",
-      }}
-    >
-      <form
-        onSubmit={onSubmit}
-        className="hud-panel"
-        style={{
-          width: "min(100%, 380px)",
-          padding: "var(--space-6)",
-          borderRadius: 16,
-          display: "grid",
-          gap: "var(--space-4)",
-        }}
-      >
-        <div>
-          <span className="eyebrow" style={{ display: "block", marginBottom: "var(--space-2)" }}>
-            BuggedOut Admin
-          </span>
-          <h1 style={{ margin: 0, fontSize: "1.6rem" }}>Sign in</h1>
-        </div>
-        <div className="field">
-          <label htmlFor="admin-pw">Password</label>
-          <div style={{ position: "relative", display: "flex" }}>
-            <input
-              id="admin-pw"
-              type={showPassword ? "text" : "password"}
-              autoComplete="current-password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              autoFocus
-              style={{ flex: 1, paddingRight: 48 }}
-            />
-            <button
-              type="button"
-              onClick={() => setShowPassword((v) => !v)}
-              aria-label={showPassword ? "Hide password" : "Show password"}
-              aria-pressed={showPassword}
-              title={showPassword ? "Hide password" : "Show password"}
-              style={{
-                position: "absolute",
-                top: 0,
-                right: 0,
-                height: "100%",
-                width: 48,
-                display: "grid",
-                placeItems: "center",
-                background: "transparent",
-                border: "none",
-                cursor: "pointer",
-                color: "var(--text-secondary)",
-                padding: 0,
-              }}
-            >
-              {showPassword ? (
-                // eye-off
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
-                  <line x1="1" y1="1" x2="23" y2="23" />
-                </svg>
-              ) : (
-                // eye
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                  <circle cx="12" cy="12" r="3" />
-                </svg>
-              )}
-            </button>
+    <div className="gate-wrap">
+      <form onSubmit={onSubmit} className="hud-panel hud-corners gate">
+        <div className="gate-strip" aria-hidden="true" />
+        <div className="gate-body">
+          <div>
+            <span className="kicker">Restricted</span>
+            <h1>Console access</h1>
+            <p className="gate-sub">
+              BuggedOut staff only. Sessions expire after 8 hours.
+            </p>
           </div>
+          <div className="field">
+            <label htmlFor="admin-pw">Password</label>
+            <div className="gate-pw">
+              <input
+                id="admin-pw"
+                type={showPassword ? "text" : "password"}
+                autoComplete="current-password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                autoFocus
+              />
+              <button
+                type="button"
+                className="gate-eye"
+                onClick={() => setShowPassword((v) => !v)}
+                aria-label={showPassword ? "Hide password" : "Show password"}
+                aria-pressed={showPassword}
+                title={showPassword ? "Hide password" : "Show password"}
+              >
+                {showPassword ? (
+                  // eye-off
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
+                    <line x1="1" y1="1" x2="23" y2="23" />
+                  </svg>
+                ) : (
+                  // eye
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                )}
+              </button>
+            </div>
+          </div>
+          {error ? (
+            <p role="alert" className="gate-error">
+              {error}
+            </p>
+          ) : null}
+          <button
+            type="submit"
+            className="btn btn-primary btn-block"
+            disabled={submitting}
+          >
+            {submitting ? "Checking…" : "Open console"}
+          </button>
         </div>
-        {error ? (
-          <p role="alert" style={{ color: "#ff5a5a", fontSize: "0.85rem", margin: 0 }}>
-            {error}
-          </p>
-        ) : null}
-        <button
-          type="submit"
-          className="btn btn-primary btn-block"
-          disabled={submitting}
-        >
-          {submitting ? "Signing in…" : "Enter Dashboard"}
-        </button>
       </form>
-    </main>
+    </div>
   );
 }
