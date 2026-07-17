@@ -308,6 +308,11 @@
 .bo-home .policy-checkbox label{color:var(--text-muted);font-size:.85rem;line-height:1.5}
 .bo-home .policy-checkbox a{color:var(--color-orange);font-weight:600}
 .bo-home .policy-checkbox a:hover{text-decoration:underline}
+.bo-home .signup-success{
+  margin-top:1.5rem;color:var(--color-orange-light);
+  font-weight:700;letter-spacing:1px;text-align:center;
+}
+.bo-home .signup-error{margin-top:10px;color:#ff5a5a;font-size:.85rem;text-align:left}
 
 /* =========================================================================
    MOBILE MENU (global chrome)

@@ -33,9 +33,7 @@ export async function POST(request: NextRequest) {
   const phone = clean(body.phone, 40);
   const referral = clean(body.referral, 40);
 
-  if (!name) {
-    return NextResponse.json({ error: "Name is required." }, { status: 400 });
-  }
+  // Name is optional: the inline hero form only collects an email.
   if (!EMAIL_RE.test(email)) {
     return NextResponse.json(
       { error: "A valid email is required." },
