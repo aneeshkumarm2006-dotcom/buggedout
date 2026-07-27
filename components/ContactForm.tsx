@@ -88,8 +88,8 @@ export default function ContactForm() {
         <span className="eyebrow">Message received</span>
         <h2>Thanks — that landed.</h2>
         <p>
-          A real human on the crew reads every message. We&apos;ll get back to
-          you at <strong>{form.email}</strong>, usually within two business days.
+          We read every message. We&apos;ll get back to you at{" "}
+          <strong>{form.email}</strong>, usually within two business days.
         </p>
         <a
           className="btn btn-primary btn-block"

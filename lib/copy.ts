@@ -37,7 +37,7 @@ export const ROUTES: Record<"home" | "events" | "gallery" | "contact", RouteCopy
     "description": "Questions, feedback, event enquiries or partnerships — reach the BuggedOut crew. Or DM us on Instagram @buggedoutevents for the fastest reply.",
     "eyebrow": "Talk To The Crew",
     "h1": "Contact & Feedback",
-    "sub": "Got a question, an idea, or something we could do better? Tell us — a real human on the crew reads every message."
+    "sub": "Got a question, an idea, or something we could do better? Tell us — we read every message."
   }
 };
 

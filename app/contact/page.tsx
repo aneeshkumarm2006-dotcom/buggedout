@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 import { ROUTES } from "@/lib/copy";
-import { IconInstagram, IconMail } from "@/components/icons";
+import { IconInstagram } from "@/components/icons";
 
 const INSTAGRAM_URL = "https://www.instagram.com/buggedoutevents";
 
@@ -45,25 +45,15 @@ export default function ContactPage() {
                 </a>
               </div>
 
+              {/* No public inbox yet — Instagram and this form are the only
+                  two ways in. Drop an email row back into a .links list here
+                  once there's an address to publish. */}
               <div className="contact-info">
-                <span className="label">Other ways to reach us</span>
-                <div className="links">
-                  <a href="mailto:hello@buggedout.com">
-                    <IconMail /> hello@buggedout.com
-                  </a>
-                  <a
-                    href={INSTAGRAM_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <IconInstagram /> @buggedoutevents
-                  </a>
-                </div>
+                <span className="label">What happens next</span>
                 <p>
-                  Every message goes to a real human on the crew — questions,
-                  event enquiries, partnership pitches or straight-up feedback
-                  on what we should do next. Expect a reply within two business
-                  days.
+                  Questions, event enquiries, partnership pitches or
+                  straight-up feedback on what we should do next — it all lands
+                  in the same inbox. Expect a reply within two business days.
                 </p>
               </div>
             </div>

@@ -567,7 +567,7 @@ ul{list-style:none}
 .contact-social p{color:var(--text-secondary);font-size:.98rem;line-height:1.6;margin-bottom:var(--space-4)}
 .contact-social .btn{gap:12px}
 .contact-social .btn svg{flex:none}
-.contact-info p:last-child{margin-bottom:0;margin-top:var(--space-4)}
+.contact-info p:last-child{margin-bottom:0}
 
 /* ---- contact vs feedback selector (real radios, styled as HUD cards) ---- */
 .kind-switch{border:0;margin-bottom:var(--space-4)}
