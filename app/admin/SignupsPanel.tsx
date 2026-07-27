@@ -1,14 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import {
-  DAY_MS,
-  PAGE_SIZE,
-  channelLabel,
-  channelShort,
-  fmtDate,
-  type SignupRow,
-} from "./data";
+import { DAY_MS, PAGE_SIZE, fmtDate, type SignupRow } from "./data";
 
 export default function SignupsPanel({
   rows,
@@ -22,63 +15,36 @@ export default function SignupsPanel({
   loaded: number;
 }) {
   const [query, setQuery] = useState("");
-  const [channel, setChannel] = useState<string | null>(null);
   const [shown, setShown] = useState(PAGE_SIZE);
 
   const stats = useMemo(() => {
     let last24h = 0;
     let last7d = 0;
-    const byChannel = new Map<string, number>();
+    let last30d = 0;
     for (const r of rows) {
       const t = r.createdAt ? Date.parse(r.createdAt) : NaN;
-      if (!Number.isNaN(t)) {
-        const age = loaded - t;
-        if (age < DAY_MS) last24h++;
-        if (age < 7 * DAY_MS) last7d++;
-      }
-      if (r.referral) {
-        byChannel.set(r.referral, (byChannel.get(r.referral) ?? 0) + 1);
-      }
+      if (Number.isNaN(t)) continue;
+      const age = loaded - t;
+      if (age < DAY_MS) last24h++;
+      if (age < 7 * DAY_MS) last7d++;
+      if (age < 30 * DAY_MS) last30d++;
     }
-    const channels = [...byChannel.entries()].sort((a, b) => b[1] - a[1]);
-    const top = channels[0];
-    return {
-      last24h,
-      last7d,
-      channels,
-      topChannel: top ? channelShort(top[0]) : "—",
-      topShare: top ? Math.round((top[1] / rows.length) * 100) : 0,
-    };
+    return { last24h, last7d, last30d };
   }, [rows, loaded]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q && !channel) return rows;
-    return rows.filter((r) => {
-      if (channel && r.referral !== channel) return false;
-      if (!q) return true;
-      return [r.name, r.email, r.phone, channelLabel(r.referral)].some((v) =>
-        v.toLowerCase().includes(q),
-      );
-    });
-  }, [rows, query, channel]);
+    if (!q) return rows;
+    return rows.filter((r) =>
+      [r.name, r.email, r.phone].some((v) => v.toLowerCase().includes(q)),
+    );
+  }, [rows, query]);
 
   const visible = filtered.slice(0, shown);
-  const filtering = query.trim() !== "" || channel !== null;
+  const filtering = query.trim() !== "";
 
   function search(value: string) {
     setQuery(value);
-    setShown(PAGE_SIZE);
-  }
-
-  function pickChannel(key: string | null) {
-    setChannel(key);
-    setShown(PAGE_SIZE);
-  }
-
-  function clearFilters() {
-    setQuery("");
-    setChannel(null);
     setShown(PAGE_SIZE);
   }
 
@@ -110,9 +76,8 @@ export default function SignupsPanel({
           <span className="lbl">Last 7 days</span>
         </div>
         <div className="stat">
-          {stats.topShare > 0 && <span className="idx">{stats.topShare}%</span>}
-          <span className="num is-word">{stats.topChannel}</span>
-          <span className="lbl">Top channel</span>
+          <span className="num">{stats.last30d}</span>
+          <span className="lbl">Last 30 days</span>
         </div>
       </section>
 
@@ -143,35 +108,6 @@ export default function SignupsPanel({
                 </button>
               )}
             </div>
-            {stats.channels.length > 0 && (
-              <div
-                className="ledger-pills"
-                role="group"
-                aria-label="Filter by channel"
-              >
-                <button
-                  type="button"
-                  className={`filter-pill${channel === null ? " active" : ""}`}
-                  aria-pressed={channel === null}
-                  onClick={() => pickChannel(null)}
-                >
-                  All<b>{rows.length}</b>
-                </button>
-                {stats.channels.map(([key, count]) => (
-                  <button
-                    key={key}
-                    type="button"
-                    className={`filter-pill${channel === key ? " active" : ""}`}
-                    aria-pressed={channel === key}
-                    onClick={() => pickChannel(channel === key ? null : key)}
-                    title={channelLabel(key)}
-                  >
-                    {channelShort(key)}
-                    <b>{count}</b>
-                  </button>
-                ))}
-              </div>
-            )}
           </div>
         )}
 
@@ -186,10 +122,14 @@ export default function SignupsPanel({
           <div className="ledger-note">
             <b>No entries match.</b>
             <br />
-            Try a different search, or clear the filters.
+            Try a different search, or clear it.
             <br />
-            <button type="button" className="btn btn-ghost" onClick={clearFilters}>
-              Clear filters
+            <button
+              type="button"
+              className="btn btn-ghost"
+              onClick={() => search("")}
+            >
+              Clear search
             </button>
           </div>
         ) : (
@@ -206,7 +146,6 @@ export default function SignupsPanel({
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Phone</th>
-                    <th scope="col">Channel</th>
                     <th scope="col">Signed up</th>
                   </tr>
                 </thead>
@@ -228,15 +167,6 @@ export default function SignupsPanel({
                         </td>
                         <td>
                           {r.phone ? <a href={`tel:${r.phone}`}>{r.phone}</a> : "—"}
-                        </td>
-                        <td>
-                          {r.referral ? (
-                            <span className="t-chip">
-                              {channelShort(r.referral)}
-                            </span>
-                          ) : (
-                            "—"
-                          )}
                         </td>
                         <td className="t-date">{fmtDate(r.createdAt)}</td>
                       </tr>

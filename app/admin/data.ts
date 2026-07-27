@@ -10,7 +10,6 @@ export interface SignupRow {
   name: string;
   email: string;
   phone: string;
-  referral: string;
   createdAt: string;
 }
 
@@ -26,36 +25,6 @@ export interface MessageRow {
 
 export const DAY_MS = 86_400_000;
 export const PAGE_SIZE = 200;
-
-/* ---- signup referral channels ---- */
-const REFERRAL_LABELS: Record<string, string> = {
-  search: "Search engine",
-  social: "Social media",
-  friend: "Friend or family",
-  youtube: "YouTube / streamer",
-  event: "Event or expo",
-  ad: "Advertisement",
-  other: "Other",
-};
-
-// Short forms for the stat module + pills, where the full label is too wide.
-const REFERRAL_SHORT: Record<string, string> = {
-  search: "Search",
-  social: "Social",
-  friend: "Friend",
-  youtube: "YouTube",
-  event: "Event",
-  ad: "Ads",
-  other: "Other",
-};
-
-export function channelLabel(key: string): string {
-  return REFERRAL_LABELS[key] ?? key;
-}
-
-export function channelShort(key: string): string {
-  return REFERRAL_SHORT[key] ?? key;
-}
 
 /* ---- message kinds ---- */
 const KIND_LABELS: Record<string, string> = {
@@ -101,14 +70,8 @@ export function downloadCsv(prefix: string, csv: string): void {
 
 export function signupsCsv(rows: SignupRow[]): string {
   return toCsv(
-    ["Name", "Email", "Phone", "Channel", "Signed up"],
-    rows.map((r) => [
-      r.name,
-      r.email,
-      r.phone,
-      channelLabel(r.referral),
-      r.createdAt,
-    ]),
+    ["Name", "Email", "Phone", "Signed up"],
+    rows.map((r) => [r.name, r.email, r.phone, r.createdAt]),
   );
 }
 

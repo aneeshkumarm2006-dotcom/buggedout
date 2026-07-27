@@ -35,7 +35,7 @@ export function useSignup(): SignupContextValue {
   return ctx;
 }
 
-const EMPTY_FORM = { name: "", email: "", phone: "", referral: "" };
+const EMPTY_FORM = { name: "", email: "", phone: "" };
 
 export default function SignupProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -211,7 +211,7 @@ export default function SignupProvider({ children }: { children: ReactNode }) {
               <p className="sub">
                 The arena isn&apos;t open just yet — but the sport that&apos;s
                 about to change the game is almost here. Sign up for news, early
-                access, and round alerts. And tell us how you heard about us.
+                access, and round alerts.
               </p>
               <form
                 noValidate
@@ -258,28 +258,6 @@ export default function SignupProvider({ children }: { children: ReactNode }) {
                       setForm((f) => ({ ...f, phone: e.target.value }))
                     }
                   />
-                </div>
-                <div className="field">
-                  <label htmlFor="su-referral">How did you hear about us?</label>
-                  <select
-                    id="su-referral"
-                    required
-                    value={form.referral}
-                    onChange={(e) =>
-                      setForm((f) => ({ ...f, referral: e.target.value }))
-                    }
-                  >
-                    <option value="" disabled>
-                      Select an option
-                    </option>
-                    <option value="search">Search engine</option>
-                    <option value="social">Social media</option>
-                    <option value="friend">Friend or family</option>
-                    <option value="youtube">YouTube / streamer</option>
-                    <option value="event">Event or expo</option>
-                    <option value="ad">Advertisement</option>
-                    <option value="other">Other</option>
-                  </select>
                 </div>
                 {error ? (
                   <p

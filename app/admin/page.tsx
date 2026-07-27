@@ -15,7 +15,6 @@ interface SignupDoc {
   name?: string;
   email?: string;
   phone?: string;
-  referral?: string;
   createdAt?: Date;
 }
 
@@ -49,7 +48,6 @@ async function loadSignups(): Promise<{ rows: SignupRow[]; error?: string }> {
       name: d.name ?? "",
       email: d.email ?? "",
       phone: d.phone ?? "",
-      referral: d.referral ?? "",
       createdAt: iso(d.createdAt),
     }));
     return { rows };

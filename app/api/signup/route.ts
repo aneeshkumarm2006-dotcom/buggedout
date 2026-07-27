@@ -6,16 +6,6 @@ export const dynamic = "force-dynamic";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-const REFERRAL_VALUES = new Set([
-  "search",
-  "social",
-  "friend",
-  "youtube",
-  "event",
-  "ad",
-  "other",
-]);
-
 function clean(value: unknown, max: number): string {
   return typeof value === "string" ? value.trim().slice(0, max) : "";
 }
@@ -31,7 +21,6 @@ export async function POST(request: NextRequest) {
   const name = clean(body.name, 120);
   const email = clean(body.email, 200).toLowerCase();
   const phone = clean(body.phone, 40);
-  const referral = clean(body.referral, 40);
 
   // Name is optional: the inline hero form only collects an email.
   if (!EMAIL_RE.test(email)) {
@@ -39,9 +28,6 @@ export async function POST(request: NextRequest) {
       { error: "A valid email is required." },
       { status: 400 },
     );
-  }
-  if (referral && !REFERRAL_VALUES.has(referral)) {
-    return NextResponse.json({ error: "Invalid referral." }, { status: 400 });
   }
 
   try {
@@ -56,7 +42,6 @@ export async function POST(request: NextRequest) {
           name,
           email,
           phone,
-          referral,
           updatedAt: new Date(),
           userAgent: request.headers.get("user-agent") ?? "",
         },

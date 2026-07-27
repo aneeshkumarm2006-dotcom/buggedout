@@ -782,9 +782,6 @@ html.gc-on input, html.gc-on textarea, html.gc-on [contenteditable="true"]{curso
 .admin-actions{display:flex;gap:10px;flex-wrap:wrap}
 .admin-actions .btn,.ledger-foot .btn,.ledger-note .btn{padding:11px 20px;font-size:.76rem}
 
-/* stat modules reuse .stathud; the top-channel word sits smaller than digits */
-.stathud .stat .num.is-word{font-size:clamp(1.25rem,2.4vw,1.7rem);line-height:1.2;padding:10px 0 4px}
-
 /* DB-offline alert */
 .admin-alert{padding:var(--space-4) var(--space-5);border-color:rgba(var(--amber-rgb),.55);box-shadow:var(--shadow-md),0 0 34px rgba(var(--amber-rgb),.10)}
 .admin-alert h2{font-family:var(--font-display);font-size:1.15rem;text-transform:uppercase;letter-spacing:.04em;color:var(--amber);margin-bottom:6px}

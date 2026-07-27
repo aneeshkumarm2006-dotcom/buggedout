@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { useSignup } from "@/components/SignupProvider";
 
 // Inline email signup with Privacy-Policy checkbox validation.
-// Posts the email to /api/signup (name/phone/referral are collected by the modal),
+// Posts the email to /api/signup (name/phone are collected by the modal),
 // then hands off to the shared "Coming Soon" confirmation modal.
 export default function SignupForm() {
   const { showSuccess } = useSignup();
