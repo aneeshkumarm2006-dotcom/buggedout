@@ -554,6 +554,48 @@ ul{list-style:none}
 .field input:hover,.field textarea:hover,.field select:hover{border-color:var(--line-2)}
 .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(var(--accent-rgb),.16);background:rgba(255,255,255,.05)}
 .field textarea{resize:vertical;min-height:130px;line-height:1.6}
+.form-error{color:var(--amber);font-size:var(--text-sm);font-weight:500;margin-bottom:var(--space-3)}
+.form-note{color:var(--text-tertiary);font-size:.82rem;line-height:1.5;margin-top:var(--space-3);text-align:center}
+.form-note a{color:var(--accent);transition:color var(--dur) var(--ease)}
+.form-note a:hover{color:var(--accent-bright)}
+
+/* ---- contact page: Instagram-first side rail + the form ---- */
+.contact-side{display:flex;flex-direction:column;gap:var(--space-4)}
+.contact-social{padding:var(--space-4) var(--space-4) var(--space-5)}
+.contact-social h2{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:var(--text-2xl);
+  color:var(--text-primary);line-height:1.05;margin:10px 0 12px}
+.contact-social p{color:var(--text-secondary);font-size:.98rem;line-height:1.6;margin-bottom:var(--space-4)}
+.contact-social .btn{gap:12px}
+.contact-social .btn svg{flex:none}
+.contact-info p:last-child{margin-bottom:0;margin-top:var(--space-4)}
+
+/* ---- contact vs feedback selector (real radios, styled as HUD cards) ---- */
+.kind-switch{border:0;margin-bottom:var(--space-4)}
+.kind-switch legend{font-family:var(--font-mono);color:var(--text-secondary);font-size:.72rem;text-transform:uppercase;
+  letter-spacing:.12em;margin-bottom:10px}
+.kind-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kind-opt{position:relative;display:flex;flex-direction:column;gap:4px;padding:13px 15px;cursor:pointer;
+  background:var(--surface-inset);border:1px solid var(--line);border-radius:var(--radius-sm);
+  transition:border-color var(--dur) var(--ease),background var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
+.kind-opt input{position:absolute;opacity:0;width:0;height:0}
+.kind-label{font-family:var(--font-mono);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-secondary)}
+.kind-hint{font-size:.78rem;line-height:1.4;color:var(--text-tertiary)}
+.kind-opt:hover{border-color:var(--line-2)}
+.kind-opt:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:2px}
+.kind-opt.active{background:rgba(var(--accent-rgb),.10);border-color:rgba(var(--accent-rgb),.6);
+  box-shadow:0 0 22px rgba(var(--accent-rgb),.16)}
+.kind-opt.active .kind-label{color:var(--accent-bright)}
+.kind-opt.active .kind-hint{color:var(--text-secondary)}
+
+/* ---- post-send confirmation (replaces the form in place) ---- */
+.contact-sent{text-align:center}
+.contact-sent .success-check{width:64px;height:64px}
+.contact-sent h2{font-family:var(--font-display);font-weight:700;text-transform:uppercase;color:var(--text-primary);
+  font-size:var(--text-2xl);line-height:1.05;margin:8px 0 12px}
+.contact-sent p{color:var(--text-secondary);font-size:1rem;line-height:1.6;margin-bottom:var(--space-4)}
+.contact-sent p strong{color:var(--text-primary);word-break:break-word}
+.contact-sent .btn{gap:12px}
+.contact-sent .btn svg{flex:none}
 
 /* =========================================================================
    HUD PANEL / CORNERS / SIGN-UP MODAL
@@ -563,7 +605,8 @@ ul{list-style:none}
 .hud-corners::before{top:10px;left:10px;border-top:2px solid var(--gold);border-left:2px solid var(--gold)}
 .hud-corners::after{bottom:10px;right:10px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold)}
 
-.overlay{position:fixed;inset:0;z-index:150;background:rgba(0,0,0,.82);backdrop-filter:blur(6px);display:none;align-items:flex-start;justify-content:center;padding:var(--space-3);overflow-y:auto}
+/* z-index clears the home page's fixed .navbar (1000) and mobile menu (2000) in concept.css */
+.overlay{position:fixed;inset:0;z-index:2500;background:rgba(0,0,0,.82);backdrop-filter:blur(6px);display:none;align-items:flex-start;justify-content:center;padding:var(--space-3);overflow-y:auto}
 .overlay.open{display:flex}
 .modal{width:480px;max-width:100%;margin-block:auto;background:var(--panel);border:1px solid var(--line-2);overflow:hidden;position:relative;box-shadow:var(--shadow-lg),0 0 50px rgba(var(--accent-rgb),.1);animation:modalIn .3s var(--ease);
   clip-path:polygon(0 14px,14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%)}
@@ -574,6 +617,42 @@ ul{list-style:none}
 .modal-body .sub{color:var(--text-secondary);font-size:var(--text-base);margin-bottom:var(--space-4);line-height:1.6}
 .modal-close{position:absolute;top:12px;right:14px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;color:var(--text-secondary);z-index:2;transition:color var(--dur) var(--ease)}
 .modal-close:hover{color:var(--accent)}
+
+/* ---- Post-signup "Coming Soon" confirmation (both the modal + inline form land here) ---- */
+.modal-success{width:620px;text-align:center;
+  box-shadow:var(--shadow-lg),0 0 90px rgba(var(--accent-rgb),.22)}
+.modal-success::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(120% 70% at 50% 0,rgba(var(--accent-rgb),.16),transparent 65%)}
+.success-body{position:relative;padding:var(--space-6) var(--space-5) var(--space-5)}
+.success-body:focus{outline:none}
+.success-check{width:78px;height:78px;margin:0 auto var(--space-3);display:flex;align-items:center;justify-content:center;
+  color:var(--on-accent);border-radius:50%;
+  background:linear-gradient(120deg,var(--accent-bright),var(--accent) 60%,var(--accent-deep));
+  box-shadow:0 0 0 6px rgba(var(--accent-rgb),.14),0 0 46px rgba(var(--accent-rgb),.55)}
+.success-title{font-family:var(--font-display);font-weight:800;text-transform:uppercase;letter-spacing:.02em;
+  color:var(--text-primary);font-size:clamp(2.4rem,7vw,3.6rem);line-height:1;margin:6px 0 var(--space-3)}
+.success-lead{color:var(--text-secondary);font-size:var(--text-lg);line-height:1.6;margin-bottom:var(--space-4);
+  max-width:44ch;margin-inline:auto}
+.success-note{display:flex;align-items:flex-start;gap:14px;text-align:left;padding:16px 18px;margin-bottom:var(--space-4);
+  background:rgba(var(--accent-rgb),.07);border:1px solid rgba(var(--accent-rgb),.28)}
+.success-note svg{flex:none;color:var(--accent);margin-top:2px}
+.success-note p{color:var(--text-secondary);font-size:.94rem;line-height:1.55}
+.success-note strong{color:var(--text-primary)}
+.success-follow{color:var(--text-secondary);font-size:.94rem;margin-bottom:12px}
+.success-follow strong{color:var(--accent-bright);font-weight:600}
+.success-ig{gap:12px}
+.success-ig svg{flex:none}
+.success-dismiss{display:block;margin:var(--space-3) auto 0;font-family:var(--font-mono);font-size:.8rem;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);
+  transition:color var(--dur) var(--ease)}
+.success-dismiss:hover{color:var(--accent)}
+@media (max-width:560px){
+  .success-body{padding:var(--space-5) var(--space-4) var(--space-4)}
+  .success-check{width:64px;height:64px}
+  .success-lead{font-size:var(--text-base)}
+  /* keep the CTA label on one line inside a ~330px modal */
+  .success-ig{gap:9px;padding-inline:12px;font-size:.74rem;letter-spacing:.05em}
+}
 
 /* =========================================================================
    ANIMATIONS / REVEAL
@@ -763,6 +842,51 @@ html.gc-on input, html.gc-on textarea, html.gc-on [contenteditable="true"]{curso
 .gate-eye{position:absolute;top:0;right:0;height:100%;width:46px;display:grid;place-items:center;color:var(--text-secondary);transition:color var(--dur) var(--ease)}
 .gate-eye:hover{color:var(--gold-bright)}
 .gate-error{margin:0;color:var(--amber);font-size:var(--text-sm);font-weight:500}
+
+/* ---- section tabs (signups | messages) ---- */
+.admin-tabs{display:flex;gap:8px;padding:6px;background:linear-gradient(180deg,var(--panel-2),var(--panel));
+  border:1px solid rgba(var(--accent-rgb),.22);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.admin-tab{flex:1;display:flex;align-items:center;justify-content:center;gap:10px;padding:13px 18px;border-radius:12px;
+  font-family:var(--font-mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-tertiary);
+  transition:color var(--dur) var(--ease),background var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
+.admin-tab b{font-weight:600;font-size:.7rem;color:var(--gold-bright);padding:2px 8px;border-radius:6px;
+  background:rgba(var(--gold-rgb),.08);box-shadow:inset 0 0 0 1px rgba(var(--gold-rgb),.28)}
+.admin-tab:hover:not(.active){color:var(--text-primary);background:rgba(255,255,255,.04)}
+.admin-tab.active{background:linear-gradient(120deg,var(--accent-bright),var(--accent));color:var(--on-accent);font-weight:700;
+  box-shadow:0 0 24px rgba(var(--accent-rgb),.35)}
+.admin-tab.active b{color:var(--on-accent);background:rgba(0,0,0,.18);box-shadow:inset 0 0 0 1px rgba(255,255,255,.25)}
+.admin-panel{display:grid;gap:18px}
+.admin-panel[hidden]{display:none}
+
+/* ---- message inbox: cards, not rows — the body copy needs room to breathe ---- */
+.msg-list{display:flex;flex-direction:column}
+.msg{display:grid;gap:9px;padding:16px 18px;border-bottom:1px solid var(--line)}
+.msg:last-child{border-bottom:0}
+@media (hover:hover){.msg:hover{background:rgba(var(--accent-rgb),.04)}}
+/* messages from the last 24h get the same orange rail as fresh signups */
+.msg.is-new{box-shadow:inset 3px 0 0 var(--accent)}
+.msg-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.msg-who{color:var(--text-primary);font-weight:600;font-size:.98rem}
+.msg-date{margin-left:auto}
+.msg-subject{font-family:var(--font-display);font-weight:700;font-size:1rem;letter-spacing:.01em;color:var(--accent-bright)}
+.msg-body{color:var(--text-secondary);font-size:.95rem;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere}
+.msg-body.is-clamped{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.msg-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:2px}
+.msg-foot a{color:var(--accent);font-family:var(--font-mono);font-size:.76rem;letter-spacing:.06em;
+  overflow-wrap:anywhere;transition:color var(--dur) var(--ease)}
+.msg-foot a:hover{color:var(--accent-bright);text-shadow:0 0 12px rgba(var(--accent-rgb),.4)}
+.msg-more{justify-self:start;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--text-tertiary);transition:color var(--dur) var(--ease)}
+.msg-more:hover{color:var(--accent)}
+.t-chip.is-feedback{color:var(--accent-bright);background:rgba(var(--accent-rgb),.08);
+  box-shadow:inset 0 0 0 1px rgba(var(--accent-rgb),.32)}
+.ledger-note code{font-family:var(--font-mono);font-size:.85em;letter-spacing:.04em;color:var(--gold-bright)}
+
+@media (max-width:520px){
+  .admin-tab{padding:12px 10px;font-size:.66rem;letter-spacing:.1em}
+  .msg-date{margin-left:0;width:100%}
+}
 
 @media (min-width:992px){.admin-shell,.gate-wrap{padding-top:270px}}
 

@@ -77,6 +77,7 @@ export default function Nav() {
                   {label}
                 </a>
               ))}
+              <Link href="/contact">Contact</Link>
             </nav>
 
             <a href="/#signup" className="signup-btn">
@@ -106,6 +107,9 @@ export default function Nav() {
             {label}
           </a>
         ))}
+        <Link href="/contact" onClick={close}>
+          Contact
+        </Link>
         <a href="/#signup" onClick={close}>
           Sign Up
         </a>

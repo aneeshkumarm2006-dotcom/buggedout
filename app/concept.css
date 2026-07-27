@@ -409,9 +409,15 @@
   .navbar-top{display:flex;align-items:center;width:100%}
   .logo-link{flex-shrink:0}
   .nav-logo{width:350px;height:100px;margin-left:-50px}
-  .desktop-nav{display:flex;flex:1;justify-content:center;align-items:center;gap:2.5rem}
+  /* The link row sits at its min-content width and the logo absorbs the rest,
+     so the gap + inline padding are what keep the five links (incl. Contact)
+     clear of the Sign Up button. */
+  .desktop-nav{
+    display:flex;flex:1;justify-content:center;align-items:center;
+    gap:clamp(1.05rem,2.2vw,2.5rem);padding-inline:clamp(14px,1.6vw,28px);
+  }
   .desktop-nav a{
-    color:var(--color-white);font-size:.95rem;font-weight:600;
+    color:var(--color-white);font-size:.95rem;font-weight:600;white-space:nowrap;
     letter-spacing:2px;text-transform:uppercase;transition:var(--transition-fast);
   }
   .desktop-nav a:hover{color:var(--color-orange)}
@@ -493,6 +499,21 @@
   .bo-home .sticker-image{display:none}
   .bo-home .signup-logo{display:block;width:550px;height:auto;margin:0 auto 2rem}
   .bo-home .signup-description{font-size:1.3rem}
+}
+
+/* =========================================================================
+   NARROW DESKTOP (992–1299px)
+   Below ~1300px the full-size 350px logo mark and the five nav links fight
+   over the same row and the mark ends up running under them. Scale the mark
+   and the link type down through this band; ≥1300px keeps the ported sizes.
+   ========================================================================= */
+@media (min-width:992px) and (max-width:1299.98px){
+  /* flex-start keeps the smaller mark hugging the left edge like the ported
+     full-size one, instead of drifting to the middle of its box */
+  .logo-link{justify-content:flex-start}
+  .nav-logo{width:245px;height:70px;margin-left:-30px}
+  .desktop-nav{gap:1.1rem}
+  .desktop-nav a{font-size:.82rem;letter-spacing:1.2px}
 }
 
 /* =========================================================================

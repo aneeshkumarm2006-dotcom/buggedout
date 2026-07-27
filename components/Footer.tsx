@@ -17,25 +17,23 @@ export default function Footer() {
           <a href="/#about">About</a>
           <a href="/#features">How It Works</a>
           <a href="/#events">Events</a>
+          <Link href="/contact">Contact</Link>
         </nav>
 
         <div className="footer-links">
+          <Link href="/contact">Contact &amp; Feedback</Link>
           <Link href="/privacy-policy">Privacy Policy</Link>
           <a href="#">Terms &amp; Conditions</a>
         </div>
 
         <div className="footer-social">
-          <a href="#" aria-label="Instagram">
+          <a
+            href="https://www.instagram.com/buggedoutevents"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+          >
             <i className="fa-brands fa-instagram" />
-          </a>
-          <a href="#" aria-label="TikTok">
-            <i className="fa-brands fa-tiktok" />
-          </a>
-          <a href="#" aria-label="YouTube">
-            <i className="fa-brands fa-youtube" />
-          </a>
-          <a href="#" aria-label="X">
-            <i className="fa-brands fa-x-twitter" />
           </a>
         </div>
 

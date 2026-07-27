@@ -33,11 +33,11 @@ export const ROUTES: Record<"home" | "events" | "gallery" | "contact", RouteCopy
     "sub": "Neon, lanes and live critters. Welcome to the floor."
   },
   "contact": {
-    "title": "Contact the Crew — BuggedOut.com",
-    "description": "Questions about the arena, the events or partnerships? Reach the BuggedOut crew trackside. Fast answers, straight talk, no runaround.",
-    "eyebrow": "Trackside Support",
-    "h1": "Talk to the Crew",
-    "sub": "Stuck, curious, or want in? Drop us a line."
+    "title": "Contact & Feedback — BuggedOut.com",
+    "description": "Questions, feedback, event enquiries or partnerships — reach the BuggedOut crew. Or DM us on Instagram @buggedoutevents for the fastest reply.",
+    "eyebrow": "Talk To The Crew",
+    "h1": "Contact & Feedback",
+    "sub": "Got a question, an idea, or something we could do better? Tell us — a real human on the crew reads every message."
   }
 };
 

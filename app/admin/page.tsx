@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { isAuthenticated } from "@/lib/adminAuth";
 import { getDb } from "@/lib/mongodb";
-import AdminConsole, { type SignupRow } from "./AdminConsole";
+import AdminConsole from "./AdminConsole";
+import type { MessageRow, SignupRow } from "./data";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Signup Console — BuggedOut Admin",
+  title: "Console — BuggedOut Admin",
 };
 
 interface SignupDoc {
@@ -16,6 +17,22 @@ interface SignupDoc {
   phone?: string;
   referral?: string;
   createdAt?: Date;
+}
+
+interface MessageDoc {
+  name?: string;
+  email?: string;
+  kind?: string;
+  subject?: string;
+  message?: string;
+  createdAt?: Date;
+}
+
+const DB_ERROR =
+  "Could not connect to the database. Check that MONGODB_URI is set in .env.local.";
+
+function iso(value?: Date): string {
+  return value ? new Date(value).toISOString() : "";
 }
 
 async function loadSignups(): Promise<{ rows: SignupRow[]; error?: string }> {
@@ -33,16 +50,37 @@ async function loadSignups(): Promise<{ rows: SignupRow[]; error?: string }> {
       email: d.email ?? "",
       phone: d.phone ?? "",
       referral: d.referral ?? "",
-      createdAt: d.createdAt ? new Date(d.createdAt).toISOString() : "",
+      createdAt: iso(d.createdAt),
     }));
     return { rows };
   } catch (err) {
     console.error("failed to load signups", err);
-    return {
-      rows: [],
-      error:
-        "Could not connect to the database. Check that MONGODB_URI is set in .env.local.",
-    };
+    return { rows: [], error: DB_ERROR };
+  }
+}
+
+async function loadMessages(): Promise<{ rows: MessageRow[]; error?: string }> {
+  try {
+    const db = await getDb();
+    const docs = await db
+      .collection<MessageDoc>("messages")
+      .find({}, { projection: { _id: 0 } })
+      .sort({ createdAt: -1 })
+      .limit(2000)
+      .toArray();
+
+    const rows: MessageRow[] = docs.map((d) => ({
+      name: d.name ?? "",
+      email: d.email ?? "",
+      kind: d.kind ?? "contact",
+      subject: d.subject ?? "",
+      message: d.message ?? "",
+      createdAt: iso(d.createdAt),
+    }));
+    return { rows };
+  } catch (err) {
+    console.error("failed to load messages", err);
+    return { rows: [], error: DB_ERROR };
   }
 }
 
@@ -51,12 +89,17 @@ export default async function AdminPage() {
     redirect("/admin/login");
   }
 
-  const { rows, error } = await loadSignups();
+  const [signups, messages] = await Promise.all([
+    loadSignups(),
+    loadMessages(),
+  ]);
 
   return (
     <AdminConsole
-      rows={rows}
-      error={error}
+      signups={signups.rows}
+      signupError={signups.error}
+      messages={messages.rows}
+      messageError={messages.error}
       loadedAt={new Date().toISOString()}
     />
   );
