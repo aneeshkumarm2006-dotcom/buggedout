@@ -147,8 +147,15 @@
   background:rgba(0,0,0,.85);opacity:0;visibility:hidden;transition:.3s;
 }
 .bo-home .video-modal.active{opacity:1;visibility:visible}
-.bo-home .video-container{position:relative;width:90%;max-width:900px}
-.bo-home .video-container video{width:100%;border-radius:16px}
+/* Shrink-wraps the video instead of forcing a width, so a portrait (9:16)
+   source stays inside the viewport instead of running ~1600px tall.
+   Height cap leaves room for the close button sitting at top:-55px. */
+.bo-home .video-container{position:relative;width:auto;max-width:90vw}
+.bo-home .video-container video{
+  display:block;width:auto;height:auto;
+  max-width:90vw;max-height:calc(100dvh - 130px);
+  border-radius:16px;
+}
 .bo-home .close-video{
   position:absolute;top:-55px;right:0;width:46px;height:46px;
   color:var(--color-white);font-size:2rem;
@@ -448,8 +455,11 @@
     text-shadow:0 0 10px rgba(255,122,24,.8),0 0 30px rgba(255,122,24,.5);
   }
   .bo-home .trailer-button:hover .play-overlay{opacity:1}
-  .bo-home .video-container{width:80%;max-width:1100px}
-  .bo-home .video-container video{border-radius:20px;box-shadow:0 0 40px rgba(0,0,0,.6)}
+  .bo-home .video-container{max-width:80vw}
+  .bo-home .video-container video{
+    max-width:80vw;max-height:calc(100dvh - 150px);
+    border-radius:20px;box-shadow:0 0 40px rgba(0,0,0,.6);
+  }
 
   /* gallery */
   .bo-home .gallery-section{

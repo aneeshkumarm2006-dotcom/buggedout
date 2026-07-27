@@ -3,8 +3,7 @@
 import { useRef, useState } from "react";
 
 // Trailer thumbnail button + fullscreen video modal (matches live behavior).
-// The live site references /videos/Buggedout_Full Events Video.mp4 (not deployed
-// there); drop a real clip at site/public/videos/ to make the modal play.
+// Plays site/public/trailor.mp4 — drop the clip in at that exact path/name.
 export default function TrailerModal() {
   const [open, setOpen] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -60,10 +59,10 @@ export default function TrailerModal() {
           >
             ×
           </button>
+          {/* No poster: the trailer thumbnail is 16:9 but the clip is 9:16,
+              so a poster would snap aspect ratio once metadata loads. */}
           <video ref={videoRef} controls playsInline preload="metadata">
-            {/* Matches the live site's reference; the source .mp4 is not
-                deployed there either, so the modal opens with no playable clip. */}
-            <source src="/videos/Buggedout_Full Events Video.mp4" type="video/mp4" />
+            <source src="/trailor.mp4" type="video/mp4" />
           </video>
         </div>
       </div>
