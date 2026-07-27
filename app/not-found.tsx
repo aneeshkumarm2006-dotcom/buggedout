@@ -6,7 +6,7 @@ export default function NotFound() {
       <span className="eyebrow">Error 404</span>
       <h1 className="display">Off The Track</h1>
       <p className="sub">
-        This race doesn&apos;t exist — or it already crossed the line.
+        This race doesn&apos;t exist, or it already crossed the line.
       </p>
       <div style={{ marginTop: "var(--space-5)" }}>
         <Link href="/" className="btn btn-primary">

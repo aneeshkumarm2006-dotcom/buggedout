@@ -12,32 +12,32 @@ export interface RouteCopy {
 export const ROUTES: Record<"home" | "events" | "gallery" | "contact", RouteCopy> =
   {
   "home": {
-    "title": "BuggedOut.com — The Future of Live Sporting Events",
-    "description": "A brand-new category of sport. Real animals, live races, pure chaos — chickens, crabs, fish and roaches head-to-head in real time. No replays, no scripts, no two rounds alike. This is how the world watches sport next.",
+    "title": "BuggedOut.com | The Future of Live Sporting Events",
+    "description": "A brand-new category of sport. Real animals, live races, pure chaos. Chickens, crabs, fish and roaches, head-to-head in real time. No replays, no scripts, no two rounds alike. This is how the world watches sport next.",
     "eyebrow": "Live Animal Racing",
     "h1": "Race. Cheer. Repeat.",
     "sub": "Real animals. Real races. Real chaos."
   },
   "events": {
-    "title": "The Lineup — Live Events & Roulette | BuggedOut.com",
+    "title": "The Lineup: Live Events & Roulette | BuggedOut.com",
     "description": "Browse the full lineup of live animal races and roulette. Meet the chickens, fish, crabs and roaches, see how each event runs, and watch the chaos unfold.",
     "eyebrow": "The Lineup",
     "h1": "Meet The Runners",
     "sub": "Every event runs live. Meet the contestants and watch it all go sideways."
   },
   "gallery": {
-    "title": "Inside the Pit — Arena Gallery | BuggedOut.com",
+    "title": "Inside the Pit: Arena Gallery | BuggedOut.com",
     "description": "Get close to the action. Neon-lit shots of the animal athletes, the lanes and the HUD from inside BuggedOut's live arena.",
     "eyebrow": "Inside the Pit",
     "h1": "The Arena, Up Close",
     "sub": "Neon, lanes and live critters. Welcome to the floor."
   },
   "contact": {
-    "title": "Contact & Feedback — BuggedOut.com",
-    "description": "Questions, feedback, event enquiries or partnerships — reach the BuggedOut crew. Or DM us on Instagram @buggedoutevents for the fastest reply.",
+    "title": "Contact & Feedback | BuggedOut.com",
+    "description": "Questions, feedback, event enquiries or partnerships? Reach the BuggedOut crew. Or DM us on Instagram @buggedoutevents for the fastest reply.",
     "eyebrow": "Talk To The Crew",
     "h1": "Contact & Feedback",
-    "sub": "Got a question, an idea, or something we could do better? Tell us — we read every message."
+    "sub": "Got a question, an idea, or something we could do better? Tell us. We read every message."
   }
 };
 
@@ -48,7 +48,7 @@ export const HOME = {
     "All chaos.",
     "BUGGEDOUT."
   ],
-  "heroSubhead": "The world's first live animal racing arena — and the start of a brand-new kind of sport.",
+  "heroSubhead": "The world's first live animal racing arena, and the start of a brand-new kind of sport.",
   "why": [
     {
       "h": "Always Live",
@@ -100,7 +100,7 @@ export const HOME = {
   "manifesto": {
     "eyebrow": "REWRITING THE RULEBOOK",
     "h": "The Sport The World Has Never Seen.",
-    "lead": "Every sport you grew up on was invented exactly once. BuggedOut is the next one. We took the rush of the racetrack, threw out the scripts and the slow-motion replays, and handed the whole spectacle to contestants who have no idea the stakes. This isn't a gimmick — it's a brand-new category of live sporting event, and it's about to change the way the world watches sport.",
+    "lead": "Every sport you grew up on was invented exactly once. BuggedOut is the next one. We took the rush of the racetrack, threw out the scripts and the slow-motion replays, and handed the whole spectacle to contestants who have no idea the stakes. This isn't a gimmick. It's a brand-new category of live sporting event, and it's about to change the way the world watches sport.",
     "points": [
       {
         "h": "A New Category",
@@ -108,7 +108,7 @@ export const HOME = {
       },
       {
         "h": "Unscriptable By Design",
-        "p": "No teams to fix, no plays to rehearse. Every outcome is decided by raw instinct — sport in its purest, wildest form."
+        "p": "No teams to fix, no plays to rehearse. Every outcome is decided by raw instinct: sport in its purest, wildest form."
       },
       {
         "h": "Built To Go Global",
@@ -159,6 +159,6 @@ export const HOME = {
   ],
   "cta": {
     "h": "Get in before the world catches on.",
-    "p": "Join the list for round alerts, early access, and a front-row seat to the sport that's about to rewrite the rulebook — Forked Fate, Split Decision, The Great Escape. The animals are waiting; they just don't know it."
+    "p": "Join the list for round alerts, early access, and a front-row seat to the sport that's about to rewrite the rulebook: Forked Fate, Split Decision, The Great Escape. The animals are waiting; they just don't know it."
   }
 } as const;

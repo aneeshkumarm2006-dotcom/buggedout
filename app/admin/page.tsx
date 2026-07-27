@@ -8,7 +8,7 @@ import type { MessageRow, SignupRow } from "./data";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Console — BuggedOut Admin",
+  title: "Console | BuggedOut Admin",
 };
 
 interface SignupDoc {

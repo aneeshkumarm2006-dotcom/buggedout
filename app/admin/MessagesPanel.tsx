@@ -198,7 +198,7 @@ export default function MessagesPanel({
           <p className="ledger-note">
             <b>No messages yet.</b>
             <br />
-            Everything sent from the <code>/contact</code> form lands here —
+            Everything sent from the <code>/contact</code> form lands here,
             questions and feedback alike.
           </p>
         ) : visible.length === 0 ? (
@@ -226,7 +226,7 @@ export default function MessagesPanel({
                       title={isNew ? "Received in the last 24 hours" : undefined}
                     >
                       <div className="msg-top">
-                        <span className="msg-who">{r.name || "—"}</span>
+                        <span className="msg-who">{r.name || "-"}</span>
                         <span
                           className={`t-chip${r.kind === "feedback" ? " is-feedback" : ""}`}
                         >

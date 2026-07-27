@@ -168,7 +168,7 @@ export default function SignupProvider({ children }: { children: ReactNode }) {
                 Coming Soon
               </h2>
               <p className="success-lead">
-                The arena isn&apos;t open just yet — but you&apos;ll be among the
+                The arena isn&apos;t open just yet, but you&apos;ll be among the
                 first through the doors.
               </p>
 
@@ -209,7 +209,7 @@ export default function SignupProvider({ children }: { children: ReactNode }) {
               </span>
               <h2 id="signupTitle">We&apos;re Coming Soon</h2>
               <p className="sub">
-                The arena isn&apos;t open just yet — but the sport that&apos;s
+                The arena isn&apos;t open just yet, but the sport that&apos;s
                 about to change the game is almost here. Sign up for news, early
                 access, and round alerts.
               </p>

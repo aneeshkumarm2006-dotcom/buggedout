@@ -52,7 +52,7 @@ export default function ContactPage() {
                 <span className="label">What happens next</span>
                 <p>
                   Questions, event enquiries, partnership pitches or
-                  straight-up feedback on what we should do next — it all lands
+                  straight-up feedback on what we should do next: it all lands
                   in the same inbox. Expect a reply within two business days.
                 </p>
               </div>

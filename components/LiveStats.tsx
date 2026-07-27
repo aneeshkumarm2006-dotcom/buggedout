@@ -31,11 +31,11 @@ export default function LiveStats({ format, type, score }: LiveStatsProps) {
     <>
       <div className="stat-row">
         <span className="label">Players Online</span>
-        <span className="val live">{online ?? "—"}</span>
+        <span className="val live">{online ?? "-"}</span>
       </div>
       <div className="stat-row">
         <span className="label">Rounds Today</span>
-        <span className="val muted">{rounds ?? "—"}</span>
+        <span className="val muted">{rounds ?? "-"}</span>
       </div>
       <div className="stat-row">
         <span className="label">Format</span>

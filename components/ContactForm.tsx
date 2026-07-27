@@ -86,7 +86,7 @@ export default function ContactForm() {
           <IconCheck width={34} height={34} />
         </div>
         <span className="eyebrow">Message received</span>
-        <h2>Thanks — that landed.</h2>
+        <h2>Thanks, that landed.</h2>
         <p>
           We read every message. We&apos;ll get back to you at{" "}
           <strong>{form.email}</strong>, usually within two business days.

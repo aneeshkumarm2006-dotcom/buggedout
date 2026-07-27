@@ -62,7 +62,7 @@ export default function Nav() {
               ☰
             </button>
 
-            <Link href="/" className="logo-link" aria-label="BuggedOut — home">
+            <Link href="/" className="logo-link" aria-label="BuggedOut home">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/comingsoon.webp"

@@ -19,13 +19,13 @@ export async function generateMetadata({
   const { slug } = await params;
   const event = getEvent(slug);
   if (!event) {
-    return { title: "Event not found — BuggedOut.com" };
+    return { title: "Event not found | BuggedOut.com" };
   }
   return {
-    title: `${event.name} — ${event.meta} | BuggedOut.com`,
+    title: `${event.name}: ${event.meta} | BuggedOut.com`,
     description: event.tagline,
     openGraph: {
-      title: `${event.name} — BuggedOut.com`,
+      title: `${event.name} | BuggedOut.com`,
       description: event.tagline,
       images: [{ url: event.image }],
     },

@@ -38,7 +38,7 @@ export function kindLabel(key: string): string {
 
 /** en-US is pinned so the server-rendered HTML and the client hydration agree. */
 export function fmtDate(iso: string): string {
-  if (!iso) return "—";
+  if (!iso) return "-";
   return new Date(iso).toLocaleString("en-US", {
     month: "short",
     day: "numeric",

@@ -354,7 +354,7 @@ export const GALLERY: GalleryTile[] = [
     "w": 1600,
     "h": 893,
     "caption": "Hen on the grid, chaos on the board.",
-    "alt": "Chicken Shit Bingo — BuggedOut arena card"
+    "alt": "Chicken Shit Bingo, BuggedOut arena card"
   },
   {
     "src": "/assets/events/forked-fate.webp",
@@ -362,7 +362,7 @@ export const GALLERY: GalleryTile[] = [
     "w": 1600,
     "h": 893,
     "caption": "The path forks. Call the turn.",
-    "alt": "Forked Fate — BuggedOut arena card"
+    "alt": "Forked Fate, BuggedOut arena card"
   },
   {
     "src": "/assets/events/lane-racing.webp",
@@ -370,7 +370,7 @@ export const GALLERY: GalleryTile[] = [
     "w": 1600,
     "h": 893,
     "caption": "Three lanes, one finish, zero mercy.",
-    "alt": "Lane Racing — BuggedOut arena card"
+    "alt": "Lane Racing, BuggedOut arena card"
   },
   {
     "src": "/assets/events/roulette.webp",
@@ -378,7 +378,7 @@ export const GALLERY: GalleryTile[] = [
     "w": 1600,
     "h": 893,
     "caption": "Call your number, let the critter land it.",
-    "alt": "Roulette — BuggedOut arena card"
+    "alt": "Roulette, BuggedOut arena card"
   },
   {
     "src": "/assets/events/split-decision.webp",
@@ -386,7 +386,7 @@ export const GALLERY: GalleryTile[] = [
     "w": 1600,
     "h": 893,
     "caption": "Two doors, one runner, instant verdict.",
-    "alt": "Split Decision — BuggedOut arena card"
+    "alt": "Split Decision, BuggedOut arena card"
   },
   {
     "src": "/assets/events/the-great-escape.webp",
@@ -394,7 +394,7 @@ export const GALLERY: GalleryTile[] = [
     "w": 1600,
     "h": 893,
     "caption": "He's loose in the pit. Watch the breakout.",
-    "alt": "The Great Escape — BuggedOut arena card"
+    "alt": "The Great Escape, BuggedOut arena card"
   },
   {
     "src": "/assets/events/three-door-monty.webp",
@@ -402,7 +402,7 @@ export const GALLERY: GalleryTile[] = [
     "w": 1600,
     "h": 893,
     "caption": "Track the runner across three doors.",
-    "alt": "Three Door Monty — BuggedOut arena card"
+    "alt": "Three Door Monty, BuggedOut arena card"
   },
   {
     "src": "/assets/events/tunnel-vision.webp",
@@ -410,7 +410,7 @@ export const GALLERY: GalleryTile[] = [
     "w": 1600,
     "h": 893,
     "caption": "Full tilt down the neon tunnel.",
-    "alt": "Tunnel Vision — BuggedOut arena card"
+    "alt": "Tunnel Vision, BuggedOut arena card"
   },
   {
     "src": "/assets/hero-horizontal.webp",

@@ -161,12 +161,12 @@ export default function SignupsPanel({
                           isNew ? "Signed up in the last 24 hours" : undefined
                         }
                       >
-                        <td className="t-name">{r.name || "—"}</td>
+                        <td className="t-name">{r.name || "-"}</td>
                         <td>
                           <a href={`mailto:${r.email}`}>{r.email}</a>
                         </td>
                         <td>
-                          {r.phone ? <a href={`tel:${r.phone}`}>{r.phone}</a> : "—"}
+                          {r.phone ? <a href={`tel:${r.phone}`}>{r.phone}</a> : "-"}
                         </td>
                         <td className="t-date">{fmtDate(r.createdAt)}</td>
                       </tr>
