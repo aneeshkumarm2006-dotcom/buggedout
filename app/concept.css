@@ -140,23 +140,26 @@
 .bo-home .trailer-image{width:100%;aspect-ratio:16 / 9;object-fit:cover;border-radius:var(--radius-lg)}
 .bo-home .play-overlay{display:none}
 
-/* video modal */
-.bo-home .video-modal{
+/* video modal — GLOBAL, not scoped to .bo-home: TrailerModal portals this into
+   <body> so it escapes the stacking context that globals.css creates on <main>
+   (position:relative;z-index:2). z-index must clear .navbar (1000) and
+   .mobile-menu (2000) so the trailer covers the whole page, nav included. */
+.video-modal{
   position:fixed;inset:0;z-index:9999;
   display:flex;justify-content:center;align-items:center;
   background:rgba(0,0,0,.85);opacity:0;visibility:hidden;transition:.3s;
 }
-.bo-home .video-modal.active{opacity:1;visibility:visible}
+.video-modal.active{opacity:1;visibility:visible}
 /* Shrink-wraps the video instead of forcing a width, so a portrait (9:16)
    source stays inside the viewport instead of running ~1600px tall.
    Height cap leaves room for the close button sitting at top:-55px. */
-.bo-home .video-container{position:relative;width:auto;max-width:90vw}
-.bo-home .video-container video{
+.video-container{position:relative;width:auto;max-width:90vw}
+.video-container video{
   display:block;width:auto;height:auto;
   max-width:90vw;max-height:calc(100dvh - 130px);
   border-radius:16px;
 }
-.bo-home .close-video{
+.close-video{
   position:absolute;top:-55px;right:0;width:46px;height:46px;
   color:var(--color-white);font-size:2rem;
   background:rgba(255,255,255,.15);
@@ -455,8 +458,8 @@
     text-shadow:0 0 10px rgba(255,122,24,.8),0 0 30px rgba(255,122,24,.5);
   }
   .bo-home .trailer-button:hover .play-overlay{opacity:1}
-  .bo-home .video-container{max-width:80vw}
-  .bo-home .video-container video{
+  .video-container{max-width:80vw}
+  .video-container video{
     max-width:80vw;max-height:calc(100dvh - 150px);
     border-radius:20px;box-shadow:0 0 40px rgba(0,0,0,.6);
   }
